@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UIManagement.Button;
-using UIManagement.Slider;
+using UI.Management.Button;
+using UI.Management.Slider;
 
 
 public class TestScript : MonoBehaviour

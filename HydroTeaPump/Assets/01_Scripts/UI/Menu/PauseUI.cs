@@ -28,6 +28,9 @@ public class PauseUI : MonoBehaviour
         ButtonManagement.AddEvent(btnPause, Pause);
         ButtonManagement.AddEvent(btnClose, Pause);
         ButtonManagement.AddEvent(btnMainMenu, () => { UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); }); // 신 이름은 아마 나중에 바뀔수도
+
+        pausePannel.SetActive(false);
+        btnPause.gameObject.SetActive(true);
     }
 
     private void Pause()
@@ -36,5 +39,6 @@ public class PauseUI : MonoBehaviour
         Time.timeScale = isPause ? 0 : 1;
         
         pausePannel.SetActive(isPause);
+        btnPause.gameObject.SetActive(!isPause);
     }
 }
