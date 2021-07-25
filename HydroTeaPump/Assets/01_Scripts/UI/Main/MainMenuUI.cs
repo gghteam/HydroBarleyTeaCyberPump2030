@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UIManagement.Button;
+using UI.Management.Button;
 
 public class MainMenuUI : MonoBehaviour
 {
