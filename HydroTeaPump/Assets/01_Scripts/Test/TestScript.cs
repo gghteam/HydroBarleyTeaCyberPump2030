@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UIManagement.Button;
+using UIManagement.Slider;
+
 
 public class TestScript : MonoBehaviour
 {
-    public GameObject obj;
+    //public Button btn;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        GenericPoolManager<PoolTest> pool = new GenericPoolManager<PoolTest>(obj);
+        //ButtonManagement.AddEvent(btn, () => { Debug.Log("pressed"); });
     }
 
     // Update is called once per frame

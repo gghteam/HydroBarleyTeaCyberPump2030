@@ -3,7 +3,6 @@ using UIManagement.Slider;
 
 public class UIManager : UnityEngine.MonoBehaviour
 {
-    
     private void Awake()
     {
         new ButtonManagement();
@@ -105,8 +104,6 @@ namespace UIManagement
 
     namespace Slider
     {
-        using UnityEngine.Events;
-
         public class SliderManagement
         {
             #region °ª
