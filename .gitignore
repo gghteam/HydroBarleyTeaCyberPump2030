@@ -61,3 +61,10 @@ crashlytics-build.properties
 HydroTeaPump/Library/
 HydroTeaPump/Temp/
 HydroTeaPump/Logs/
+HydroTeaPump/UserSettings/
+
+.log
+.cache
+
+shadercompiler-UnityShaderCompiler.exe0.log
+HydroTeaPump/obj/Debug/
