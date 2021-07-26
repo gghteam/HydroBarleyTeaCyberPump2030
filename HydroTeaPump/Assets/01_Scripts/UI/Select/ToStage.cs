@@ -7,6 +7,9 @@ public class ToStage : SelectObjectBase
     [SerializeField] private GameObject objNotice = null;
 
     [SerializeField] private string nextScene = "";
+
+    bool isSceneOpen = false;
+
     private void Awake()
     {
         objNotice.SetActive(false);
@@ -26,7 +29,16 @@ public class ToStage : SelectObjectBase
         }
         else
         {
-            SceneLoadManager.LoadSceneAdditive(nextScene);
+            if (isSceneOpen)
+            {
+                isSceneOpen = false;
+                SceneLoadManager.UnLoadScene(nextScene);
+            }
+            else
+            {
+                isSceneOpen = true;
+                SceneLoadManager.LoadSceneAdditive(nextScene);
+            }
         }
         GameManager.Instance.isPopupOpen = !GameManager.Instance.isPopupOpen;
     }
