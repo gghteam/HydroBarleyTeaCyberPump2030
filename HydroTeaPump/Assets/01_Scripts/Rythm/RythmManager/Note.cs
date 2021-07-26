@@ -8,6 +8,7 @@ public class Note : MonoBehaviour
 
     UnityEngine.UI.Image noteImage;
 
+    public bool isRightNote = true;
     void OnEnable()
     {
         if (noteImage == null)
@@ -17,7 +18,8 @@ public class Note : MonoBehaviour
 
     void Update()
     {
-        transform.localPosition += Vector3.down * noteSpeed * Time.deltaTime;
+        Vector3 dir = isRightNote ? Vector3.right :Vector3.left;
+        transform.localPosition += dir * noteSpeed * Time.deltaTime;
     }
     public void HideNote()
     {

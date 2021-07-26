@@ -17,7 +17,10 @@ public class NoteManager : MonoBehaviour
 
 
     [SerializeField]
-    Transform tfNoteAppear = null;
+    Transform tfNoteAppearRight = null;
+    [SerializeField]
+    Transform tfNoteAppearLeft = null;
+
     [SerializeField]
     Transform Center = null;
     [SerializeField]
@@ -39,8 +42,8 @@ public class NoteManager : MonoBehaviour
 
         for (int i = 0; i < timingRect.Length; i++)
         {
-            timingBoxes[i].Set(Center.localPosition.y + timingRect[i].rect.height / 2,
-                               Center.localPosition.y - timingRect[i].rect.height / 2);
+            timingBoxes[i].Set(Center.localPosition.y + timingRect[i].rect.width / 2,
+                               Center.localPosition.y - timingRect[i].rect.width / 2);
         }
         
     }
@@ -50,12 +53,8 @@ public class NoteManager : MonoBehaviour
         
         if(currentTime >= 60d/ bpm)
         {
-            GameObject t_note = ObjectPool.instance.noteQueue.Dequeue();
-            t_note.transform.position = tfNoteAppear.position;
-            t_note.SetActive(true);
-            noteObj_Line.Add(t_note);
-            currentTime -= 60d / bpm;
-            enemy.GetComponent<EnemyMove>().EnemyMoving();
+            MakeNote(true);
+            MakeNote(false);
         }
         
         if(Input.GetKeyDown(KeyCode.DownArrow)|| Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -70,6 +69,19 @@ public class NoteManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 노트 생성 함수
+    /// </summary>
+    public void MakeNote(bool isRight)
+    {
+        GameObject t_note = ObjectPool.instance.noteQueue.Dequeue();
+        t_note.transform.position = isRight?  tfNoteAppearRight.position : tfNoteAppearLeft.position;
+        t_note.GetComponent<Note>().isRightNote = !isRight;
+        t_note.SetActive(true);
+        noteObj_Line.Add(t_note);
+        currentTime -= 60d / bpm;
+        enemy.GetComponent<EnemyMove>().EnemyMoving();
+    }
 
     /// <summary>
     /// 노트 제거 함수
@@ -91,24 +103,27 @@ public class NoteManager : MonoBehaviour
     {
         for (int i = 0; i < a.Count; i++)
         {
-            float t_notePosY = a[i].transform.localPosition.y;
-
-            for (int x = 0; x < timingBoxes.Length; x++)
+            float t_notePosX = a[i].transform.localPosition.x;
+            if(a[i].GetComponent<Note>().isRightNote)
             {
-                if (timingBoxes[x].y <= t_notePosY && timingBoxes[x].x >= t_notePosY)
+                for (int x = 0; x < timingBoxes.Length; x++)
                 {
-                    a[i].GetComponent<Note>().HideNote();
-                    a.RemoveAt(i);
-                    Debug.Log("Hit" + x);
-                    if(x <= 2)
+                    if (timingBoxes[x].y <= t_notePosX && timingBoxes[x].x >= t_notePosX)
                     {
-                        player.GetComponent<StagePlayerMove>().PlayerMoving();
+                        a[i].GetComponent<Note>().HideNote();
+                        a.RemoveAt(i);
+                        Debug.Log("Hit" + x);
+                        if (x <= 2)
+                        {
+                            player.GetComponent<StagePlayerMove>().PlayerMoving();
+                        }
+                        return;
                     }
-                    return;
                 }
             }
+          
             Debug.Log("Miss");
-            GameManager.Instance.CameraShaking(1f);
+            //GameManager.Instance.CameraShaking(1f);
         }
         /*Debug.Log(timingBoxes[0].y);
         Debug.Log(timingBoxes[0].x);

@@ -18,7 +18,8 @@ public partial class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (!GameManager.Instance.isPopupOpen)
+            Move();
     }
 
     /// <summary>

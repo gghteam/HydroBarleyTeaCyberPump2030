@@ -7,11 +7,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public bool isPopupOpen = false;
+
     [Header("Ä«¸Þ¶ó")]
-    public CinemachineImpulseSource ImpulseSource;
+    private CinemachineImpulseSource ImpulseSource;
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this);
+    }
+    private void Start()
+    {
+        if (GameObject.Find("Vcam") != null)
+            ImpulseSource = GameObject.Find("Vcam").GetComponent<CinemachineImpulseSource>();
     }
 
     /// <summary>

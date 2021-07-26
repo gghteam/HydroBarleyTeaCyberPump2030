@@ -6,6 +6,7 @@ public class ToStage : SelectObjectBase
 {
     [SerializeField] private GameObject objNotice = null;
 
+    [SerializeField] private string nextScene = "";
     private void Awake()
     {
         objNotice.SetActive(false);
@@ -14,8 +15,20 @@ public class ToStage : SelectObjectBase
     public override void OnSelect()
     {
         base.OnSelect();
-
-        SceneLoadManager.LoadSceneAdditive("Craft");
+        Debug.Log("SSSSS");
+        if(GameManager.Instance.isPopupOpen)
+        {
+            if(nextScene == "MapScene")
+            {
+                MapUi mapManager = GameObject.Find("MapManager").GetComponent<MapUi>();
+                mapManager.PopDown(.5f);
+            }
+        }
+        else
+        {
+            SceneLoadManager.LoadSceneAdditive(nextScene);
+        }
+        GameManager.Instance.isPopupOpen = !GameManager.Instance.isPopupOpen;
     }
 
     public override void ToggleNotice()

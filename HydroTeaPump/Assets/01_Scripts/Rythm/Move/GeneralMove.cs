@@ -22,7 +22,7 @@ public class GeneralMove : MonoBehaviour
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.name);
-            GameManager.Instance.CameraShaking(0.5f);
+            //GameManager.Instance.CameraShaking(0.5f);
         }
         else
         {

@@ -44,5 +44,7 @@ public partial class CollSelect : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isCollision = false;
+        col = collision.GetComponent<ICollSelectable>();
+        col?.ToggleNotice();
     }
 }
