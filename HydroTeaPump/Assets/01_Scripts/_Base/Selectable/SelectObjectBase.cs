@@ -8,4 +8,9 @@ public class SelectObjectBase : MonoBehaviour, ICollSelectable
     {
         Debug.Log($"I am selected!, Name: {gameObject.name}");
     }
+    
+    public virtual void ToggleNotice()
+    {
+        
+    }
 }

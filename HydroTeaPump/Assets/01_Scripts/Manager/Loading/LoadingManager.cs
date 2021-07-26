@@ -21,30 +21,9 @@ public class LoadingManager : MonoBehaviour
         }
 
 
-        load = SceneManager.LoadSceneAsync(WhatToLoad());
+        load = SceneManager.LoadSceneAsync(SceneLoadManager.GetLastRequest());
         load.allowSceneActivation = false;
         btnLoad.gameObject.SetActive(false);
-    }
-
-    /// <summary>
-    /// 로드할 씬을 리턴합니다.
-    /// </summary>
-    /// <returns>로드할 씬의 이름(string)</returns>
-    private string WhatToLoad()
-    {
-
-        switch(SceneLoadManager.GetLastScene())
-        {
-            case "MainMenu":
-                return "SelectStage";
-                break;
-
-
-            default:
-                return "MainMenu";
-                break;
-        }
-
     }
 
 
