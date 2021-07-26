@@ -13,7 +13,12 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
-    public void CameraShaking(float force)//주어진 값으로 카메라 흔드는 함수
+
+    /// <summary>
+    /// 주어진 값만큼 카메라 흔드는 함수
+    /// </summary>
+    /// <param name="force">흔드는 힘</param>
+    public void CameraShaking(float force)
     {
         ImpulseSource.GenerateImpulse(force);
     }

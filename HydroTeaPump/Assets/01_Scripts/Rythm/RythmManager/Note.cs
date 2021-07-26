@@ -14,7 +14,7 @@ public class Note : MonoBehaviour
             noteImage = GetComponent<UnityEngine.UI.Image>();
         noteImage.enabled = true;
     }
-    // Update is called once per frame
+
     void Update()
     {
         transform.localPosition += Vector3.down * noteSpeed * Time.deltaTime;

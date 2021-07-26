@@ -53,7 +53,6 @@ public class NoteManager : MonoBehaviour
             GameObject t_note = ObjectPool.instance.noteQueue.Dequeue();
             t_note.transform.position = tfNoteAppear.position;
             t_note.SetActive(true);
-            //t_note.transform.SetParent(this.transform);
             noteObj_Line.Add(t_note);
             currentTime -= 60d / bpm;
             enemy.GetComponent<EnemyMove>().EnemyMoving();
@@ -72,7 +71,10 @@ public class NoteManager : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// 노트 제거 함수
+    /// </summary>
+    /// <param name="a">제거할 노트</param>
     public void RemoveNoteObj(GameObject a)
     {
         noteObj_Line.Remove(a);
@@ -81,6 +83,10 @@ public class NoteManager : MonoBehaviour
         a.SetActive(false);
     }
 
+    /// <summary>
+    /// 노트 판정 함수
+    /// </summary>
+    /// <param name="a"></param>
     public void CheckTiming(List<GameObject> a)
     {
         for (int i = 0; i < a.Count; i++)

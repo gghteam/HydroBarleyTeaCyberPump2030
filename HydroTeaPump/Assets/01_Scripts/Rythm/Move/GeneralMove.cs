@@ -11,6 +11,10 @@ public class GeneralMove : MonoBehaviour
     [SerializeField]
     private LayerMask ObtacleMask;
 
+    /// <summary>
+    /// 방향을 정해주면 이동 가능 체크 및 이동 함수
+    /// </summary>
+    /// <param name="dir"> 방향 </param>
     public void Moving(Vector3 dir)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1,ObtacleMask);

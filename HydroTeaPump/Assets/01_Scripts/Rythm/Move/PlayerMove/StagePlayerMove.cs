@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class StagePlayerMove : GeneralMove
 {
+    /// <summary>
+    /// ÇÃ·¹ÀÌ¾î ÀÌµ¿ÇÔ¼ö
+    /// </summary>
     public void PlayerMoving()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -18,4 +21,13 @@ public class StagePlayerMove : GeneralMove
         Vector3 dir = new Vector3(h, v, 0);
         Moving(dir);
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.layer == 11)
+        {
+            Debug.Log("¤È! È¹µæ!");
+        }
+    }
+    
 }
