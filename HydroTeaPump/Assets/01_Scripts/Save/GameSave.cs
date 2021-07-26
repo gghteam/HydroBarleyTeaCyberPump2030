@@ -55,6 +55,9 @@ public class GameSave : MonoBehaviour
         Debug.Log(filePath);
     }
 
+    /// <summary>
+    /// 데이터 로드 함수, 데이터가 없을경우 새로운 파일 생성
+    /// </summary>
     public void LoadGameData()
     {
         if (File.Exists(filePath))
@@ -72,6 +75,9 @@ public class GameSave : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 데이터 저장 함수
+    /// </summary>
     public void SaveGameData()
     {
         string ToJsonData = JsonUtility.ToJson(data, true);
