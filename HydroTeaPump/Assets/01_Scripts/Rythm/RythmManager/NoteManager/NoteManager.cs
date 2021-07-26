@@ -4,18 +4,18 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NoteManager : MonoBehaviour
+public partial class NoteManager : MonoBehaviour
 {
-
+    static private NoteManager inst; // static 함수 접근 용도
 
     public GameObject notePrefab;
 
+    private int baseBPM = 0; // 초기 bpm
     public int bpm = 0;
     double currentTime = 0d;
 
     // 노트 프리팹 생성 및 리스트 저장.
     public List<GameObject> noteObj_Line = new List<GameObject>();
-
 
     [SerializeField]
     Transform tfNoteAppearRight = null;
@@ -48,7 +48,13 @@ public class NoteManager : MonoBehaviour
         BAD = 2
     }
     private HeartState heartState = HeartState.NORMAL;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        inst = this;
+        baseBPM = bpm; // 다시 원래대로 돌리기 위함
+    }
+
     void Start()
     {
 
@@ -169,4 +175,5 @@ public class NoteManager : MonoBehaviour
     {
         heartSprite.sprite = heartSprites[(int)heartState];
     }
+
 }
