@@ -6,6 +6,12 @@ using UnityEngine.UI;
 using UI.Management.Button;
 using UI.Interactive.Button;
 
+// TODO
+/*
+마우스 따라다니는거 없에야 함
+ 
+*/
+
 // UI 관련
 public partial class Inventory : MonoBehaviour
 {
@@ -17,8 +23,8 @@ public partial class Inventory : MonoBehaviour
     [Header("따라다니게 되는 오브젝트")]
     [SerializeField] private GameObject     followedObj;
                      private SpriteRenderer followedRenderer = null;
-                     private bool           follow   = false; // 따라다니는지
-                     private ItemVO         lastItem = null;  // 따라다니고 있는 오브젝트
+                     private bool           follow           = false; // 따라다니는지
+                     private ItemVO         lastItem         = null;  // 따라다니고 있는 오브젝트
 
     [Header("선택 인디케이터")]
     [SerializeField] private RectTransform indicator = null;
@@ -43,7 +49,7 @@ public partial class Inventory : MonoBehaviour
 
     private void Update()
     {
-        FollowCursor();
+        //FollowCursor();
         Select.MoveNext();
         Select.MovePrev();
         Select.MoveSelect();
