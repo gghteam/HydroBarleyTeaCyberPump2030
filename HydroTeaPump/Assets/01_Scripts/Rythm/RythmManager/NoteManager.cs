@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
+
+
     public GameObject notePrefab;
 
     public int bpm = 0;
@@ -24,6 +27,8 @@ public class NoteManager : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +56,7 @@ public class NoteManager : MonoBehaviour
             //t_note.transform.SetParent(this.transform);
             noteObj_Line.Add(t_note);
             currentTime -= 60d / bpm;
+            enemy.GetComponent<EnemyMove>().EnemyMoving();
         }
         
         if(Input.GetKeyDown(KeyCode.DownArrow)|| Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -64,6 +70,8 @@ public class NoteManager : MonoBehaviour
             RemoveNoteObj(collision.gameObject);
         }
     }
+
+
 
     public void RemoveNoteObj(GameObject a)
     {
@@ -88,15 +96,16 @@ public class NoteManager : MonoBehaviour
                     Debug.Log("Hit" + x);
                     if(x <= 2)
                     {
-                        player.GetComponent<StagePlayerMove>().Moving();
+                        player.GetComponent<StagePlayerMove>().PlayerMoving();
                     }
                     return;
                 }
             }
             Debug.Log("Miss");
+            GameManager.Instance.CameraShaking(1f);
         }
-        Debug.Log(timingBoxes[0].y);
+        /*Debug.Log(timingBoxes[0].y);
         Debug.Log(timingBoxes[0].x);
-        Debug.Log(a[0].transform.localPosition.y);
+        Debug.Log(a[0].transform.localPosition.y);*/
     }
 }
