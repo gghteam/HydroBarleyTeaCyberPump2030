@@ -88,7 +88,7 @@ public class NoteManager : MonoBehaviour
                     Debug.Log("Hit" + x);
                     if(x <= 2)
                     {
-                        player.GetComponent<PlayerMove>().Moving();
+                        player.GetComponent<StagePlayerMove>().Moving();
                     }
                     return;
                 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PlayerMove : MonoBehaviour
+public class StagePlayerMove : MonoBehaviour
 {
     [SerializeField]
     private float moveDistance = 100;
