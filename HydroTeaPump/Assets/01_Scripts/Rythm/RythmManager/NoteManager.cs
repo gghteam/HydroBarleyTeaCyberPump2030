@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteManager : MonoBehaviour
 {
@@ -33,6 +34,20 @@ public class NoteManager : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
 
+    [SerializeField]
+    private Sprite[] heartSprites;
+    public Image heartSprite;
+
+    /// <summary>
+    /// 0 = Cool, 1 = Normal, 2 = Bad
+    /// </summary>
+    private enum HeartState
+    {
+        COOL = 0,
+        NORMAL =1,
+        BAD = 2
+    }
+    private HeartState heartState = HeartState.NORMAL;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +57,8 @@ public class NoteManager : MonoBehaviour
 
         for (int i = 0; i < timingRect.Length; i++)
         {
-            timingBoxes[i].Set(Center.localPosition.y + timingRect[i].rect.width / 2,
-                               Center.localPosition.y - timingRect[i].rect.width / 2);
+            timingBoxes[i].Set(Center.localPosition.x - timingRect[i].rect.height / 2,
+                               Center.localPosition.x + timingRect[i].rect.height / 2);
         }
         
     }
@@ -58,7 +73,7 @@ public class NoteManager : MonoBehaviour
         }
         
         if(Input.GetKeyDown(KeyCode.DownArrow)|| Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
-            CheckTiming(noteObj_Line);
+            CheckTiming();
         
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -66,6 +81,11 @@ public class NoteManager : MonoBehaviour
         if (collision.CompareTag("Note"))
         {
             RemoveNoteObj(collision.gameObject);
+            if(collision.GetComponent<Note>().isRightNote && heartState != HeartState.COOL)
+            {
+                heartState = (HeartState)1;
+                HeartSpriteRefresh();
+            }
         }
     }
 
@@ -76,6 +96,8 @@ public class NoteManager : MonoBehaviour
     {
         GameObject t_note = ObjectPool.instance.noteQueue.Dequeue();
         t_note.transform.position = isRight?  tfNoteAppearRight.position : tfNoteAppearLeft.position;
+        t_note.transform.rotation =Quaternion.Euler(0,0,90);
+        t_note.transform.localScale = new Vector3(144, isRight ? -144 : 144, 144);
         t_note.GetComponent<Note>().isRightNote = !isRight;
         t_note.SetActive(true);
         noteObj_Line.Add(t_note);
@@ -99,34 +121,52 @@ public class NoteManager : MonoBehaviour
     /// 노트 판정 함수
     /// </summary>
     /// <param name="a"></param>
-    public void CheckTiming(List<GameObject> a)
+    public void CheckTiming()
     {
-        for (int i = 0; i < a.Count; i++)
+        for (int i = 0; i < noteObj_Line.Count; i++)
         {
-            float t_notePosX = a[i].transform.localPosition.x;
-            if(a[i].GetComponent<Note>().isRightNote)
+            float t_notePosX = noteObj_Line[i].transform.localPosition.x;
+            if(noteObj_Line[i].GetComponent<Note>().isRightNote)
             {
                 for (int x = 0; x < timingBoxes.Length; x++)
                 {
-                    if (timingBoxes[x].y <= t_notePosX && timingBoxes[x].x >= t_notePosX)
+                    if (timingBoxes[x].x <= t_notePosX && timingBoxes[x].y >= t_notePosX)
                     {
-                        a[i].GetComponent<Note>().HideNote();
-                        a.RemoveAt(i);
+                        noteObj_Line[i].GetComponent<Note>().HideNote();
+                        noteObj_Line[i-1].GetComponent<Note>().HideNote();
+                        noteObj_Line.RemoveAt(i);
+                        noteObj_Line.RemoveAt(i-1);
                         Debug.Log("Hit" + x);
-                        if (x <= 2)
+
+                        if (x <2)
                         {
                             player.GetComponent<StagePlayerMove>().PlayerMoving();
                         }
+                        heartState = (HeartState)x;
+                        HeartSpriteRefresh();
                         return;
                     }
                 }
+
+                //GameManager.Instance.CameraShaking(1f);
+
             }
-          
-            Debug.Log("Miss");
-            //GameManager.Instance.CameraShaking(1f);
+
         }
+
+        Debug.Log("Miss");
+        heartState = HeartState.BAD;
+        HeartSpriteRefresh();
         /*Debug.Log(timingBoxes[0].y);
         Debug.Log(timingBoxes[0].x);
         Debug.Log(a[0].transform.localPosition.y);*/
+    }
+
+    /// <summary>
+    /// 상태에 따른 하트 스프라이트 변환 함수
+    /// </summary>
+    public void HeartSpriteRefresh()
+    {
+        heartSprite.sprite = heartSprites[(int)heartState];
     }
 }
