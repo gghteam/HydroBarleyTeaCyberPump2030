@@ -34,12 +34,12 @@ public class InventoryBase : MonoBehaviour
             count = 1;
         }
 
-        inventory.Add(ItemEnum.Temp1, new ItemVO(ItemEnum.Temp1, count, 0));
-        inventory.Add(ItemEnum.Temp2, new ItemVO(ItemEnum.Temp2, count, 0));
-        inventory.Add(ItemEnum.Temp3, new ItemVO(ItemEnum.Temp3, count, 0));
-        inventory.Add(ItemEnum.Temp4, new ItemVO(ItemEnum.Temp4, count, 0));
-        inventory.Add(ItemEnum.Temp5, new ItemVO(ItemEnum.Temp5, count, 0));
-        inventory.Add(ItemEnum.Temp6, new ItemVO(ItemEnum.Temp6, count, 0));
+        inventory.Add(ItemEnum.Star,     new ItemVO(ItemEnum.Star,     count, 0));
+        inventory.Add(ItemEnum.Mermaid,  new ItemVO(ItemEnum.Mermaid,  count, 0));
+        inventory.Add(ItemEnum.Flower,   new ItemVO(ItemEnum.Flower,   count, 0));
+        inventory.Add(ItemEnum.WolfTear, new ItemVO(ItemEnum.WolfTear, count, 0));
+        inventory.Add(ItemEnum.Fog,      new ItemVO(ItemEnum.Fog,      count, 0));
+        inventory.Add(ItemEnum.Moon,     new ItemVO(ItemEnum.Moon,     count, 0));
     }
 
 

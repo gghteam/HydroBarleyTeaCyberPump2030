@@ -1033,7 +1033,7 @@ MonoBehaviour:
   - {fileID: 2074805270}
   - {fileID: 1297960108}
   - {fileID: 632996687}
-  btnCraft: {fileID: 0}
+  btnCraft: {fileID: 508890702}
 --- !u!1 &699617955
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,6 +97,8 @@ public class CraftUI : MonoBehaviour
             int idx = i;
             ButtonManagement.AddEvent(btnCraftList[i], () => AddToTable(idx));
         }
+
+        btnCraft.onClick.AddListener(Craft);
     }
 
     #endregion
