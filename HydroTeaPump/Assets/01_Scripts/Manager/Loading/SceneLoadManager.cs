@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoadManager : MonoBehaviour
 {
     static private SceneLoadManager inst; // static Á¢±Ù¿ë
-           private Stack<string> sceneHistory;
+           private Stack<string>    sceneRequest;
 
 
     private void Awake()
@@ -17,13 +17,13 @@ public class SceneLoadManager : MonoBehaviour
 
     static public void LoadScene(string sceneName)
     {
-        inst.sceneHistory.Push(SceneManager.GetActiveScene().name);
+        inst.sceneRequest.Push(sceneName);
 
         SceneManager.LoadScene("Loading");
     }
 
-    static public string GetLastScene()
+    static public string GetLastRequest()
     {
-        return inst.sceneHistory.Count == 0 ? "null" : inst.sceneHistory.Pop();
+        return inst.sceneRequest.Count == 0 ? "null" : inst.sceneRequest.Pop();
     }
 }
