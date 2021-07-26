@@ -11,6 +11,9 @@ public class GeneralMove : MonoBehaviour
     [SerializeField]
     private LayerMask ObtacleMask;
 
+    public bool isMoving = false;
+
+
     /// <summary>
     /// 방향을 정해주면 이동 가능 체크 및 이동 함수
     /// </summary>
@@ -23,11 +26,12 @@ public class GeneralMove : MonoBehaviour
         {
             Debug.Log(hit.collider.name);
             //GameManager.Instance.CameraShaking(0.5f);
+            isMoving = false;
         }
         else
         {
             Vector3 nextPos = transform.position + new Vector3(dir.x * moveDistance, dir.y * moveDistance);
-            transform.DOMove(nextPos, 0.1f);
+            transform.DOMove(nextPos, 0.1f).OnComplete(()=> { isMoving = false; });
         }
 
     }

@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &159159209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -386,6 +386,7 @@ MonoBehaviour:
   ObtacleMask:
     serializedVersion: 2
     m_Bits: 1088
+  isMoving: 0
 --- !u!50 &159159211
 Rigidbody2D:
   serializedVersion: 4
@@ -2289,6 +2290,7 @@ MonoBehaviour:
   ObtacleMask:
     serializedVersion: 2
     m_Bits: 576
+  isMoving: 0
 --- !u!61 &1800466016
 BoxCollider2D:
   m_ObjectHideFlags: 0
