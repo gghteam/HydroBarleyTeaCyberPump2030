@@ -32,13 +32,11 @@ public partial class Inventory : MonoBehaviour
 
     static private Inventory inst; // static 함수 접근 용도
 
-    private void Awake()
-    {
-        Select.SelectFrom(btns);
-    }
 
     private void Start()
     {
+        Select.SelectFrom(btns);
+
         inst = this;
         LinkFunctions();
         SetSprite();
