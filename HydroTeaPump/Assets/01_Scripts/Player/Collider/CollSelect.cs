@@ -29,6 +29,7 @@ public partial class CollSelect : MonoBehaviour
     {
         if (input.select)
         {
+            if (!isCollision) return;
             input.DisableSelect();
             col?.OnSelect();
         }
