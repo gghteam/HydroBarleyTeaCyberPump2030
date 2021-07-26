@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class StagePlayerMove : GeneralMove
+public class RythmPlayerMove : GeneralMove
 {
     /// <summary>
     /// 플레이어 이동함수

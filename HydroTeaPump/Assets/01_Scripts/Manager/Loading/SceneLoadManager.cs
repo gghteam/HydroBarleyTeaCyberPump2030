@@ -31,4 +31,9 @@ public class SceneLoadManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
     }
+    
+    static public void UnLoadScene(string sceneName)
+    {
+        SceneManager.UnloadSceneAsync(sceneName);
+    }
 }

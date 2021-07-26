@@ -140,7 +140,7 @@ public class NoteManager : MonoBehaviour
 
                         if (x <2)
                         {
-                            player.GetComponent<StagePlayerMove>().PlayerMoving();
+                            player.GetComponent<RythmPlayerMove>().PlayerMoving();
                         }
                         heartState = (HeartState)x;
                         HeartSpriteRefresh();

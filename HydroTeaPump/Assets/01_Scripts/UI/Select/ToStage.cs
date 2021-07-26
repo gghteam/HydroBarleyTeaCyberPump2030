@@ -20,7 +20,7 @@ public class ToStage : SelectObjectBase
         {
             if(nextScene == "MapScene")
             {
-                MapUi mapManager = GameObject.Find("MapManager").GetComponent<MapUi>();
+                MapUi mapManager = GameObject.Find("Piece").GetComponent<MapUi>();
                 mapManager.PopDown(.5f);
             }
         }
