@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 기능 관련 (또는 기반)
 public class InventoryBase : MonoBehaviour
 {
 
     static private InventoryBase                inst            = null;                                // static 함수 용
            private Dictionary<ItemEnum, ItemVO> inventory       = new Dictionary<ItemEnum, ItemVO>();  // 인벤토리 딕셔너리
-           private GameObject                   inventoryPannel = null;                                // 실제 인벤토리
 
     #region init, includes Awake
 
     private void Awake()
     {
         inst = this;
-        inventoryPannel = transform.GetChild(0).gameObject;
-        inventoryPannel.SetActive(false);
+
+        SetItemData(true);
     }
 
     #endregion
@@ -23,21 +23,48 @@ public class InventoryBase : MonoBehaviour
     #region Item
 
     /// <summary>
+    /// 아이탬 기본 데이터를 인벤토리에 저장
+    /// </summary>
+    private void SetItemData(bool debug = false)
+    {
+        int count = 0;
+
+        if (debug)
+        {
+            count = 1;
+        }
+
+        inventory.Add(ItemEnum.Temp1, new ItemVO(ItemEnum.Temp1, count, 0));
+        inventory.Add(ItemEnum.Temp2, new ItemVO(ItemEnum.Temp2, count, 0));
+        inventory.Add(ItemEnum.Temp3, new ItemVO(ItemEnum.Temp3, count, 0));
+        inventory.Add(ItemEnum.Temp4, new ItemVO(ItemEnum.Temp4, count, 0));
+        inventory.Add(ItemEnum.Temp5, new ItemVO(ItemEnum.Temp5, count, 0));
+        inventory.Add(ItemEnum.Temp6, new ItemVO(ItemEnum.Temp6, count, 0));
+    }
+
+
+
+    /// <summary>
     /// 아이탬 가져올 수 있는지 확인하는 함수
     /// </summary>
     /// <param name="itemEnum">가져올 아이탬</param>
     /// <param name="itemVO">가져올 수 있을 시 가져온 아이탬의 정보가 담김</param>
     /// <returns>false when item count is 0 or less</returns>
-    static public bool TryGetItem(ItemEnum itemEnum, out ItemVO itemVO)
+    static public bool TryGetItem(ItemEnum itemEnum, ref ItemVO itemVO)
     {
-        if (inst.inventory[itemEnum].count < 1)
+        if (!inst.inventory.ContainsKey(itemEnum))
+        {
+            Debug.LogError($"Request key: {itemEnum} does not exists");
+            return false;
+        }
+
+        if (inst.inventory[itemEnum].count < 1) 
         {
             itemVO = null;
             return false;
         }
 
-
-        itemVO = inst.inventory[itemEnum]; // TODO : 아직 다 구현되지 않음
+        itemVO = inst.inventory[itemEnum];
         
         return true;
     }
@@ -65,28 +92,31 @@ public class InventoryBase : MonoBehaviour
     /// <returns>false when fail</returns>
     static public bool AddItem(ItemVO vo)
     {
-        // 이미 아이탬을 가지고 있는 경우 수량만 더함
         if (inst.inventory.ContainsKey(vo.itemEnum))
         {
-            inst.inventory[vo.itemEnum].count += vo.count;
+            inst.inventory[vo.itemEnum].count = 1;
             return true;
         }
 
-        inst.inventory.Add(vo.itemEnum, vo);
-
-        return true;
+        Debug.LogError($"AddItem: Cannot find key: {vo.itemEnum}");
+        return false;
     }
 
-    #endregion
-
-    #region Display
-
     /// <summary>
-    /// 인벤토리를 열거나 닫습니다.
+    /// 아이탬을 하나 추가함
     /// </summary>
-    static public void ToggleInventory()
+    /// <param name="itemEnum">추가할 아이탬의 enums</param>
+    /// <returns>false when fail</returns>
+    static public bool AddItem(ItemEnum itemEnum)
     {
-        inst.inventoryPannel.SetActive(!inst.inventoryPannel.activeSelf);
+        if (inst.inventory.ContainsKey(itemEnum))
+        {
+            inst.inventory[itemEnum].count = 1;
+            return true;
+        }
+
+        Debug.LogError($"AddItem: Cannot find key: {itemEnum}");
+        return false;
     }
 
     #endregion

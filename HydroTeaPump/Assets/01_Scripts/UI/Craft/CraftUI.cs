@@ -3,22 +3,103 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using UI.Management.Button;
+
 public class CraftUI : MonoBehaviour
 {
     [SerializeField] private List<Button> btnCraftList = new List<Button>();
+    [SerializeField] private Button       btnCraft     = null;
 
+    // 테이블에 들어간 아이탬들
+    private ItemVO[] craftTable = new ItemVO[3];
 
 
     private void Awake()
     {
-        foreach (Button btn in btnCraftList)
+        InitArray();
+        InitButton();
+    }
+
+
+    private void AddToTable(int idx)
+    {
+        if (!Inventory.IsFollowing())
         {
-            btn.onClick.AddListener(InventoryBase.ToggleInventory);
+            return;
+        }
+
+        if (craftTable[idx] != null)
+        {
+            InventoryBase.AddItem(craftTable[idx]);
+        }
+
+        craftTable[idx] = Inventory.GetCurrentItem();
+        btnCraftList[idx].image.sprite = Inventory.GetItemSprite(craftTable[idx].itemEnum);
+    }
+
+    private void Craft()
+    {
+        bool isStar = false;
+        bool isWolf = false;
+        bool isFog  = false;
+
+        // 조합 테이블 확인
+        for (int i = 0; i < craftTable.Length; ++i)
+        {
+            isStar = !isStar ? craftTable[i].itemEnum == ItemEnum.Star     : true;
+            isWolf = !isWolf ? craftTable[i].itemEnum == ItemEnum.WolfTear : true;
+            isFog  = !isFog  ? craftTable[i].itemEnum == ItemEnum.Fog      : true;
+        }
+
+
+        // 조합 확인
+        if (isStar && isWolf && isFog)
+        {
+            Debug.Log("all correct");
+        }
+        else // 뭐가 틀린지 알려줌
+        {
+            if (isStar)
+            {
+                Debug.Log("isStar is correct");
+            }
+            if (isWolf)
+            {
+                Debug.Log("isWolf is correct");
+            }
+            if (isFog)
+            {
+                Debug.Log("isFog is correct");
+            }
         }
     }
 
-    private void AddToTable()
+    #region init
+
+    /// <summary>
+    /// 배열 초기화
+    /// </summary>
+    private void InitArray()
     {
-        
+        for (int i = 0; i < craftTable.Length; ++i)
+        {
+            craftTable[i] = null;
+        }
     }
+
+    /// <summary>
+    /// 버튼 초기화
+    /// </summary>
+    private void InitButton()
+    {
+        for (int i = 0; i < btnCraftList.Count; ++i)
+        {
+            int idx = i;
+            ButtonManagement.AddEvent(btnCraftList[i], () => AddToTable(idx));
+        }
+    }
+
+    #endregion
+
+    
 }

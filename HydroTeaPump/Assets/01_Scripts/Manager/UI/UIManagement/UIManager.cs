@@ -46,6 +46,52 @@ namespace UI
                 }
 
                 /// <summary>
+                /// 버튼에 기능을 추가합니다.<br></br>
+                /// 배열 크기가 같아야 해요.
+                /// </summary>
+                /// <param name="btns">추가할 버튼들 (배열)</param>
+                /// <param name="functions">추가할 기능들 (배열)</param>
+                /// <param name="callback"></param>
+                static public void AddEvent(UnityEngine.UI.Button[] btns, UnityAction[] functions, CallBack callback = null)
+                {
+                    if (btns.Length != functions.Length)
+                    {
+                        UnityEngine.Debug.LogError($"ButtonManagement: cannot link functions to buttons.\r\nReason: different array size.\r\nbuttons: {btns.Length}, functions: {functions.Length}");
+                        return;
+                    }
+
+                    for (int i = 0; i < 10; ++i)
+                    {
+                        btns[i].onClick.AddListener(functions[i]);
+                    }
+
+                    callback?.Invoke();
+                }
+                
+                /// <summary>
+                /// 버튼에 기능을 추가합니다.<br></br>
+                /// 리스트 크기가 같아야 해요.
+                /// </summary>
+                /// <param name="btns">추가할 버튼들 (리스트)</param>
+                /// <param name="functions">추가할 기능들 (리스트)</param>
+                /// <param name="callback"></param>
+                static public void AddEvent(System.Collections.Generic.List<UnityEngine.UI.Button> btns, System.Collections.Generic.List<UnityAction> functions, CallBack callback = null)
+                {
+                    if (btns.Count != functions.Count)
+                    {
+                        UnityEngine.Debug.LogError($"ButtonManagement: cannot link functions to buttons.\r\nReason: different array size.\r\nbuttons: {btns.Count}, functions: {functions.Count}");
+                        return;
+                    }
+
+                    for (int i = 0; i < 10; ++i)
+                    {
+                        btns[i].onClick.AddListener(functions[i]);
+                    }
+
+                    callback?.Invoke();
+                }
+
+                /// <summary>
                 /// 버튼에 달린 기능들을 전부 제거합니다.
                 /// </summary>
                 /// <param name="btn">제거할 버튼</param>
