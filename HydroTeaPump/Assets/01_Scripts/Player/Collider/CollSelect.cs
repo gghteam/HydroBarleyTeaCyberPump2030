@@ -8,10 +8,16 @@ public partial class CollSelect : MonoBehaviour
                      private BoxCollider2D coll  = null;
     [SerializeField] private PlayerInput   input = null;
 
+    // 충돌 시 true
+    private bool isCollision = false;
+
+    // 충돌한 오브젝트의 ICollSelectable
+    ICollSelectable col = null;
+
     private void Awake()
     {
         coll = GetComponent<BoxCollider2D>();
-        coll.enabled = false;
+        coll.enabled = true;
     }
 
     private void Update()
@@ -24,21 +30,19 @@ public partial class CollSelect : MonoBehaviour
         if (input.select)
         {
             input.DisableSelect();
-            coll.enabled = true;
-            Debug.Log("selected");
-            Invoke(nameof(DisableCollider), 0.2f);
+            col?.OnSelect();
         }
-    }
-
-    private void DisableCollider()
-    {
-        coll.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!coll.enabled) return;
-        ICollSelectable select = collision.GetComponent<ICollSelectable>();
-        select?.OnSelect();
+        isCollision = true;
+        col = collision.GetComponent<ICollSelectable>();
+        col?.ToggleNotice();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isCollision = false;
     }
 }
