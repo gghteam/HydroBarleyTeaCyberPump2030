@@ -26,4 +26,9 @@ public class SceneLoadManager : MonoBehaviour
     {
         return inst.sceneRequest.Count == 0 ? "null" : inst.sceneRequest.Pop();
     }
+
+    static public void LoadSceneAdditive(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+    }
 }

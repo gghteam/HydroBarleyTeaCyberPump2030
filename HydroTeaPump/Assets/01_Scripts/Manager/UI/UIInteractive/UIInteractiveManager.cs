@@ -21,6 +21,8 @@ namespace UI
 
         namespace Button
         {
+            // TODO : SelectFrom 에 ID 를 추가해서 묶어둘 수 있게끔
+
             
             /// <summary>
             /// 방향키로 선택하는 기능을 가진 클레스
@@ -129,45 +131,60 @@ namespace UI
                 /// next 키가 눌렸다면 다음으로 이동
                 /// </summary>
                 /// <param name="callback"></param>
-                static public void MoveNext(CallBack callback = null)
+                /// <returns>true when input</returns>
+                static public bool MoveNext(CallBack callback = null)
                 {
                     if (UnityEngine.Input.GetKeyDown(inst.next))
                     {
                         // 선택할 오브젝트 리스트 마지막 인덱스보다 인덱스카 커질 경우 0으로 변경
                         inst.index = inst.index + 1 > inst.from.Count - 1 ? 0 : ++inst.index;
+                        callback?.Invoke();
+                        return true;
                     }
-
-                    callback?.Invoke();
+                    else
+                    {
+                        return false;
+                    }
                 }
-                
+
                 /// <summary>
                 /// prev 키가 눌렸다면 이전으로 이동
                 /// </summary>
                 /// <param name="callback"></param>
-                static public void MovePrev(CallBack callback = null)
+                /// <returns>true when input</returns>
+                static public bool MovePrev(CallBack callback = null)
                 {
                     if (UnityEngine.Input.GetKeyDown(inst.prev))
                     {
                         // 인덱스가 0 보다 작아질 경우 선택할 오브젝트 리스트 마지막 인덱스 값으로 변경
                         inst.index = inst.index - 1 < 0 ? inst.from.Count - 1 : --inst.index;
+                        callback?.Invoke();
+                        return true;
                     }
-
-                    callback?.Invoke();
+                    else
+                    {
+                        return false;
+                    }
                 }
 
                 /// <summary>
                 /// select 키가 눌렸다면 현제 인덱스에 해당하는 버튼의 onClick 이벤트 효과 호출
                 /// </summary>
                 /// <param name="callback"></param>
-                static public void MoveSelect(CallBack callback = null)
+                /// <returns>true when input</returns>
+                static public bool MoveSelect(CallBack callback = null)
                 {
                     if (UnityEngine.Input.GetKeyDown(inst.select))
                     {
                         // 버튼 눌림 이벤트 호출
                         inst.from[inst.index].onClick.Invoke();
+                        callback?.Invoke();
+                        return true;
                     }
-
-                    callback?.Invoke();
+                    else
+                    {
+                        return false;
+                    }
                 }
 
                 #endregion
@@ -178,7 +195,7 @@ namespace UI
                 /// 선택된 버튼의 RectTransform 을 반환합니다.
                 /// </summary>
                 /// <returns>List[index]'s RectTransform</returns>
-                static public UnityEngine.RectTransform GetSelectedButtonPos()
+                static public UnityEngine.RectTransform GetSelectedButtonRectPos()
                 {
                     return inst.from[inst.index].GetComponent<UnityEngine.RectTransform>();
                 }
@@ -192,7 +209,7 @@ namespace UI
                     return inst.index;
                 }
 
-
+                
 
                 #endregion
             }

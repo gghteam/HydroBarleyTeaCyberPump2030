@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using UI.Management.Button;
-
-
+using UI.Interactive.Button;
 
 // UI 관련
 public partial class Inventory : MonoBehaviour
 {
     [Header("아이탬 Enum 과 순서가 같아야 함")]
-    [SerializeField] private Sprite[] sprites = new Sprite[0]; // 아이탬들
-    [SerializeField] private Button[] btns    = new Button[0]; // 인벤토리 버튼들
+    [SerializeField] private Sprite[]     sprites = new Sprite[0];     // 아이탬들
+    [SerializeField] private Button[]     btns    = new Button[0];     // 인벤토리 버튼들
+    [SerializeField] private GameObject[] faders  = new GameObject[0]; // 아이탬 없을 시 어둡게 처리
 
     [Header("따라다니게 되는 오브젝트")]
     [SerializeField] private GameObject     followedObj;
@@ -20,29 +20,42 @@ public partial class Inventory : MonoBehaviour
                      private bool           follow   = false; // 따라다니는지
                      private ItemVO         lastItem = null;  // 따라다니고 있는 오브젝트
 
+    [Header("선택 인디케이터")]
+    [SerializeField] private RectTransform indicator = null;
+
+
     static private Inventory inst; // static 함수 접근 용도
 
+    private void Awake()
+    {
+        Select.SelectFrom(btns);
+    }
 
     private void Start()
     {
         inst = this;
         LinkFunctions();
+        SetSprite();
         followedRenderer = followedObj.GetComponent<SpriteRenderer>();
+
+        Select.SetKey(KeyCode.D, KeyCode.A, KeyCode.Return);
     }
 
     private void Update()
     {
-        Debug.Log(follow);
         FollowCursor();
+        Select.MoveNext();
+        Select.MovePrev();
+        Select.MoveSelect();
+        SetIndicatorPos();
     }
 
-    // 활성화될때마다 갱신함
-    private void OnEnable()
+    private void SetIndicatorPos()
     {
-        SetSprite();
+        RectTransform rect  = Select.GetSelectedButtonRectPos();
+        indicator.position  = rect.position;
+        indicator.sizeDelta = rect.rect.width < 100 ? new Vector2(120.0f, 120.0f) : rect.sizeDelta * 1.1f;
     }
-
-    
 }
 
 public partial class Inventory : MonoBehaviour
@@ -56,6 +69,7 @@ public partial class Inventory : MonoBehaviour
     {
         for (int i = 0; i < btns.Length; ++i)
         {
+            faders[i].SetActive(InventoryBase.GetInventory().items[i].count == 0);
             ButtonManagement.SetImage(btns[i], sprites[i]);
         }
     }
@@ -100,6 +114,7 @@ public partial class Inventory : MonoBehaviour
     {
         inst.follow = false;
         inst.lastItem.count = 0;
+        inst.SetSprite();
         return inst.lastItem;
     }
 

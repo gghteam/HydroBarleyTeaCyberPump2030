@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using UI.Management.Button;
+using UI.Interactive.Button;
 
 public class CraftUI : MonoBehaviour
 {
-    [SerializeField] private List<Button> btnCraftList = new List<Button>();
-    [SerializeField] private Button       btnCraft     = null;
+    [SerializeField] private List<Button> btnCraftList = new List<Button>(); // 작업 테이블
+    [SerializeField] private Button       btnCraft     = null; // 조합버튼
 
     // 테이블에 들어간 아이탬들
     private ItemVO[] craftTable = new ItemVO[3];
@@ -16,10 +17,21 @@ public class CraftUI : MonoBehaviour
 
     private void Awake()
     {
-        InitArray();
-        InitButton();
+        
     }
 
+    private void Start()
+    {
+        InitArray();
+        InitButton();
+
+        // 버튼 선택 범위에 추가
+        for (int i = 0; i < btnCraftList.Count; ++i)
+        {
+            Select.AddFrom(btnCraftList[i]);
+        }
+        Select.AddFrom(btnCraft);
+    }
 
     private void AddToTable(int idx)
     {

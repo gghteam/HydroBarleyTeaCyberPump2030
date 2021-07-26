@@ -15,7 +15,7 @@ public class ToStage : SelectObjectBase
     {
         base.OnSelect();
 
-        SceneLoadManager.LoadScene("Stage");
+        SceneLoadManager.LoadSceneAdditive("Craft");
     }
 
     public override void ToggleNotice()
