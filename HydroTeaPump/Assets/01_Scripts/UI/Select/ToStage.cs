@@ -26,19 +26,14 @@ public class ToStage : SelectObjectBase
                 MapUi mapManager = GameObject.Find("Piece").GetComponent<MapUi>();
                 mapManager.PopDown(.5f);
             }
+            else
+            {
+                SceneLoadManager.UnLoadScene(nextScene);
+            }
         }
         else
         {
-            if (isSceneOpen)
-            {
-                isSceneOpen = false;
-                SceneLoadManager.UnLoadScene(nextScene);
-            }
-            else
-            {
-                isSceneOpen = true;
-                SceneLoadManager.LoadSceneAdditive(nextScene);
-            }
+            SceneLoadManager.LoadSceneAdditive(nextScene);
         }
         GameManager.Instance.isPopupOpen = !GameManager.Instance.isPopupOpen;
     }
