@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
+[Serializable]
 public class SaveData
 {
-    int TestInt = 100;
-    string TestString = "테스트용";
+    public int TestInt = 100;
+    public string TestString = "테스트용";
+    public InventoryVO inventoryVO = InventoryBase.inventoryVO;
 }

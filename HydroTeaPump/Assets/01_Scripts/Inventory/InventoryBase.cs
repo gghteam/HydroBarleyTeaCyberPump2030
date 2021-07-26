@@ -8,7 +8,8 @@ public class InventoryBase : MonoBehaviour
 
     static private InventoryBase                inst            = null;                                // static 함수 용
            private Dictionary<ItemEnum, ItemVO> inventory       = new Dictionary<ItemEnum, ItemVO>();  // 인벤토리 딕셔너리
-
+           private ItemVO[]                     items           = new ItemVO[6];                       // 아이탬 배열
+    static public  InventoryVO                  inventoryVO     = null;                                // 인벤토리 저장
     #region init, includes Awake
 
     private void Awake()
@@ -34,12 +35,24 @@ public class InventoryBase : MonoBehaviour
             count = 1;
         }
 
-        inventory.Add(ItemEnum.Star,     new ItemVO(ItemEnum.Star,     count, 0));
-        inventory.Add(ItemEnum.Mermaid,  new ItemVO(ItemEnum.Mermaid,  count, 0));
-        inventory.Add(ItemEnum.Flower,   new ItemVO(ItemEnum.Flower,   count, 0));
-        inventory.Add(ItemEnum.WolfTear, new ItemVO(ItemEnum.WolfTear, count, 0));
-        inventory.Add(ItemEnum.Fog,      new ItemVO(ItemEnum.Fog,      count, 0));
-        inventory.Add(ItemEnum.Moon,     new ItemVO(ItemEnum.Moon,     count, 0));
+        // 아이탬 초기화
+        items[0] = new ItemVO(ItemEnum.Star,     count, 0);
+        items[1] = new ItemVO(ItemEnum.Mermaid,  count, 0);
+        items[2] = new ItemVO(ItemEnum.Flower,   count, 0);
+        items[3] = new ItemVO(ItemEnum.WolfTear, count, 0);
+        items[4] = new ItemVO(ItemEnum.Fog,      count, 0);
+        items[5] = new ItemVO(ItemEnum.Moon,     count, 0);
+
+        // 딕셔너리에 추가
+        for (int i = 0; i < items.Length; ++i)
+        {
+            inventory.Add((ItemEnum)i, items[i]);
+        }
+
+        // VO 에 넣어둠
+        inventoryVO = new InventoryVO(items);
+
+        SaveData data = GameSave.Instance.data;
     }
 
 
