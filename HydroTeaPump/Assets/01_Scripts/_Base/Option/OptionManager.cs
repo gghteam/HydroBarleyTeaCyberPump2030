@@ -51,6 +51,53 @@ public partial class OptionManager : MonoBehaviour
     {
         return inst.settingsData;
     }
+    
+    static public KeyCode GetSettings(KeyMapEnum key)
+    {
+        switch (key)
+        {
+            case KeyMapEnum.up:     return inst.settingsData.moveUp;   
+            case KeyMapEnum.down:   return inst.settingsData.moveDown; 
+            case KeyMapEnum.left:   return inst.settingsData.moveLeft; 
+            case KeyMapEnum.right:  return inst.settingsData.moveRight;
+            case KeyMapEnum.select: return inst.settingsData.select;   
+            case KeyMapEnum.esc:    return inst.settingsData.exit;     
+            default: return KeyCode.None;
+        }
+    }
+
+    static public void KeyRemap(KeyCode keyCode, KeyMapEnum key)
+    {
+        switch (key)
+        {
+            case KeyMapEnum.up:
+                inst.up = keyCode;
+                break;
+
+            case KeyMapEnum.down:
+                inst.down = keyCode;
+                break;
+
+            case KeyMapEnum.left:
+                inst.left = keyCode;
+                break;
+
+            case KeyMapEnum.right:
+                inst.right = keyCode;
+                break;
+
+            case KeyMapEnum.select:
+                inst.select = keyCode;
+                break;
+
+            case KeyMapEnum.esc:
+                inst.exit = keyCode;
+                break;
+
+            default:
+                break;
+        }
+    }
 }
 
 
@@ -118,5 +165,22 @@ public partial class OptionManager : MonoBehaviour
 
         effectVolume = settingsData.effectVolume;
         musicVolume  = settingsData.musicVolume;
+    }
+
+    /// <summary>
+    /// 볼륨을 설정합니다.
+    /// </summary>
+    /// <param name="isEffect"></param>
+    /// <param name="value"></param>
+    static public void SetVolume(bool isEffect, float value)
+    {
+        if (isEffect)
+        {
+            inst.effectVolume = value;
+        }
+        else
+        {
+            inst.musicVolume = value;
+        }
     }
 }

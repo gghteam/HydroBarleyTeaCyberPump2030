@@ -20,7 +20,9 @@ public class NULLChecker : MonoBehaviour
         }
         return false;
 #endif
+#pragma warning disable CS0162 // 접근할 수 없는 코드가 있습니다.
         return false;
+#pragma warning restore CS0162 // 접근할 수 없는 코드가 있습니다.
     }
 
     /// <summary>
@@ -47,6 +49,8 @@ public class NULLChecker : MonoBehaviour
 
         return false;
 #endif
+#pragma warning disable CS0162 // 접근할 수 없는 코드가 있습니다.
         return false;
+#pragma warning restore CS0162 // 접근할 수 없는 코드가 있습니다.
     }
 }
