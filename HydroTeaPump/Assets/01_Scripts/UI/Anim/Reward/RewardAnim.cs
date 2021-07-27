@@ -9,7 +9,6 @@ public class RewardAnim : MonoBehaviour
 
     delegate void Callback();
 
-    GameObject obj;
 
     private bool canGoNext = false;
 
@@ -17,16 +16,8 @@ public class RewardAnim : MonoBehaviour
     {
         anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
-        obj = GameObject.Find("cvsCutScene");
-        if (obj != null)
-        {
-            StartCoroutine(PlayAnim(() => canGoNext = true));
-            Debug.Log("Find");
-        }
-        else
-        {
-            Debug.Log("CantFind");
-        }
+
+        StartCoroutine(PlayAnim(() => canGoNext = true));
     }
     private void Update()
     {
@@ -40,7 +31,6 @@ public class RewardAnim : MonoBehaviour
     }
     private void AfterAnim()
     {
-        gameObject.SetActive(false);
         SceneLoadManager.LoadSceneAdditive("CutSceneScene");
     }
     /// <summary>

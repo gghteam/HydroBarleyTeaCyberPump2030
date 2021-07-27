@@ -39,7 +39,7 @@ public partial class NoteManager : MonoBehaviour
     /// 현제 BPM 을 리턴합니다.
     /// </summary>
     /// <returns>current bpm</returns>
-    static public int GetBPM()
+    static public float GetBPM()
     {
         return inst.bpm;
     }

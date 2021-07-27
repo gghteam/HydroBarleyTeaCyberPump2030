@@ -41,11 +41,6 @@ public class RythmPlayerMove : GeneralMove
     private void Update()
     {
         animator.SetBool("Run", isMoving);
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            noteManager.canAct = false;
-            failedManager.FailedStage();
-        }
     }
     private void OnTriggerEnter2D(Collider2D col)
     {

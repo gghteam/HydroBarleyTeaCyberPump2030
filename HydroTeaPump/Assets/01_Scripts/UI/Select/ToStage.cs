@@ -10,7 +10,7 @@ public class ToStage : SelectObjectBase
     public override void OnSelect()
     {
         base.OnSelect();
-        Debug.Log("SSSSS");
+        //Debug.Log("SSSSS");
         if(GameManager.Instance.isPopupOpen)
         {
             if(nextScene == "MapScene")

@@ -9,6 +9,6 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(StagePrefabs[/*GameManager.Instance.currentStage*/0]);
+        Instantiate(StagePrefabs[GameManager.Instance.currentStage]);
     }
 }

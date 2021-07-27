@@ -17,13 +17,15 @@ public class AudioManager : MonoBehaviour
     {
         if(audioSource != null)
         {
-            audioSource.clip = StageMusic[/*GameManager.Instance.currentStage*/0];
-            audioSource.Play();
+            audioSource.clip = StageMusic[GameManager.Instance.currentStage];
         }
 
         SetVolume();
     }
-
+    public void StartMusic()
+    {
+        audioSource.Play();
+    }
 
     /// <summary>
     /// 옵션에 있는 값 그대로 볼륨을 설정합니다.

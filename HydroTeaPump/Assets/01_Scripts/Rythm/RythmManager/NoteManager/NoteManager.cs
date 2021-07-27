@@ -10,8 +10,8 @@ public partial class NoteManager : MonoBehaviour
 
     public GameObject notePrefab;
 
-    private int baseBPM = 0; // 초기 bpm
-    public int bpm = 0;
+    private float baseBPM = 0; // 초기 bpm
+    public float bpm = 0;
     double currentTime = 0d;
 
     // 노트 프리팹 생성 및 리스트 저장.
@@ -41,7 +41,11 @@ public partial class NoteManager : MonoBehaviour
     private Sprite[] heartSprites;
     public Image heartSprite;
 
-    public bool canAct=true;
+    public bool canAct = true;
+
+    public AudioManager audioManager = null;
+
+    private bool isFirstNote = true;
 
     /// <summary>
     /// 0 = Cool, 1 = Normal, 2 = Bad
@@ -49,14 +53,17 @@ public partial class NoteManager : MonoBehaviour
     private enum HeartState
     {
         COOL = 0,
-        NORMAL =1,
+        NORMAL = 1,
         BAD = 2
     }
     private HeartState heartState = HeartState.NORMAL;
 
+    private float[] bpms = new float[5] { 69f,0,0,103,0 };
+    
     private void Awake()
     {
         inst = this;
+        bpm = bpms[GameManager.Instance.currentStage];
         baseBPM = bpm; // 다시 원래대로 돌리기 위함
     }
 
@@ -85,14 +92,29 @@ public partial class NoteManager : MonoBehaviour
         {
             MakeNote(true);
             MakeNote(false);
+            currentTime -= 60d / bpm;
         }
+        if(noteObj_Line.Count >= 1)
+        {
+            float t_notePosX = noteObj_Line[0].transform.localPosition.x;
+            if (t_notePosX <= 170)
+            {
+                if (isFirstNote)
+                {
+                    isFirstNote = false;
+                    audioManager.StartMusic();
+                }
+            }
+        }
+
         
+
         // 키 입력 시 타이밍 체크
-        if(Input.GetKeyDown(opt.moveUp) || Input.GetKeyDown(opt.moveRight) || Input.GetKeyDown(opt.moveLeft) || Input.GetKeyDown(opt.moveDown))
+        if (Input.GetKeyDown(opt.moveUp) || Input.GetKeyDown(opt.moveRight) || Input.GetKeyDown(opt.moveLeft) || Input.GetKeyDown(opt.moveDown))
             CheckTiming();
         
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Note"))
         {
@@ -101,6 +123,7 @@ public partial class NoteManager : MonoBehaviour
             {
                 heartState = (HeartState)1;
                 HeartSpriteRefresh();
+                
             }
         }
     }
@@ -117,7 +140,7 @@ public partial class NoteManager : MonoBehaviour
         t_note.GetComponent<Note>().isRightNote = !isRight;
         t_note.SetActive(true);
         noteObj_Line.Add(t_note);
-        currentTime -= 60d / bpm;
+        
         if(enemy != null)
         {
             enemy.GetComponent<EnemyMove>().EnemyMoving();
