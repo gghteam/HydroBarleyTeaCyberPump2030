@@ -10,7 +10,8 @@ public class CraftUI : MonoBehaviour
 {
     [SerializeField] private List<Button> btnCraftList = new List<Button>(); // 작업 테이블
     [SerializeField] private Button       btnCraft     = null; // 조합버튼
-                     private CraftAnim anim = null; // 조합 에니메이션
+    [SerializeField] private Transform    magicCircle  = null;
+                     private CraftAnim    anim         = null; // 조합 에니메이션
 
 
     // 테이블에 들어간 아이탬들
@@ -40,6 +41,12 @@ public class CraftUI : MonoBehaviour
             Select.AddFrom(btnCraftList[i]);
         }
         Select.AddFrom(btnCraft);
+    }
+
+    float rot = 0; // 마법진 로테이션
+    private void FixedUpdate()
+    {
+        magicCircle.rotation = Quaternion.Euler(0, 0, rot += 0.1f);
     }
 
     /// <summary>
