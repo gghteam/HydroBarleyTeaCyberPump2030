@@ -46,6 +46,10 @@ public class RythmPlayerMove : GeneralMove
             noteManager.canAct = false;
             SceneLoadManager.LoadSceneAdditive("RewardScene");
         }
+        else if(col.gameObject.layer == 12)//가시
+        {
+            Debug.Log("아 따가!");
+        }
     }
     
 }
