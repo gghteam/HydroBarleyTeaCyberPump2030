@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/05.Scenes/MapScene.unity
     guid: 173687f7b03fbd240bc17fe34511c48e
   - enabled: 1
+    path: Assets/05.Scenes/RewardScene.unity
+    guid: ddc0dd4e465c496459908a227feba0a4
+  - enabled: 0
     path: Assets/05.Scenes/TestScene.unity
     guid: 4eae1a276f632e04fb1ddd078f16a9aa
   m_configObjects: {}
