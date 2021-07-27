@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 1823539944}
   - component: {fileID: 1823539943}
   m_Layer: 5
-  m_Name: cvsREward
+  m_Name: cvsReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
