@@ -29,6 +29,7 @@ public class RewardAnim : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && canGoNext)
         {
+            canGoNext = false;
             if (gameObject.activeSelf)
             {
                 AfterAnim();

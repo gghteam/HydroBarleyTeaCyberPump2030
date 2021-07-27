@@ -47,6 +47,7 @@ public class RythmPlayerMove : GeneralMove
         {
             Debug.Log("¤È! È¹µæ!");
             noteManager.canAct = false;
+            GameManager.Instance.isClear = true;
             SceneLoadManager.LoadSceneAdditive("RewardScene");
         }
         else if(col.gameObject.layer == 12)//°¡½Ã

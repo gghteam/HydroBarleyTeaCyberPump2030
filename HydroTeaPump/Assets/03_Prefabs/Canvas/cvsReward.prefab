@@ -283,7 +283,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1273971349083996299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,12 +349,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earnObj: {fileID: 1273971350273812382}
   earnObjSprites:
-  - {fileID: 21300000, guid: b4e8aad24a94d6a4f8716647174aaf06, type: 3}
-  - {fileID: 21300000, guid: c0d9fd1781265d84386a7af4c0961858, type: 3}
   - {fileID: 21300000, guid: 1b0de6ba513c43f469985b9bc63fa4fa, type: 3}
+  - {fileID: 21300000, guid: b4e8aad24a94d6a4f8716647174aaf06, type: 3}
   - {fileID: 21300000, guid: 4cb85f19e58179347a81b93962fda36e, type: 3}
-  - {fileID: 21300000, guid: ccb6e903bf2fcee4998a0efe1a78ab7b, type: 3}
   - {fileID: 21300000, guid: 1de2957449254314fa5ac3d2950a0074, type: 3}
+  - {fileID: 21300000, guid: ccb6e903bf2fcee4998a0efe1a78ab7b, type: 3}
 --- !u!1 &1273971349114513019
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b4e8aad24a94d6a4f8716647174aaf06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b0de6ba513c43f469985b9bc63fa4fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

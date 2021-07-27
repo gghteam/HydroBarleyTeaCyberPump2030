@@ -40,7 +40,33 @@ public class CutScene : MonoBehaviour
         
         Talk(explainText, explainId, explainIndex);
         explainIndex++;
+    }
+    private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
+    {
+        string talkData = textManager.GetTalk(id, talkIndex);
 
+        if (talkData != null)
+        {
+            text.text = talkData;
+            PopUp();
+        }
+        else
+        {
+            //씬 전환
+            if(GameManager.Instance.isClear)
+            {
+                GameManager.Instance.isClear = false;
+                GameManager.Instance.stageClear[GameManager.Instance.currentStage] = true;
+                SceneLoadManager.LoadScene("MainMenu");
+            }
+            else
+            {
+                //어느 씬을 로드할지 결정
+            }
+        }
+    }
+    private void PopUp()
+    {
         gameObject.SetActive(true);
         SetChildAlpha();
         Vector3 prevScale = transform.GetChild(1).localScale;
@@ -58,16 +84,7 @@ public class CutScene : MonoBehaviour
         seq.Join(transform.GetChild(3).GetComponent<Text>().DOFade(1, 1f));
         seq.Join(transform.GetChild(3).DOScale(prevTextScale, .4f).SetEase(Ease.OutBack));
 
-        seq.OnComplete(()=> { isPlaying = false; });
-    }
-    private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
-    {
-        string talkData = textManager.GetTalk(id, talkIndex);
-
-        if (talkData != null)
-        {
-            text.text = talkData;
-        }
+        seq.OnComplete(() => { isPlaying = false; });
     }
     private void SetChildAlpha()
     {

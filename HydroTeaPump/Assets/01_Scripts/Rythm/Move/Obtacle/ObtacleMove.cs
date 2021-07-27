@@ -80,7 +80,13 @@ public class ObtacleMove : GeneralMove
             --objectHp;
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.layer == 12)
+        {
+            Destroy(col.gameObject);
+        }
+    }
     public void DestroyObj()
     {
         Destroy(gameObject);

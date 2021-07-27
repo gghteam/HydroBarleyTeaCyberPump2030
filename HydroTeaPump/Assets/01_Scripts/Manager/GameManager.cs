@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     public bool isPopupOpen = false;
 
-    private bool[] stageClear = new bool[5]; // 스테이지 클리어 정보 배열
+    public bool[] stageClear = new bool[5]; // 스테이지 클리어 정보 배열
+
+    public bool isClear = false;
 
     public bool[] GetStageClearStat()
     {

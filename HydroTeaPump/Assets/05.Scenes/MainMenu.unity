@@ -208,7 +208,7 @@ Transform:
   m_Children:
   - {fileID: 2051730621}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &97549802
 MonoBehaviour:
@@ -822,6 +822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 586448509}
   - component: {fileID: 586448508}
+  - component: {fileID: 586448510}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Untagged
@@ -894,6 +895,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &586448510
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586448507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3556d73ce844f6b47987ab538f7d3bee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &674604147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1462,7 @@ Transform:
   - {fileID: 107017874}
   - {fileID: 986515208}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &934665179
 BoxCollider2D:
@@ -2395,6 +2415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPopupOpen: 0
+  stageClear: 0000000000
+  isClear: 0
   currentStage: 0
 --- !u!4 &1274378866
 Transform:

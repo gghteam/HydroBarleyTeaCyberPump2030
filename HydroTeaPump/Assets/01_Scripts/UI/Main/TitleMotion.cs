@@ -7,9 +7,13 @@ using UnityEngine.UI;
 public class TitleMotion : MonoBehaviour
 {
     [SerializeField]
-    private Transform titlePanel;
+    private Transform titlePanel = null;
     public Transform lastPos;
     Vector3 firstPosition;
+
+    /*delegate 반환형 변수명(매개변수);
+    (변수명 변수);*/
+    private bool isPanelEnable = true;
     void Start()
     {
         firstPosition = titlePanel.position;

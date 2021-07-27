@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2730660336700307526}
   - component: {fileID: 2730660336700307524}
   - component: {fileID: 2730660336700307527}
+  - component: {fileID: 558030510566256826}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: PinkSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b905dfdec4fc2164f8c9263b4f7b7288, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bb0f0c92a00d9b4f9a9cfea03d35c89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,3 +150,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1088
   isMoving: 0
+--- !u!95 &558030510566256826
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730660336700307525}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26465c3551f54664895d762e1c9b07de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
