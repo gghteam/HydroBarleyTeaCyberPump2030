@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: FIREMANDU
+  m_Name: green_wall_7
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: a997a2b4735c2d245820360ed311d8a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4dbc177b53cfbf149b0e56b4e63c1d27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
