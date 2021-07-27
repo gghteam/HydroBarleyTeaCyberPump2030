@@ -57,7 +57,8 @@ public partial class NoteManager : MonoBehaviour
 
     void Start()
     {
-
+        if (GameObject.Find("Enemy") != null)
+            enemy = GameObject.Find("Enemy");
         //타이밍 박스 설정
         timingBoxes = new Vector2[timingRect.Length];
 
@@ -108,7 +109,10 @@ public partial class NoteManager : MonoBehaviour
         t_note.SetActive(true);
         noteObj_Line.Add(t_note);
         currentTime -= 60d / bpm;
-        enemy.GetComponent<EnemyMove>().EnemyMoving();
+        if(enemy != null)
+        {
+            enemy.GetComponent<EnemyMove>().EnemyMoving();
+        }
     }
 
     /// <summary>

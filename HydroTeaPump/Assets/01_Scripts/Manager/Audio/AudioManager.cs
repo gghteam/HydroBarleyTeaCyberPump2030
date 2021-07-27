@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     {
         if(audioSource != null)
         {
-            audioSource.clip = StageMusic[/*GameManager.Instance.stage*/0];
+            audioSource.clip = StageMusic[/*GameManager.Instance.currentStage*/0];
             audioSource.Play();
         }
         

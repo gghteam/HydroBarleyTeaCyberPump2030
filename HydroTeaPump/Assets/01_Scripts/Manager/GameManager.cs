@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Ä«¸Þ¶ó")]
     private CinemachineImpulseSource ImpulseSource;
+
+    public int currentStage;
     private void Awake()
     {
         Instance = this;

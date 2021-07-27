@@ -242,7 +242,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 288456901}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 806945502}
+        m_TargetAssemblyTypeName: StageChoise, Assembly-CSharp
+        m_MethodName: StageBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &295432606
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 295432608}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 806945502}
+        m_TargetAssemblyTypeName: StageChoise, Assembly-CSharp
+        m_MethodName: StageBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &712103183
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +506,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 712103185}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 806945502}
+        m_TargetAssemblyTypeName: StageChoise, Assembly-CSharp
+        m_MethodName: StageBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &806945498
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +530,7 @@ GameObject:
   - component: {fileID: 806945499}
   - component: {fileID: 806945501}
   - component: {fileID: 806945500}
+  - component: {fileID: 806945502}
   m_Layer: 0
   m_Name: MAP
   m_TagString: Untagged
@@ -564,6 +601,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806945498}
   m_CullTransparentMesh: 1
+--- !u!114 &806945502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806945498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3335e7ce76150b74f99bf7269b24995d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &999410236
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +732,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 999410238}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 806945502}
+        m_TargetAssemblyTypeName: StageChoise, Assembly-CSharp
+        m_MethodName: StageBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1141403670
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +915,9 @@ MonoBehaviour:
   - {fileID: 295432610}
   - {fileID: 999410240}
   - {fileID: 712103187}
+  nextKey: 276
+  prevKey: 275
+  selectKey: 32
 --- !u!1 &1573659329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +1067,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1586753378}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 806945502}
+        m_TargetAssemblyTypeName: StageChoise, Assembly-CSharp
+        m_MethodName: StageBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1881997189
 GameObject:
   m_ObjectHideFlags: 0

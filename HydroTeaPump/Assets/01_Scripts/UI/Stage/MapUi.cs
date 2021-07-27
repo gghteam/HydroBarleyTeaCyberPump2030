@@ -16,6 +16,10 @@ public class MapUi : MonoBehaviour
     public Button[] stages;
 
     private bool canMove = false;
+
+    public KeyCode nextKey = KeyCode.LeftArrow;
+    public KeyCode prevKey = KeyCode.RightArrow;
+    public KeyCode selectKey = KeyCode.Space;
     void Start()
     {
         firstPos = map.position;
@@ -24,7 +28,7 @@ public class MapUi : MonoBehaviour
         PopUp(1f);
 
         Select.SelectFrom(stages);
-        Select.SetKey(KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.Space);
+        Select.SetKey(nextKey, prevKey, selectKey);
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class MapUi : MonoBehaviour
     {
         Select.MoveSelect();
         Debug.Log(Select.GetIndex());
-        if (Input.anyKeyDown && canMove)
+        if (Input.GetKey(nextKey) || Input.GetKey(prevKey) || Input.GetKey(selectKey) && canMove)
         {
             canMove = false;
             Select.MoveNext();
