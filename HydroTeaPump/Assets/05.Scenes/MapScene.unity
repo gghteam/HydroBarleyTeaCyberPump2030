@@ -2329,6 +2329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb6c8840f4039647b1bb2e5d34028f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stamps:
+  - {fileID: 135930272}
+  - {fileID: 1527559551}
+  - {fileID: 331334169}
+  - {fileID: 202259030}
+  - {fileID: 730676073}
 --- !u!1 &2080904807
 GameObject:
   m_ObjectHideFlags: 0

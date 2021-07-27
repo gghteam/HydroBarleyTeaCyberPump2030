@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class AppearAnimation : MonoBehaviour
@@ -13,6 +14,10 @@ public class AppearAnimation : MonoBehaviour
     [Header("에니메이션 길이")]
     [SerializeField] private float duration;
 
+    [Header("키 텍스트")]
+    [SerializeField] private Text        text = null;
+    [SerializeField] private CanvasGroup cvs  = null;
+
     private SpriteRenderer spr = null;
     
     private bool isUp = false;
@@ -21,7 +26,10 @@ public class AppearAnimation : MonoBehaviour
     {
         spr = GetComponent<SpriteRenderer>();
         spr.DOFade(0, 0);
+        cvs.DOFade(0, 0);
         transform.position = new Vector2(transform.position.x, origin.position.y);
+
+        text.text = OptionManager.GetSettings(KeyMapEnum.select).ToString();
     }
 
     
@@ -30,6 +38,7 @@ public class AppearAnimation : MonoBehaviour
         isUp = !isUp;
 
         spr.DOFade(isUp ? 1 : 0, duration);
+        cvs.DOFade(isUp ? 1 : 0, duration);
         transform.DOMoveY(isUp ? target.position.y : origin.position.y, duration).SetEase(isUp ? Ease.OutCirc : Ease.InCirc);
     }
 }

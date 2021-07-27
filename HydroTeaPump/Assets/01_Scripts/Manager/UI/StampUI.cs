@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class StampUI : MonoBehaviour
 {
-    [SerializeField] private GameObject[] stamps     = new GameObject[0];
+    [SerializeField] private GameObject[] stamps     = new GameObject[5];
                      private bool[]       stageClear;
 
 
