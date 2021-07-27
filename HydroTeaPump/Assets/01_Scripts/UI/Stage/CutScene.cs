@@ -15,7 +15,7 @@ public class CutScene : MonoBehaviour
     {
         if (isPlaying) return;
         isPlaying = true;
-
+        gameObject.SetActive(true);
         SetChildAlpha();
         Vector3 prevScale = transform.GetChild(0).localScale;
         Vector3 prevTextScale = transform.GetChild(2).localScale;

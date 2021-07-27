@@ -9,13 +9,33 @@ public class RewardAnim : MonoBehaviour
 
     delegate void Callback();
 
+    GameObject obj;
+
+    private bool canGoNext = false;
+
     void Start()
     {
         anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
-        StartCoroutine(PlayAnim(() => Debug.Log("Asdasd")));
+        obj = GameObject.Find("CutScene");
+        if (obj != null)
+        {
+            StartCoroutine(PlayAnim(() => canGoNext = true));
+        }
     }
-
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (gameObject.activeSelf)
+                AfterAnim();
+        }
+    }
+    private void AfterAnim()
+    {
+        obj.GetComponent<CutScene>().PopPop();
+        gameObject.SetActive(false);
+    }
     /// <summary>
     /// 피슝 에니메이션 재생
     /// </summary>
