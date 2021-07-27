@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class RewardAnim : MonoBehaviour
 {
-    [SerializeField] private Animation anim;
+    private Animation anim;
+    private Animator animator;
 
     delegate void Callback();
 
     void Start()
     {
-        StartCoroutine(PlayAnim());
+        anim = GetComponent<Animation>();
+        animator = GetComponent<Animator>();
+        StartCoroutine(PlayAnim(() => Debug.Log("Asdasd")));
     }
 
     /// <summary>
@@ -20,9 +23,9 @@ public class RewardAnim : MonoBehaviour
     /// <returns></returns>
     IEnumerator PlayAnim(Callback callback = null)
     {
-        anim.Play();
-
-        while (anim.isPlaying)
+        animator.Play("reward");
+        
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("reward"))
         {
             yield return new WaitForEndOfFrame();
         }
