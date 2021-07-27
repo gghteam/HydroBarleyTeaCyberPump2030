@@ -1429,7 +1429,7 @@ MonoBehaviour:
   moveDistance: 1
   ObtacleMask:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 832
   isMoving: 0
   noteManager: {fileID: 2129315681}
 --- !u!61 &1800466016

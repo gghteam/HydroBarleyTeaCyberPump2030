@@ -8,6 +8,10 @@ public class ObtacleMove : GeneralMove
 
     public void ObtacleMoving()
     {
-        Moving(dir);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1, ObtacleMask);
+        if (hit.collider == null)
+        {
+            Moving(dir);
+        }
     }
 }
