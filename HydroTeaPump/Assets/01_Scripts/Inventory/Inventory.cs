@@ -16,18 +16,16 @@ using UI.Interactive.Button;
 public partial class Inventory : MonoBehaviour
 {
     [Header("아이탬 Enum 과 순서가 같아야 함")]
-    [SerializeField] private Sprite[]     sprites = new Sprite[0];     // 아이탬들
-    [SerializeField] private Button[]     btns    = new Button[0];     // 인벤토리 버튼들
-    [SerializeField] private GameObject[] faders  = new GameObject[0]; // 아이탬 없을 시 어둡게 처리
+    [SerializeField] private Sprite[]     sprites     = new Sprite[0];     // 일반   아이탬 스프라이트
+    [SerializeField] private Sprite[]     usedsprites = new Sprite[0];     // 선택된 아이탬 스프라이트
+    [SerializeField] private Button[]     btns        = new Button[0];     // 인벤토리 버튼들
+    [SerializeField] private GameObject[] faders      = new GameObject[0]; // 아이탬 없을 시 어둡게 처리
 
     [Header("따라다니게 되는 오브젝트")]
     [SerializeField] private GameObject     followedObj;
                      private SpriteRenderer followedRenderer = null;
                      private bool           follow           = false; // 따라다니는지
                      private ItemVO         lastItem         = null;  // 따라다니고 있는 오브젝트
-
-    [Header("선택 인디케이터")]
-    [SerializeField] private RectTransform indicator = null;
 
     private SettingsVO opt = new SettingsVO();
 
@@ -54,14 +52,23 @@ public partial class Inventory : MonoBehaviour
         Select.MoveNext();
         Select.MovePrev();
         Select.MoveSelect();
-        SetIndicatorPos();
+        SetItemImage();
     }
 
-    private void SetIndicatorPos()
+    private void SetItemImage()
     {
-        RectTransform rect  = Select.GetSelectedButtonRectPos();
-        indicator.position  = rect.position;
-        indicator.sizeDelta = rect.rect.width < 100 ? new Vector2(120.0f, 120.0f) : rect.sizeDelta * 1.1f;
+        int idx = Select.GetIndex();
+
+        for (int i = 0; i < btns.Length; ++i)
+        {
+            btns[i].image.sprite = sprites[i];
+        }
+
+        if (idx < btns.Length)
+        {
+            btns[idx].image.sprite = usedsprites[idx];
+        }
+        
     }
 }
 
@@ -133,6 +140,16 @@ public partial class Inventory : MonoBehaviour
     static public Sprite GetItemSprite(ItemEnum itemEnum)
     {
         return inst.sprites[(int)itemEnum];
+    }  
+    
+    /// <summary>
+    /// 아웃라인이 있는 아이탬 스프라이트를 가져옵니다.
+    /// </summary>
+    /// <param name="itemEnum"></param>
+    /// <returns></returns>
+    static public Sprite GetUsedItemSprite(ItemEnum itemEnum)
+    {
+        return inst.usedsprites[(int)itemEnum];
     }
 
     /// <summary>

@@ -9,9 +9,15 @@ using UI.Interactive.Button;
 public class CraftUI : MonoBehaviour
 {
     [SerializeField] private List<Button> btnCraftList = new List<Button>(); // 작업 테이블
+    [SerializeField] private Image[]      blur         = new Image[0];
+    [SerializeField] private float        blurAmount   = 0.4f;
     [SerializeField] private Button       btnCraft     = null; // 조합버튼
     [SerializeField] private Transform    magicCircle  = null;
+    [SerializeField] private Text         infoText     = null;
                      private CraftAnim    anim         = null; // 조합 에니메이션
+
+    [Header("조합 버튼 선택 효과")]
+    [SerializeField] private float darkenAmount = 0.6f;
 
 
     // 테이블에 들어간 아이탬들
@@ -40,13 +46,48 @@ public class CraftUI : MonoBehaviour
         {
             Select.AddFrom(btnCraftList[i]);
         }
+
         Select.AddFrom(btnCraft);
+
+        infoText.text = $"{OptionManager.GetSettings(KeyMapEnum.left)} 와 {OptionManager.GetSettings(KeyMapEnum.right)} 버튼과 {OptionManager.GetSettings(KeyMapEnum.select)} 버튼을 통해\r\n재료를 선택하고 마법진에 추가할 수 있습니다";
     }
 
     float rot = 0; // 마법진 로테이션
     private void FixedUpdate()
     {
         magicCircle.rotation = Quaternion.Euler(0, 0, rot += 0.1f);
+
+        if (Select.GetIndex() == 9) // 하드코딩
+        {
+            btnCraft.image.color = new Color(darkenAmount, darkenAmount, darkenAmount);
+        }
+        else
+        {
+            blur[0].color = new Color(1, 1, 1, 0);
+            blur[1].color = new Color(1, 1, 1, 0);
+            blur[2].color = new Color(1, 1, 1, 0);
+
+            switch (Select.GetIndex())
+            {
+                case 6:
+                    blur[0].color = new Color(1, 1, 1, blurAmount);
+                    break;
+
+                case 7:
+                    blur[1].color = new Color(1, 1, 1, blurAmount);
+                    break;
+
+                case 8:
+                    blur[2].color = new Color(1, 1, 1, blurAmount);
+                    break;
+
+                default:
+                    break;
+            }
+
+
+            btnCraft.image.color = new Color(1, 1, 1);
+        }
     }
 
     /// <summary>
@@ -85,7 +126,7 @@ public class CraftUI : MonoBehaviour
         }
 
         craftTable[idx] = Inventory.GetCurrentItem();
-        btnCraftList[idx].image.sprite = Inventory.GetItemSprite(craftTable[idx].itemEnum);
+        btnCraftList[idx].image.sprite = Inventory.GetUsedItemSprite(craftTable[idx].itemEnum);
     }
 
     private void Craft()
