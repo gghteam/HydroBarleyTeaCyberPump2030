@@ -519,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1800466021}
   bounceDuration: 0.5
-  bounceAmount: 50
+  bounceAmount: 10
 --- !u!114 &194871979
 MonoBehaviour:
   m_ObjectHideFlags: 0

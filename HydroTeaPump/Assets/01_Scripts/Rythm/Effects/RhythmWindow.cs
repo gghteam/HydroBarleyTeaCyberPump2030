@@ -11,30 +11,33 @@ public class RhythmWindow : MonoBehaviour
     [SerializeField] private float bounceDuration;
     [SerializeField] private float bounceAmount;
 
-    void Start()
+    private void Start()
     {
-        
+        PositionEffects.Middle(0, true);
     }
 
-    // Update is called once per frame
     void Update()
     {
         bounceDuration = (float)NoteManager.GetBPM() / 1000.0f;
 
         if (input.up)
         {
+            PositionEffects.Middle(0, true);
             PositionEffects.BounceUp(bounceDuration, bounceAmount);
         }
         if (input.down)
         {
+            PositionEffects.Middle(0, true);
             PositionEffects.BounceDown(bounceDuration, bounceAmount);
         }
         if (input.left)
         {
+            PositionEffects.Middle(0, true);
             PositionEffects.BounceLeft(bounceDuration, bounceAmount);
         }
         if (input.right)
         {
+            PositionEffects.Middle(0, true);
             PositionEffects.BounceRight(bounceDuration, bounceAmount);
         }
     }

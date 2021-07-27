@@ -24,7 +24,7 @@ public class SceneLoadManager : MonoBehaviour
 
     static public string GetLastRequest()
     {
-        return inst.sceneRequest.Count == 0 ? "null" : inst.sceneRequest.Pop();
+        return inst.sceneRequest.Count == 0 ? null : inst.sceneRequest.Pop();
     }
 
     static public void LoadSceneAdditive(string sceneName)
