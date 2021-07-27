@@ -29,6 +29,7 @@ public partial class Inventory : MonoBehaviour
     [Header("선택 인디케이터")]
     [SerializeField] private RectTransform indicator = null;
 
+    private SettingsVO opt = new SettingsVO();
 
     static private Inventory inst; // static 함수 접근 용도
 
@@ -37,12 +38,14 @@ public partial class Inventory : MonoBehaviour
     {
         Select.SelectFrom(btns);
 
+        opt = OptionManager.GetSettings();
+
         inst = this;
         LinkFunctions();
         SetSprite();
         followedRenderer = followedObj.GetComponent<SpriteRenderer>();
 
-        Select.SetKey(KeyCode.D, KeyCode.A, KeyCode.Return);
+        Select.SetKey(opt.moveRight, opt.moveLeft, opt.select);
     }
 
     private void Update()

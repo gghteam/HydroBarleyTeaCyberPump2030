@@ -14,6 +14,7 @@ public partial class OptionManager : MonoBehaviour
     public KeyCode left   = KeyCode.A;
     public KeyCode right  = KeyCode.D;
     public KeyCode select = KeyCode.Return;
+    public KeyCode exit   = KeyCode.Escape;
 
     public float effectVolume = 0.8f;
     public float musicVolume  = 0.8f;
@@ -39,7 +40,7 @@ public partial class OptionManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        SaveOption(new SettingsVO(up, down, left, right, select, effectVolume, musicVolume));
+        SaveOption(new SettingsVO(up, down, left, right, select, exit, effectVolume, musicVolume));
     }
 
     /// <summary>
@@ -62,19 +63,20 @@ public partial class OptionManager : MonoBehaviour
         if (!File.Exists(path))
         {
             // 초기값
-            inst.settingsData.moveUp = inst.up;
-            inst.settingsData.moveDown = inst.down;
-            inst.settingsData.moveLeft = inst.left;
+            inst.settingsData.moveUp    = inst.up;
+            inst.settingsData.moveDown  = inst.down;
+            inst.settingsData.moveLeft  = inst.left;
             inst.settingsData.moveRight = inst.right;
-            inst.settingsData.select = inst.select;
+            inst.settingsData.select    = inst.select;
+            inst.settingsData.exit      = inst.exit;
 
             inst.settingsData.effectVolume = inst.effectVolume;
-            inst.settingsData.musicVolume = inst.musicVolume;
+            inst.settingsData.musicVolume  = inst.musicVolume;
 
             return;
         }
 
-        FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+        FileStream   fs = new FileStream(path, FileMode.Open, FileAccess.Read);
         StreamReader sr = new StreamReader(fs);
 
         inst.settingsData = JsonUtility.FromJson<SettingsVO>(JsonUtility.FromJson<DataVO>(sr.ReadToEnd()).payload); 
@@ -89,13 +91,12 @@ public partial class OptionManager : MonoBehaviour
 
     static public void SaveOption(SettingsVO vo)
     {
-        string json = JsonUtility.ToJson(new DataVO("option", JsonUtility.ToJson(vo))); // 직렬화
+        string       json = JsonUtility.ToJson(new DataVO("option", JsonUtility.ToJson(vo))); // 직렬화
+        string       path = string.Concat(Application.persistentDataPath, "/settings.json");
+        FileStream   fs   = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+        StreamWriter sw   = new StreamWriter(fs);
 
-
-        string path = string.Concat(Application.persistentDataPath, "/settings.json");
         File.WriteAllText(path, string.Empty);
-        FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
-        StreamWriter sw = new StreamWriter(fs);
 
         sw.WriteLine(json);
         Debug.Log($"Data saved.\r\nPath: {path}");
@@ -111,6 +112,7 @@ public partial class OptionManager : MonoBehaviour
         left   = settingsData.moveLeft;
         right  = settingsData.moveRight;
         select = settingsData.select;
+        exit   = settingsData.exit;
 
         effectVolume = settingsData.effectVolume;
         musicVolume  = settingsData.musicVolume;
