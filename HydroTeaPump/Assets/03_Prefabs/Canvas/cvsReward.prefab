@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 43}
   m_SizeDelta: {x: 1800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1273971348399415890
@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 1273971349073045959}
   - component: {fileID: 1273971349073045958}
   - component: {fileID: 1273971349073045957}
+  - component: {fileID: 8994947657058934114}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -162,6 +163,38 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273971349073045956}
   m_Enabled: 1
+--- !u!114 &8994947657058934114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273971349073045956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1273971349083996298
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +283,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1273971349083996299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +347,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c25c8e3a58c50459e5be5909287075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  earnObj: {fileID: 1273971350273812382}
+  earnObjSprites:
+  - {fileID: 21300000, guid: b4e8aad24a94d6a4f8716647174aaf06, type: 3}
+  - {fileID: 21300000, guid: c0d9fd1781265d84386a7af4c0961858, type: 3}
+  - {fileID: 21300000, guid: 1b0de6ba513c43f469985b9bc63fa4fa, type: 3}
+  - {fileID: 21300000, guid: 4cb85f19e58179347a81b93962fda36e, type: 3}
+  - {fileID: 21300000, guid: ccb6e903bf2fcee4998a0efe1a78ab7b, type: 3}
+  - {fileID: 21300000, guid: 1de2957449254314fa5ac3d2950a0074, type: 3}
 --- !u!1 &1273971349114513019
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,8 +616,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -62.49}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -232, y: -132}
-  m_SizeDelta: {x: 512, y: 1024}
+  m_AnchoredPosition: {x: -181, y: -49}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1273971350273812376
 CanvasRenderer:
@@ -607,7 +647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba13f6743fe67c240966aa38efe8f741, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4e8aad24a94d6a4f8716647174aaf06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

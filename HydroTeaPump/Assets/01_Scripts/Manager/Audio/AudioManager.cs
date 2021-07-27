@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
 
     private SettingsVO opt = new SettingsVO();
 
+    private bool isStartPlaying = false;
     private void Start()
     {
         if(audioSource != null)
@@ -25,6 +26,15 @@ public class AudioManager : MonoBehaviour
     public void StartMusic()
     {
         audioSource.Play();
+        isStartPlaying = true;
+    }
+
+    private void Update()
+    {
+        if(!audioSource.isPlaying && isStartPlaying)
+        {
+            noteManager.TimeOut();
+        }
     }
 
     /// <summary>

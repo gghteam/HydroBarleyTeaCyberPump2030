@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+
 public class StageFailedManager : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +19,10 @@ public class StageFailedManager : MonoBehaviour
     public float zoomSpeed = 2;
 
     private bool isLoadScene = false;
+
+    public Transform stageFailedPanel = null;
+
+    private Vector3 stageFailedPanelFisrtScale;
     public void FailedStage()
     {
         if (vCam != null) 
@@ -33,17 +39,32 @@ public class StageFailedManager : MonoBehaviour
     private void Start()
     {
         zoom = vCamSize;
+        stageFailedPanelFisrtScale = stageFailedPanel.localScale;
+        stageFailedPanel.localScale = stageFailedPanel.localScale / 2;
+        stageFailedPanel.gameObject.SetActive(false);
     }
     private void Update()
     {
-        Zoom();
         if(zoom == vCamSmallerSize && !isLoadScene)
         {
             isLoadScene = true;
-            SceneLoadManager.LoadSceneAdditive("CutSceneScene");
+            stageFailedPanel.gameObject.SetActive(true);
+            //stageFailedPanel.transform.position = new Vector3();
+            stageFailedPanel.GetChild(0).GetComponent<Text>().text = "클리어 실패!";
+            stageFailedPanel.gameObject.SetActive(true);
+            stageFailedPanel.DOScale(stageFailedPanelFisrtScale, .5f).SetEase(Ease.OutBack).OnComplete(()=> {
+                Invoke("NextSceneLoad", 3f);
+            });
+        }
+        else if(zoom != vCamSmallerSize)
+        {
+            Zoom();
         }
     }
-
+    public void NextSceneLoad()
+    {
+        SceneLoadManager.LoadSceneAdditive("CutSceneScene");
+    }
     public void Zoom()
     {
         vCam.m_Lens.OrthographicSize = zoom;

@@ -10,7 +10,6 @@ public class RythmPlayerMove : GeneralMove
 
     public NoteManager noteManager;
 
-    public StageFailedManager failedManager;
 
     public int playerHp = 9;
 
@@ -56,8 +55,7 @@ public class RythmPlayerMove : GeneralMove
             --playerHp;
             if(playerHp <=0)
             {
-                noteManager.canAct = false;
-                failedManager.FailedStage();
+                noteManager.TimeOut();
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RewardAnim : MonoBehaviour
 {
@@ -12,11 +13,16 @@ public class RewardAnim : MonoBehaviour
 
     private bool canGoNext = false;
 
+    [SerializeField]
+    private Transform earnObj = null;
+
+    [SerializeField]
+    private Sprite[] earnObjSprites = null;
     void Start()
     {
         anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
-
+        earnObj.GetComponent<Image>().sprite = earnObjSprites[GameManager.Instance.currentStage];
         StartCoroutine(PlayAnim(() => canGoNext = true));
     }
     private void Update()

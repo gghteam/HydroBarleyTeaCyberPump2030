@@ -47,6 +47,8 @@ public partial class NoteManager : MonoBehaviour
 
     private bool isFirstNote = true;
 
+    public StageFailedManager failedManager;
+
     /// <summary>
     /// 0 = Cool, 1 = Normal, 2 = Bad
     /// </summary>
@@ -97,7 +99,7 @@ public partial class NoteManager : MonoBehaviour
         if(noteObj_Line.Count >= 1)
         {
             float t_notePosX = noteObj_Line[0].transform.localPosition.x;
-            if (t_notePosX <= 170)
+            if (t_notePosX <= 150)
             {
                 if (isFirstNote)
                 {
@@ -111,7 +113,12 @@ public partial class NoteManager : MonoBehaviour
 
         // 키 입력 시 타이밍 체크
         if (Input.GetKeyDown(opt.moveUp) || Input.GetKeyDown(opt.moveRight) || Input.GetKeyDown(opt.moveLeft) || Input.GetKeyDown(opt.moveDown))
-            CheckTiming();
+        {
+            if(!isFirstNote)
+            {
+                CheckTiming();
+            }
+        }
         
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -212,4 +219,9 @@ public partial class NoteManager : MonoBehaviour
         heartSprite.sprite = heartSprites[(int)heartState];
     }
 
+    public void TimeOut()
+    {
+        canAct = false;
+        failedManager.FailedStage();
+    }
 }

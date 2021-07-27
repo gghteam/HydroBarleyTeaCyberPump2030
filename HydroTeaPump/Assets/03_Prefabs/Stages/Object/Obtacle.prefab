@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a997a2b4735c2d245820360ed311d8a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2265acc1f2a50a141a46ca82baed0eaa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.25, y: 2.25}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,3 +150,10 @@ MonoBehaviour:
     m_Bits: 576
   isMoving: 0
   dir: {x: 0, y: 0, z: 0}
+  objectHp: 1
+  obtacleSprites:
+  - {fileID: 21300000, guid: 2265acc1f2a50a141a46ca82baed0eaa, type: 3}
+  - {fileID: 21300000, guid: 6395856bb8aeaca4ebe5fa28b3932d3f, type: 3}
+  - {fileID: 21300000, guid: 3409fe3dbe7e602469220d2e700544e9, type: 3}
+  brokenObtacleSprite: {fileID: 21300000, guid: 4379281e096ef344c8a9150180023f34, type: 3}
+  obtacleType: 1

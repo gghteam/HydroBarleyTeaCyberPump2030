@@ -7,14 +7,30 @@ public class ObtacleMove : GeneralMove
     public Vector3 dir;
 
     public int objectHp = 1;
+
+    public Sprite[] obtacleSprites = null;
+    public Sprite brokenObtacleSprite = null;
     public enum ObtacleType
     {
-        Breakable,
-        UnBreakable,
-        MovingBreakable
+        Breakable = 0,
+        UnBreakable = 1,
+        MovingBreakable = 2
     }
 
     public ObtacleType obtacleType = ObtacleType.UnBreakable;
+
+    private void Start()
+    {
+        Setting();
+    }
+
+    public void Setting()
+    {
+        if(obtacleSprites.Length >= (int)obtacleType)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = obtacleSprites[(int)obtacleType];
+        }
+    }
 
     public void ObtacleMoving()
     {
@@ -49,11 +65,24 @@ public class ObtacleMove : GeneralMove
     {
         if(objectHp <=0)
         {
-            Destroy(gameObject);
+            if(obtacleType == ObtacleType.Breakable)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = brokenObtacleSprite;
+                Invoke("DestroyObj", 0.2f);
+            }    
+            else
+            {
+                DestroyObj();
+            }
         }
         else
         {
             --objectHp;
         }
+    }
+
+    public void DestroyObj()
+    {
+        Destroy(gameObject);
     }
 }

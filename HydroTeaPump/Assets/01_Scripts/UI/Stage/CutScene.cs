@@ -39,7 +39,8 @@ public class CutScene : MonoBehaviour
         isPlaying = true;
         
         Talk(explainText, explainId, explainIndex);
-        
+        explainIndex++;
+
         gameObject.SetActive(true);
         SetChildAlpha();
         Vector3 prevScale = transform.GetChild(1).localScale;
@@ -66,7 +67,6 @@ public class CutScene : MonoBehaviour
         if (talkData != null)
         {
             text.text = talkData;
-            explainIndex++;
         }
     }
     private void SetChildAlpha()
