@@ -209,7 +209,14 @@ namespace UI
                     return inst.index;
                 }
 
-                
+                /// <summary>
+                /// 선택된 버튼을 반환합니다.
+                /// </summary>
+                /// <returns>UnityEngine.UI.Button</returns>
+                static public UnityEngine.UI.Button GetSelectedButton()
+                {
+                    return inst.from[inst.index];
+                }
 
                 #endregion
             }
