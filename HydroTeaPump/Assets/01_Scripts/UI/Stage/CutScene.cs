@@ -7,12 +7,9 @@ using UnityEngine.UI;
 public class CutScene : MonoBehaviour
 {
     private bool isPlaying = false;
-    private void Update()
+    private void Start()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            PopPop(); 
-        }
+        gameObject.SetActive(false);
     }
     public void PopPop()
     {
