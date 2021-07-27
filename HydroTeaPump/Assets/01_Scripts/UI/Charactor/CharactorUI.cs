@@ -25,10 +25,10 @@ public class CharactorUI : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Animation());
+        //StartCoroutine(Animation());
     }
 
-    IEnumerator Animation()
+    public IEnumerator Animation()
     {
         body.DOMove(bodyMovement[bodyidx].position, bodyTransitTime[bodyidx]).SetEase(Ease.OutCubic).OnComplete(() => ++bodyidx);
         yield return new WaitForSeconds(0.1f);
