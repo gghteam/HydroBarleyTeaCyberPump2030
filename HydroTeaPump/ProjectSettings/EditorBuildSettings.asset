@@ -27,6 +27,12 @@ EditorBuildSettings:
     path: Assets/05.Scenes/CutSceneScene.unity
     guid: 622d50312c00bee4980a44426864a2a0
   - enabled: 0
-    path: Assets/05.Scenes/TestScene.unity
+    path: 
     guid: 4eae1a276f632e04fb1ddd078f16a9aa
+  - enabled: 1
+    path: Assets/05.Scenes/CraftEventScene/FailedScene.unity
+    guid: 2acbcb2dbe64a274095b825051477e53
+  - enabled: 1
+    path: Assets/05.Scenes/CraftEventScene/SuccessScene.unity
+    guid: 93a8355e982be434ba79067e83fab45e
   m_configObjects: {}
