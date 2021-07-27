@@ -40,6 +40,7 @@ public partial class CollSelect : MonoBehaviour
         isCollision = true;
         col = collision.GetComponent<ICollSelectable>();
         col?.ToggleNotice();
+        collision.transform.GetChild(0).GetComponent<AppearAnimation>()?.ToggleEnable();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -47,5 +48,6 @@ public partial class CollSelect : MonoBehaviour
         isCollision = false;
         col = collision.GetComponent<ICollSelectable>();
         col?.ToggleNotice();
+        collision.transform.GetChild(0).GetComponent<AppearAnimation>()?.ToggleEnable();
     }
 }
