@@ -9,20 +9,26 @@ public class TitleMotion : MonoBehaviour
     [SerializeField]
     private Transform titlePanel;
     public Transform lastPos;
+    Vector3 firstPosition;
     void Start()
     {
-        Vector3 firstPosition = titlePanel.position;
+        firstPosition = titlePanel.position;
         titlePanel.position = lastPos.position;
-        Sequence seq = DOTween.Sequence();
-        seq.Append(titlePanel.DOMove(firstPosition, 2f));
-        seq.Join(titlePanel.GetComponent<Image>().DOFade(1,2));
-        seq.SetDelay(2);
-        seq.SetLoops(2,LoopType.Yoyo);
+        TitlePanelMove(true,2);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.anyKey)
+        {
+            TitlePanelMove(false,1);
+        }
+    }
+
+    public void TitlePanelMove(bool enable,float time)
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(titlePanel.DOMove(enable ? firstPosition:lastPos.position, time));
+        seq.Join(titlePanel.GetComponent<Image>().DOFade(enable? 1:0, time));
     }
 }
