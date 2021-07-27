@@ -127,6 +127,7 @@ public class CraftUI : MonoBehaviour
 
         craftTable[idx] = Inventory.GetCurrentItem();
         btnCraftList[idx].image.sprite = Inventory.GetUsedItemSprite(craftTable[idx].itemEnum);
+        btnCraftList[idx].image.color = new Color(1, 1, 1, 1);
     }
 
     private void Craft()
