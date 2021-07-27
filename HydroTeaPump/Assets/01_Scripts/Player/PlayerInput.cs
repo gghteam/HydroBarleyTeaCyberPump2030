@@ -9,9 +9,16 @@ public class PlayerInput : MonoBehaviour
     public bool select { get; private set; } // 선택 키 눌렀음을 의미
 
     // 키매핑 대응
-    public KeyCode leftKey   = KeyCode.A;
-    public KeyCode rightKey  = KeyCode.D;
-    public KeyCode selectKey = KeyCode.Return;
+    private KeyCode leftKey;
+    private KeyCode rightKey;
+    private KeyCode selectKey;
+
+    private void Start()
+    {
+        leftKey = OptionManager.GetSettings().moveLeft;
+        rightKey = OptionManager.GetSettings().moveRight;
+        selectKey = OptionManager.GetSettings().select;
+    }
 
     void Update()
     {
@@ -28,6 +35,9 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// select boolean 을 false 로 설정합니다.
+    /// </summary>
     public void DisableSelect()
     {
         select = false;
