@@ -33,14 +33,15 @@ public class RewardAnim : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && canGoNext)
         {
             if (gameObject.activeSelf)
+            {
                 AfterAnim();
+            }
         }
     }
     private void AfterAnim()
     {
-        obj.transform.GetChild(0).GetComponent<CutScene>().isPlayed = true;
-        obj.transform.GetChild(0).GetComponent<CutScene>().PopPop();
         gameObject.SetActive(false);
+        SceneLoadManager.LoadSceneAdditive("CutSceneScene");
     }
     /// <summary>
     /// 피슝 에니메이션 재생

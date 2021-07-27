@@ -6,7 +6,7 @@ public class ObtacleMove : GeneralMove
 {
     public Vector3 dir;
 
-    public int objectHp = 2;
+    public int objectHp = 1;
     public enum ObtacleType
     {
         Breakable,

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class CutScene : MonoBehaviour
 {
-    public bool isPlayed = false;
     private bool isPlaying = false;
 
     private TextManager textManager;
@@ -17,23 +16,20 @@ public class CutScene : MonoBehaviour
     private int explainIndex;
     private void Start()
     {
-        gameObject.SetActive(false);
         explainText = transform.GetChild(3).GetComponent<Text>();
 
         textManager = GameObject.Find("TextManager").GetComponent<TextManager>();
 
         explainId = 1;
         explainIndex = 0;
+        PopPop();
     }
 
     private void Update()
     {
-        if(isPlayed)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                PopPop();
-            }
+            PopPop();
         }
     }
 

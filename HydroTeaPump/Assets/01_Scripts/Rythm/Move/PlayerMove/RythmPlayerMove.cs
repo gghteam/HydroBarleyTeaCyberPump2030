@@ -10,6 +10,10 @@ public class RythmPlayerMove : GeneralMove
 
     public NoteManager noteManager;
 
+    public StageFailedManager failedManager;
+
+    public int playerHp = 9;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -37,6 +41,11 @@ public class RythmPlayerMove : GeneralMove
     private void Update()
     {
         animator.SetBool("Run", isMoving);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            noteManager.canAct = false;
+            failedManager.FailedStage();
+        }
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -49,6 +58,12 @@ public class RythmPlayerMove : GeneralMove
         else if(col.gameObject.layer == 12)//가시
         {
             Debug.Log("아 따가!");
+            --playerHp;
+            if(playerHp <=0)
+            {
+                noteManager.canAct = false;
+                failedManager.FailedStage();
+            }
         }
     }
     

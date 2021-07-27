@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FailedManager : MonoBehaviour
 {
-    [SerializeField] private CraftUI craft; // 실패 원인
+    [SerializeField] private CraftUI craft = null; // 실패 원인
 
     static private FailedManager inst;
 
