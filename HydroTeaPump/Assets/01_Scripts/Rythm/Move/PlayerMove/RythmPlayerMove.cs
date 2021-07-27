@@ -19,25 +19,8 @@ public class RythmPlayerMove : GeneralMove
     /// </summary>
     public void PlayerMoving()
     {
-        Debug.Log(input.up);
-        Debug.Log(input.down);
-        Debug.Log(input.left);
-        Debug.Log(input.right);
-        
-        //float h = Input.GetAxisRaw("Horizontal");
-        //float v = Input.GetAxisRaw("Vertical");
-
-        //if (h != 0)
-        //{
-        //    v = 0;
-        //}
-
         float h = input.right ? 1 : (input.left ? -1 : 0);
         float v = input.up ? 1    : (input.down ? -1 : 0);
-
-        Debug.Log(h);
-        Debug.Log(v);
-
         if (h != 0)
         {
             v = 0;

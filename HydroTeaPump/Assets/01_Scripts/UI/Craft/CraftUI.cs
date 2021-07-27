@@ -55,9 +55,16 @@ public class CraftUI : MonoBehaviour
         bool isWolf = false;
         bool isFog  = false;
 
+        
         // 조합 테이블 확인
         for (int i = 0; i < craftTable.Length; ++i)
         {
+            // 아무것도 없으면 실행시키지 않음
+            if (craftTable[i] == null)
+            {
+                return;
+            }
+
             isStar = !isStar ? craftTable[i].itemEnum == ItemEnum.Star     : true;
             isWolf = !isWolf ? craftTable[i].itemEnum == ItemEnum.WolfTear : true;
             isFog  = !isFog  ? craftTable[i].itemEnum == ItemEnum.Fog      : true;
