@@ -37,9 +37,10 @@ public class CraftAnim : MonoBehaviour
         images[2].gameObject.SetActive(true);
 
         animator.SetBool("clear", craft.Success());
-
         animator.Play("Craft");
         animator.SetTrigger("Craft");
+
+        FailedManager.AddSuccessInfo(craft.GetWhatIsWrong());
 
     }
 }
