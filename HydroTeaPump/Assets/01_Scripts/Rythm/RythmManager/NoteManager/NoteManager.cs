@@ -17,6 +17,9 @@ public partial class NoteManager : MonoBehaviour
     // 노트 프리팹 생성 및 리스트 저장.
     public List<GameObject> noteObj_Line = new List<GameObject>();
 
+    // 입력 키
+    private SettingsVO opt = new SettingsVO();
+
     [SerializeField]
     Transform tfNoteAppearRight = null;
     [SerializeField]
@@ -68,6 +71,8 @@ public partial class NoteManager : MonoBehaviour
                                Center.localPosition.x + timingRect[i].rect.height / 2);
         }
         
+        // 옵션 세팅 가져옴
+        opt = OptionManager.GetSettings();
     }
     private void Update()
     {
@@ -79,7 +84,8 @@ public partial class NoteManager : MonoBehaviour
             MakeNote(false);
         }
         
-        if(Input.GetKeyDown(KeyCode.DownArrow)|| Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+        // 키 입력 시 타이밍 체크
+        if(Input.GetKeyDown(opt.moveUp) || Input.GetKeyDown(opt.moveRight) || Input.GetKeyDown(opt.moveLeft) || Input.GetKeyDown(opt.moveDown))
             CheckTiming();
         
     }

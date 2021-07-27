@@ -5,26 +5,47 @@ using DG.Tweening;
 
 public class RythmPlayerMove : GeneralMove
 {
-    private Animator animator;
+    private Animator          animator;
+    private RhythmPlayerInput input; // 입력
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        input    = GetComponent<RhythmPlayerInput>();
     }
     /// <summary>
     /// 플레이어 이동함수
     /// </summary>
     public void PlayerMoving()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        Debug.Log(input.up);
+        Debug.Log(input.down);
+        Debug.Log(input.left);
+        Debug.Log(input.right);
+        
+        //float h = Input.GetAxisRaw("Horizontal");
+        //float v = Input.GetAxisRaw("Vertical");
+
+        //if (h != 0)
+        //{
+        //    v = 0;
+        //}
+
+        float h = input.right ? 1 : (input.left ? -1 : 0);
+        float v = input.up ? 1    : (input.down ? -1 : 0);
+
+        Debug.Log(h);
+        Debug.Log(v);
 
         if (h != 0)
         {
             v = 0;
         }
+
         isMoving = true;
 
-        Vector3 dir = new Vector3(h, v, 0);
+        Vector3 dir = new Vector3(h, v, 0); // 1, 0, -1 : h, v
         transform.localScale = new Vector3(h!=0? -h/2:transform.localScale.x, 0.5f, 1);
         Moving(dir);
     }

@@ -10,10 +10,18 @@ public class RhythmPlayerInput : MonoBehaviour
     public bool left  { get; private set; }
     public bool right { get; private set; }
 
-    [SerializeField] private KeyCode upKey    = KeyCode.W;
-    [SerializeField] private KeyCode downKey  = KeyCode.S;
-    [SerializeField] private KeyCode leftKey  = KeyCode.A;
-    [SerializeField] private KeyCode rightKey = KeyCode.D;
+    [SerializeField] private KeyCode upKey;
+    [SerializeField] private KeyCode downKey;
+    [SerializeField] private KeyCode leftKey;
+    [SerializeField] private KeyCode rightKey;
+
+    private void Awake()
+    {
+        upKey    = OptionManager.GetSettings().moveUp;
+        downKey  = OptionManager.GetSettings().moveDown;
+        leftKey  = OptionManager.GetSettings().moveLeft;
+        rightKey = OptionManager.GetSettings().moveRight;
+    }
 
     private void Update()
     {
