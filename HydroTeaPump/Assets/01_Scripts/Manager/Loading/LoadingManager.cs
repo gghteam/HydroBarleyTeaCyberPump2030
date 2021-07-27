@@ -12,7 +12,7 @@ public class LoadingManager : MonoBehaviour
     [SerializeField] private Transform beginPos; // 로딩 시작 부분
     [SerializeField] private Transform endPos; // 로딩 끝 부분
 
-    [SerializeField] private Button btnLoad = null;
+    [SerializeField] private Button    btnLoad      = null;
     [SerializeField] private Transform loadingImage = null;
 
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoadManager : MonoBehaviour
 {
     static private SceneLoadManager inst; // static Á¢±Ù¿ë
-           private Stack<string>    sceneRequest;
+           private Stack<string>    sceneRequest = new Stack<string>();
 
 
     private void Awake()
