@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 1273971349083996299}
   - component: {fileID: 1273971349083996288}
   - component: {fileID: 1273971349083996289}
+  - component: {fileID: 1273971349695251054}
   m_Layer: 5
   m_Name: cvsReward
   m_TagString: Untagged
@@ -298,9 +299,22 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 2770ed89f7e7f85459ed32c4c904ece0, type: 2}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1273971349695251054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273971349083996298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c25c8e3a58c50459e5be5909287075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &1273971349114513019
 GameObject:
   m_ObjectHideFlags: 0
