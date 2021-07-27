@@ -9,6 +9,20 @@ public class GameManager : MonoBehaviour
 
     public bool isPopupOpen = false;
 
+    private bool[] stageClear = new bool[5]; // 스테이지 클리어 정보 배열
+
+    public bool[] GetStageClearStat()
+    {
+        return stageClear;
+    }
+
+    // 데이터 저장 용
+    private void OnDestroy()
+    {
+        DataVO vo = new DataVO("stageStat", JsonUtility.ToJson(new StageVO(stageClear)));
+        SaveManager.SaveOption(vo, "stageStat.json");
+    }
+
     [Header("카메라")]
     private CinemachineImpulseSource ImpulseSource;
 
