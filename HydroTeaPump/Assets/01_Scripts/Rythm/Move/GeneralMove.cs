@@ -9,7 +9,7 @@ public class GeneralMove : MonoBehaviour
     private float moveDistance = 100;
 
     [SerializeField]
-    private LayerMask ObtacleMask;
+    protected LayerMask ObtacleMask;
 
     public bool isMoving = false;
 
