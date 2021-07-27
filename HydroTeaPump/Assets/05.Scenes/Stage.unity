@@ -152,7 +152,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1431,6 +1431,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 576
   isMoving: 0
+  noteManager: {fileID: 2129315681}
 --- !u!61 &1800466016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1574,10 +1575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac0f1cac4711da4190255c37ee76e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upKey: 273
-  downKey: 274
-  leftKey: 276
-  rightKey: 275
 --- !u!1 &2129315678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,6 +1669,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: be26fe8c925e48d43b81599ce892987f, type: 3}
   - {fileID: 21300000, guid: 9692958d00f51ac4c8eb00fce32e74f2, type: 3}
   heartSprite: {fileID: 1530907317}
+  canAct: 1
 --- !u!114 &2129315682
 MonoBehaviour:
   m_ObjectHideFlags: 0

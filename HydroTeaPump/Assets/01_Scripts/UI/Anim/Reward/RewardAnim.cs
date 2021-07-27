@@ -17,10 +17,15 @@ public class RewardAnim : MonoBehaviour
     {
         anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
-        obj = GameObject.Find("CutScene");
+        obj = GameObject.Find("cvsCutScene");
         if (obj != null)
         {
             StartCoroutine(PlayAnim(() => canGoNext = true));
+            Debug.Log("Find");
+        }
+        else
+        {
+            Debug.Log("CantFind");
         }
     }
     private void Update()
@@ -33,8 +38,8 @@ public class RewardAnim : MonoBehaviour
     }
     private void AfterAnim()
     {
-        obj.GetComponent<CutScene>().isPlayed = true;
-        obj.GetComponent<CutScene>().PopPop();
+        obj.transform.GetChild(0).GetComponent<CutScene>().isPlayed = true;
+        obj.transform.GetChild(0).GetComponent<CutScene>().PopPop();
         gameObject.SetActive(false);
     }
     /// <summary>

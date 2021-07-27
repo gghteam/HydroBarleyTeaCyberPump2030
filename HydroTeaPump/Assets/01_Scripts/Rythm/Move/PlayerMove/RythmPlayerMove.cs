@@ -8,6 +8,7 @@ public class RythmPlayerMove : GeneralMove
     private Animator          animator;
     private RhythmPlayerInput input; // ÀÔ·Â
 
+    public NoteManager noteManager;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class RythmPlayerMove : GeneralMove
         if (col.gameObject.layer == 11)  //¸ñÇ¥¹°°ú Á¢ÃËÇßÀ»¶§
         {
             Debug.Log("¤È! È¹µæ!");
+            noteManager.canAct = false;
             SceneLoadManager.LoadSceneAdditive("RewardScene");
         }
     }

@@ -41,6 +41,8 @@ public partial class NoteManager : MonoBehaviour
     private Sprite[] heartSprites;
     public Image heartSprite;
 
+    public bool canAct=true;
+
     /// <summary>
     /// 0 = Cool, 1 = Normal, 2 = Bad
     /// </summary>
@@ -76,6 +78,7 @@ public partial class NoteManager : MonoBehaviour
     }
     private void Update()
     {
+        if (!canAct) return;
         currentTime += Time.deltaTime;
         
         if(currentTime >= 60d/ bpm)
