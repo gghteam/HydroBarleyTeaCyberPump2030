@@ -10,14 +10,23 @@ public class CraftUI : MonoBehaviour
 {
     [SerializeField] private List<Button> btnCraftList = new List<Button>(); // 작업 테이블
     [SerializeField] private Button       btnCraft     = null; // 조합버튼
+                     private CraftAnim anim = null; // 조합 에니메이션
+
 
     // 테이블에 들어간 아이탬들
     private ItemVO[] craftTable = new ItemVO[3];
 
+    private bool isClear = false;
+
+    // 재료 성공 여부
+    bool isStar;
+    bool isWolf;
+    bool isFog;
 
     private void Awake()
     {
-        
+        isClear = false;
+        anim = GetComponent<CraftAnim>();
     }
 
     private void Start()
@@ -31,6 +40,29 @@ public class CraftUI : MonoBehaviour
             Select.AddFrom(btnCraftList[i]);
         }
         Select.AddFrom(btnCraft);
+    }
+
+    /// <summary>
+    /// 작업테이블을 리턴합니다.
+    /// </summary>
+    /// <returns>List of button</returns>
+    public List<Button> GetTable()
+    {
+        return btnCraftList;
+    }
+
+    public bool Success()
+    {
+        return isClear;
+    }
+
+    /// <summary>
+    /// 무엇이 틀렸는지 알 수 있는 함수
+    /// </summary>
+    /// <returns>bool[3] { isStar, isWolf, isFog }</returns>
+    public bool[] GetWhatIsWrong()
+    {
+        return new bool[] {isStar, isWolf, isFog };
     }
 
     private void AddToTable(int idx)
@@ -51,9 +83,9 @@ public class CraftUI : MonoBehaviour
 
     private void Craft()
     {
-        bool isStar = false;
-        bool isWolf = false;
-        bool isFog  = false;
+        isStar = false;
+        isWolf = false;
+        isFog  = false;
 
         
         // 조합 테이블 확인
@@ -70,14 +102,17 @@ public class CraftUI : MonoBehaviour
             isFog  = !isFog  ? craftTable[i].itemEnum == ItemEnum.Fog      : true;
         }
 
+        anim.Animation();
 
         // 조합 확인
         if (isStar && isWolf && isFog)
         {
             Debug.Log("all correct");
+            isClear = true;
         }
         else // 뭐가 틀린지 알려줌
         {
+            isClear = false;
             if (isStar)
             {
                 Debug.Log("isStar is correct");

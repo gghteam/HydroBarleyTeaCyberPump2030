@@ -23,11 +23,6 @@ public class CharactorUI : MonoBehaviour
     private int lWingidx = 0;
     private int rWingidx = 0;
 
-    void Start()
-    {
-        //StartCoroutine(Animation());
-    }
-
     public IEnumerator Animation()
     {
         body.DOMove(bodyMovement[bodyidx].position, bodyTransitTime[bodyidx]).SetEase(Ease.OutCubic).OnComplete(() => ++bodyidx);
