@@ -93,10 +93,12 @@ public partial class OptionManager : MonoBehaviour
     {
         string       json = JsonUtility.ToJson(new DataVO("option", JsonUtility.ToJson(vo))); // Á÷·ÄÈ­
         string       path = string.Concat(Application.persistentDataPath, "/settings.json");
+        
+        File.WriteAllText(path, string.Empty);
+
         FileStream   fs   = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
         StreamWriter sw   = new StreamWriter(fs);
 
-        File.WriteAllText(path, string.Empty);
 
         sw.WriteLine(json);
         Debug.Log($"Data saved.\r\nPath: {path}");
