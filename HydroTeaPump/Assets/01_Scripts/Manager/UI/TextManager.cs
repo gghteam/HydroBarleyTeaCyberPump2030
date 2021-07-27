@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class TextManager : MonoBehaviour
 {
-    private Dictionary<int, string[]> talkData; //텍스트들이 저장될
+    private Dictionary<int, string[]> talkData = new Dictionary<int, string[]>();//텍스트들이 저장될
 
     private void Awake()
     {
-        talkData = new Dictionary<int, string[]>();
         GenerateData();
     }
 
@@ -20,11 +19,15 @@ public class TextManager : MonoBehaviour
 
     public string GetTalk(int id, int talkIndex) //다른 스크립트에서 대사를 불러와야 한다면 이 함수 사용, id와 몇번째 대사인지.
     {
-        if (talkIndex == talkData[id].Length)
+        if(talkData.ContainsKey(id))
         {
-            return null;
+            if (talkIndex == talkData[id].Length)
+            {
+                return null;
+            }
+            return talkData[id][talkIndex];
         }
-        return talkData[id][talkIndex];
+        return null;
     } 
 
    /* private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함

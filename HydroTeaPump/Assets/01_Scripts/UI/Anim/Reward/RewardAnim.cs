@@ -25,7 +25,7 @@ public class RewardAnim : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && canGoNext)
         {
             if (gameObject.activeSelf)
                 AfterAnim();
@@ -33,6 +33,7 @@ public class RewardAnim : MonoBehaviour
     }
     private void AfterAnim()
     {
+        obj.GetComponent<CutScene>().isPlayed = true;
         obj.GetComponent<CutScene>().PopPop();
         gameObject.SetActive(false);
     }

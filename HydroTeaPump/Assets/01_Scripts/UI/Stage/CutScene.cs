@@ -6,15 +6,44 @@ using UnityEngine.UI;
 
 public class CutScene : MonoBehaviour
 {
+    public bool isPlayed = false;
     private bool isPlaying = false;
+
+    private TextManager textManager;
+
+    private Text explainText;
+
+    private int explainId;
+    private int explainIndex;
     private void Start()
     {
         gameObject.SetActive(false);
+        explainText = transform.GetChild(2).GetComponent<Text>();
+
+        textManager = GameObject.Find("TextManager").GetComponent<TextManager>();
+
+        explainId = 1;
+        explainIndex = 0;
     }
+
+    private void Update()
+    {
+        if(isPlayed)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                PopPop();
+            }
+        }
+    }
+
     public void PopPop()
     {
         if (isPlaying) return;
         isPlaying = true;
+        
+        Talk(explainText, explainId, explainIndex);
+        
         gameObject.SetActive(true);
         SetChildAlpha();
         Vector3 prevScale = transform.GetChild(0).localScale;
@@ -34,7 +63,16 @@ public class CutScene : MonoBehaviour
 
         seq.OnComplete(()=> { isPlaying = false; });
     }
+    private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
+    {
+        string talkData = textManager.GetTalk(id, talkIndex);
 
+        if (talkData != null)
+        {
+            text.text = talkData;
+            explainIndex++;
+        }
+    }
     private void SetChildAlpha()
     {
         transform.GetChild(1).GetComponent<Image>().color = new Color(1,1,1,0) ;
