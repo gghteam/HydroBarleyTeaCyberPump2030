@@ -39,9 +39,10 @@ public class RythmPlayerMove : GeneralMove
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer == 11)
+        if (col.gameObject.layer == 11)  //¸ñÇ¥¹°°ú Á¢ÃËÇßÀ»¶§
         {
             Debug.Log("¤È! È¹µæ!");
+            SceneLoadManager.LoadSceneAdditive("RewardScene");
         }
     }
     
