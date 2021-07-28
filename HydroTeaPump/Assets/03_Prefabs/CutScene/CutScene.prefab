@@ -127,6 +127,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e29e29447dca7d459627e58ea2cc9dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cutSceneSprites:
+  - {fileID: 21300000, guid: 724cdc36ff2d92a4e878c86483fa9a2b, type: 3}
+  - {fileID: 21300000, guid: 0b322e658296ed040a4f316ce5f25e5f, type: 3}
+  - {fileID: 21300000, guid: 0b322e658296ed040a4f316ce5f25e5f, type: 3}
+  - {fileID: 21300000, guid: d51a69edcd5804f47bdb42f39189d8b4, type: 3}
+  - {fileID: 21300000, guid: d51a69edcd5804f47bdb42f39189d8b4, type: 3}
+  - {fileID: 21300000, guid: 17a5d543106a1bf438b201d77f1a1d00, type: 3}
+  - {fileID: 21300000, guid: f64991c420506694b9adf00f5e37b885, type: 3}
+  - {fileID: 21300000, guid: f64991c420506694b9adf00f5e37b885, type: 3}
+  - {fileID: 21300000, guid: f64991c420506694b9adf00f5e37b885, type: 3}
+  - {fileID: 21300000, guid: 160a7eba77f9968489b1eda3c6be56fa, type: 3}
+  - {fileID: 21300000, guid: 3c9f8227b6c606f4ba016d746ade60f9, type: 3}
+  - {fileID: 21300000, guid: 7461c634fd604c847ad23a98424707e4, type: 3}
+  - {fileID: 21300000, guid: 7461c634fd604c847ad23a98424707e4, type: 3}
+  - {fileID: 21300000, guid: bd5506bf0befcf2418035cf2fd6a311a, type: 3}
+  - {fileID: 21300000, guid: 17a5d543106a1bf438b201d77f1a1d00, type: 3}
+  - {fileID: 21300000, guid: 415da783f4f1ecb4189d7ac78f9f8e06, type: 3}
+  - {fileID: 21300000, guid: cedba591dc81d504396bc22bacdfd3ab, type: 3}
+  - {fileID: 21300000, guid: 34dc8d4d0b7ca644c93654d6c3080350, type: 3}
 --- !u!1 &8274719199962865920
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a0133d9e485c6c4192d350dcc6fa618, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 724cdc36ff2d92a4e878c86483fa9a2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
