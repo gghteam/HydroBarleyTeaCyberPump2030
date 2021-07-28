@@ -31,13 +31,16 @@ public class InventoryBase : MonoBehaviour
             count = 1;
         }
 
+        bool[] itemStatus = new bool[5];
+        itemStatus = GameManager.Instance.GetStageClearStat();
+
         // æ∆¿Ã≈∆ √ ±‚»≠
-        items[0] = new ItemVO(ItemEnum.Star, count, 0);
-        items[1] = new ItemVO(ItemEnum.Mermaid, count, 0);
-        items[2] = new ItemVO(ItemEnum.Flower, count, 0);
-        items[3] = new ItemVO(ItemEnum.WolfTear, count, 0);
-        items[4] = new ItemVO(ItemEnum.Fog, count, 0);
-        items[5] = new ItemVO(ItemEnum.Moon, count, 0);
+        items[0] = new ItemVO(ItemEnum.Star,     (itemStatus[0] ? 1 : 0), 0);
+        items[1] = new ItemVO(ItemEnum.Mermaid,  1, 0);
+        items[2] = new ItemVO(ItemEnum.Flower,   (itemStatus[1] ? 1 : 0), 0);
+        items[3] = new ItemVO(ItemEnum.WolfTear, (itemStatus[2] ? 1 : 0), 0);
+        items[4] = new ItemVO(ItemEnum.Fog,      (itemStatus[3] ? 1 : 0), 0);
+        items[5] = new ItemVO(ItemEnum.Moon,     (itemStatus[4] ? 1 : 0), 0);
 
         // µÒº≈≥ ∏Æø° √ﬂ∞°
         for (int i = 0; i < items.Length; ++i)
