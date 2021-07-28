@@ -10,6 +10,7 @@ public class RythmPlayerMove : GeneralMove
 
     public NoteManager noteManager;
 
+    [SerializeField] private GameObject[] hps = new GameObject[9];
 
     public int playerHp = 9;
 
@@ -42,7 +43,23 @@ public class RythmPlayerMove : GeneralMove
     private void Update()
     {
         animator.SetBool("Run", isMoving);
+
+        SetHP();
     }
+
+    private void SetHP()
+    {
+        for (int i = 0; i < hps.Length; ++i)
+        {
+            hps[i].SetActive(false);
+        }
+
+        for (int i = 0; i < playerHp; ++i)
+        {
+            hps[i].SetActive(true);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == 11)  //목표물과 접촉했을때
