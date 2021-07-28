@@ -473,7 +473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 129087327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 585668992fddf1446b66c863f5ecc6a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 56e91e4daaf83cb449105761a68cd7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &165606156
@@ -2562,6 +2562,9 @@ MonoBehaviour:
   isPopupOpen: 0
   stageClear: 0000000000
   isClear: 0
+  isStory: 1
+  isEnding: 0
+  isGoodEnding: 0
   currentStage: 0
 --- !u!4 &1274378866
 Transform:

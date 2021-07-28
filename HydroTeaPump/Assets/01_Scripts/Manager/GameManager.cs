@@ -66,7 +66,12 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(this);
-        SceneLoadManager.LoadSceneAdditive("CutSceneScene");
+
+        if (isStory)
+        {
+            SceneLoadManager.LoadSceneAdditive("CutSceneScene");
+            isStory = false;
+        }
     }
     private void Start()
     {
