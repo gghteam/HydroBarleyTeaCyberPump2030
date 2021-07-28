@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using WinTween.Position;
+using WinTween.Scale;
 
 public class RhythmWindow : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class RhythmWindow : MonoBehaviour
     private void Start()
     {
         PositionEffects.Middle(0, true);
+        ScaleEffects.ToWindowed(1280, 720, 0, true);
     }
 
     void Update()
