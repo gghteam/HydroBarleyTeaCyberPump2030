@@ -50,6 +50,14 @@ public class PauseUI : MonoBehaviour
         pausePannel.SetActive(false);
         btnPause.gameObject.SetActive(true);
     }
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(OptionManager.GetSettings().exit))
+        {
+            Pause();
+        }
+    }
 
     private void Pause()
     {
