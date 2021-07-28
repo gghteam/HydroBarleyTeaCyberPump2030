@@ -45,10 +45,10 @@ public class AudioManager : MonoBehaviour
         opt = OptionManager.GetSettings();
         if (opt != null)
         {
-            audioSource.volume = 0.8f;
+            audioSource.volume = opt.musicVolume;
             return;
         }
 
-        audioSource.volume = opt.effectVolume;
+        //audioSource.volume = opt.effectVolume;
     }
 }
