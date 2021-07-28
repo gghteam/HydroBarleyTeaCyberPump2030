@@ -36,7 +36,7 @@ public class CutScene : MonoBehaviour
 
         textManager = GameObject.Find("TextManager").GetComponent<TextManager>();
 
-        explainId = GameManager.Instance.isClear ? GameManager.Instance.currentStage : 100;
+        explainId = GameManager.Instance.isClear ? GameManager.Instance.currentStage + 1 : 100;
         explainIndex = 0;
         PopPop();
     }
@@ -73,6 +73,9 @@ public class CutScene : MonoBehaviour
             {
                 GameManager.Instance.isClear = false;
                 GameManager.Instance.stageClear[GameManager.Instance.currentStage] = true;
+
+                GameManager.Instance.SaveClearData();
+
                 SceneLoadManager.LoadScene("MainMenu");
             }
             else

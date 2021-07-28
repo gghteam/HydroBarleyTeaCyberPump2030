@@ -24,6 +24,7 @@ public class RewardAnim : MonoBehaviour
         animator = GetComponent<Animator>();
         earnObj.GetComponent<Image>().sprite = earnObjSprites[GameManager.Instance.currentStage];
         StartCoroutine(PlayAnim(() => canGoNext = true));
+
     }
     private void Update()
     {

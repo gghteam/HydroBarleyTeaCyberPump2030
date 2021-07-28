@@ -7,7 +7,20 @@ public class StageChoise : MonoBehaviour
 {
     public void StageBtn()
     {
-        GameManager.Instance.currentStage = Select.GetIndex();
-        SceneLoadManager.LoadScene("Stage");
+        if (GameManager.Instance.GetStageClearStat()[0] == false)
+        {
+            int idx = Select.GetIndex();
+            if(idx != 0)
+            {
+                return;
+            }
+            SceneLoadManager.LoadScene("Stage");
+        }
+        else
+        {
+            GameManager.Instance.currentStage = Select.GetIndex();
+            SceneLoadManager.LoadScene("Stage");
+        }
+
     }
 }
