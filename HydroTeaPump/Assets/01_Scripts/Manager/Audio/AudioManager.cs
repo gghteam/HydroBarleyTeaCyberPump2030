@@ -49,6 +49,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        //audioSource.volume = opt.effectVolume;
+        audioSource.volume = opt.musicVolume;
     }
 }

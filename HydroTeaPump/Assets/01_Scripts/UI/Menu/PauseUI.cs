@@ -43,7 +43,7 @@ public class PauseUI : MonoBehaviour
         ButtonManagement.AddEvent(btnPause,  Pause);
         ButtonManagement.AddEvent(btnClose,  Pause);
         ButtonManagement.AddEvent(btnOption, BtnMovement);
-        ButtonManagement.AddEvent(btnMainMenu, () => { UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); }); // 신 이름은 아마 나중에 바뀔수도
+        ButtonManagement.AddEvent(btnMainMenu, () => { UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); Time.timeScale = 1; }); // 신 이름은 아마 나중에 바뀔수도
 
         origin = btnGroup.position;
 
