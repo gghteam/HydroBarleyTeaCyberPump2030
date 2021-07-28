@@ -60,7 +60,7 @@ public partial class NoteManager : MonoBehaviour
     }
     private HeartState heartState = HeartState.NORMAL;
 
-    private float[] bpms = new float[5] { 69f,0,0,103,0 };
+    private float[] bpms = new float[5] { 69f, 103, 10,0,0 };
     
     private void Awake()
     {

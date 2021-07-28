@@ -252,9 +252,9 @@ MonoBehaviour:
   audioSource: {fileID: 87731011}
   StageMusic:
   - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
-  - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
-  - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
   - {fileID: 8300000, guid: 606212a319b047047aeddf544bc2a613, type: 3}
+  - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
+  - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
   noteManager: {fileID: 2129315681}
 --- !u!4 &87731013
 Transform:
@@ -1343,10 +1343,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StagePrefabs:
+  - {fileID: 455633615375741402, guid: c05096a2f03b5754aa3d5dee368838d9, type: 3}
   - {fileID: 455633615375741402, guid: d06dc1080d58da141b79b95479675b8c, type: 3}
   - {fileID: 455633615375741402, guid: d06dc1080d58da141b79b95479675b8c, type: 3}
-  - {fileID: 455633615375741402, guid: d06dc1080d58da141b79b95479675b8c, type: 3}
-  - {fileID: 455633615375741402, guid: d06dc1080d58da141b79b95479675b8c, type: 3}
+  - {fileID: 455633615375741402, guid: 8bcac47a035c6f74b8a9a4dd33ba97ea, type: 3}
   - {fileID: 455633615375741402, guid: d06dc1080d58da141b79b95479675b8c, type: 3}
   - {fileID: 455633615375741402, guid: d06dc1080d58da141b79b95479675b8c, type: 3}
 --- !u!4 &1186826566
