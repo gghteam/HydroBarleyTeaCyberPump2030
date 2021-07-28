@@ -310,9 +310,9 @@ namespace WinTween
             /// <param name="duration">창 줄어드는 기간</param>
             /// <param name="snap">에니메이션 없이 이동 여부</param>
             /// <param name="callBack"></param>
-            public void ToWindowed(Vector2Int targetScale, float duration, bool snap = false, WindowCallBack callBack = null)
+            static public void ToWindowed(Vector2Int targetScale, float duration, bool snap = false, WindowCallBack callBack = null)
             {
-                StartCoroutine(Windowed(targetScale.x, targetScale.y, duration, snap, callBack));
+                inst.StartCoroutine(inst.Windowed(targetScale.x, targetScale.y, duration, snap, callBack));
             }
             /// <summary>
             /// 전체화면을 해제한 후 창을 점점 줄입니다.
@@ -322,9 +322,9 @@ namespace WinTween
             /// <param name="duration">창 줄어드는 기간</param>
             /// <param name="snap">에니메이션 없이 이동 여부</param>
             /// <param name="callBack"></param>
-            public void ToWindowed(int targetX, int targetY, float duration, bool snap = false, WindowCallBack callBack = null)
+            static public void ToWindowed(int targetX, int targetY, float duration, bool snap = false, WindowCallBack callBack = null)
             {
-                StartCoroutine(Windowed(targetX, targetY, duration, snap, callBack));
+                inst.StartCoroutine(inst.Windowed(targetX, targetY, duration, snap, callBack));
             }
             #endregion
 

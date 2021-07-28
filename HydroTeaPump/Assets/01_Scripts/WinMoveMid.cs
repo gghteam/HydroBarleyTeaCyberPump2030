@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using WinTween.Position;
+using WinTween.Scale;
 
 public class WinMoveMid : MonoBehaviour
 {
@@ -10,5 +11,6 @@ public class WinMoveMid : MonoBehaviour
     void Start()
     {
         PositionEffects.Middle(0, true);
+        ScaleEffects.ToWindowed(1280, 720, 0, true);
     }
 }
