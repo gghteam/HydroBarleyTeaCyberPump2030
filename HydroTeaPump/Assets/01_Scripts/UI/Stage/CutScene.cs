@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class CutScene : MonoBehaviour
 {
+    static CutScene inst = null;
+    
     private bool isPlaying = false;
 
     private TextManager textManager;
@@ -14,6 +16,20 @@ public class CutScene : MonoBehaviour
 
     private int explainId;
     private int explainIndex;
+
+    public delegate void CutsceneEndCallback();
+
+    private CutsceneEndCallback callbackSave = null;
+    static public void SetCallback(CutsceneEndCallback callback)
+    {
+        inst.callbackSave = callback;
+    }
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
     private void Start()
     {
         explainText = transform.GetChild(3).GetComponent<Text>();
@@ -29,19 +45,19 @@ public class CutScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PopPop();
+            PopPop(callbackSave);
         }
     }
 
-    public void PopPop()
+    public void PopPop(CutsceneEndCallback callback = null)
     {
         if (isPlaying) return;
         isPlaying = true;
-        
+
         Talk(explainText, explainId, explainIndex);
         explainIndex++;
     }
-    private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
+    private void Talk(UnityEngine.UI.Text text, int id, int talkIndex, CutsceneEndCallback callback = null) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
     {
         string talkData = textManager.GetTalk(id, talkIndex);
 
@@ -52,6 +68,8 @@ public class CutScene : MonoBehaviour
         }
         else
         {
+            
+
             //씬 전환
             if(GameManager.Instance.isClear)
             {
@@ -62,10 +80,11 @@ public class CutScene : MonoBehaviour
             else
             {
                 //어느 씬을 로드할지 결정
+                callbackSave?.Invoke();
             }
         }
     }
-    private void PopUp()
+    private void PopUp(CutsceneEndCallback callback = null)
     {
         gameObject.SetActive(true);
         SetChildAlpha();
