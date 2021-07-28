@@ -13,4 +13,9 @@ public class SelectObjectBase : MonoBehaviour, ICollSelectable
     {
         
     }
+
+    public virtual void OnClose()
+    {
+
+    }
 }

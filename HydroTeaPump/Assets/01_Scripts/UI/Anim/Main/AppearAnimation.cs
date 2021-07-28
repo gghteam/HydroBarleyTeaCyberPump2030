@@ -29,9 +29,12 @@ public class AppearAnimation : MonoBehaviour
         cvs.DOFade(0, 0);
         transform.position = new Vector2(transform.position.x, origin.position.y);
 
-        text.text = OptionManager.GetSettings(KeyMapEnum.select).ToString();
     }
 
+    private void FixedUpdate()
+    {
+        text.text = OptionManager.GetSettings(KeyMapEnum.select).ToString();
+    }
     
     public void ToggleEnable()
     {   

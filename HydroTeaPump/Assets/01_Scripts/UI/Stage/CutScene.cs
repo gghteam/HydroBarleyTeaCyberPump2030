@@ -36,7 +36,7 @@ public class CutScene : MonoBehaviour
 
         textManager = GameObject.Find("TextManager").GetComponent<TextManager>();
 
-        explainId = 1;
+        explainId = GameManager.Instance.isClear ? GameManager.Instance.currentStage : 100;
         explainIndex = 0;
         PopPop();
     }
@@ -68,8 +68,6 @@ public class CutScene : MonoBehaviour
         }
         else
         {
-            
-
             //씬 전환
             if(GameManager.Instance.isClear)
             {
@@ -82,6 +80,7 @@ public class CutScene : MonoBehaviour
                 //어느 씬을 로드할지 결정
                 callbackSave?.Invoke();
             }
+
         }
     }
     private void PopUp(CutsceneEndCallback callback = null)
