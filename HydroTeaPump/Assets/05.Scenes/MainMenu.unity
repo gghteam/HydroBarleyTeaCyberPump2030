@@ -2565,6 +2565,7 @@ MonoBehaviour:
   isStory: 1
   isEnding: 0
   isGoodEnding: 0
+  storyWatched: 0
   currentStage: 0
 --- !u!4 &1274378866
 Transform:

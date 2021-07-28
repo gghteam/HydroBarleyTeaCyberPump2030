@@ -39,6 +39,7 @@ public class RewardAnim : MonoBehaviour
     }
     private void AfterAnim()
     {
+        GameManager.Instance.isStory = false;
         SceneLoadManager.LoadSceneAdditive("CutSceneScene");
     }
     /// <summary>

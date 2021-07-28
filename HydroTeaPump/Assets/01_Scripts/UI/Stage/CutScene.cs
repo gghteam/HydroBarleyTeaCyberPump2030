@@ -64,7 +64,7 @@ public class CutScene : MonoBehaviour
         else if (GameManager.Instance.isEnding)
         {
             explainId = GameManager.Instance.isGoodEnding ? 400 : 401;
-            spriteIndex = 13;
+            spriteIndex = 14;
         }
         else
         {
