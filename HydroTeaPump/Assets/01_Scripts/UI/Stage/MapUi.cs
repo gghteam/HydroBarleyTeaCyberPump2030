@@ -40,7 +40,6 @@ public class MapUi : MonoBehaviour
     void Update()
     {
         Select.MoveSelect();
-        Debug.Log(Select.GetIndex());
         if (Input.GetKey(nextKey) || Input.GetKey(prevKey) || Input.GetKey(selectKey) && canMove)
         {
             canMove = false;

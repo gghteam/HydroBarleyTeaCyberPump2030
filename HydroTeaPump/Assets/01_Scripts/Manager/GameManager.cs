@@ -15,15 +15,45 @@ public class GameManager : MonoBehaviour
 
     public bool[] GetStageClearStat()
     {
+        SetClearData();
         return stageClear;
     }
+    #region 데이터 저장 용
 
     // 데이터 저장 용
     private void OnDestroy()
     {
-        DataVO vo = new DataVO("stageStat", JsonUtility.ToJson(new StageVO(stageClear)));
-        SaveManager.SaveOption(vo, "stageStat.json");
+        SaveClearData();
     }
+    public void SaveClearData()
+    {
+        DataVO vo = new DataVO("stageStat", JsonUtility.ToJson(new StageVO(stageClear)));
+        SaveManager.SaveOption(vo, "/stageStat.json");
+    }
+    public void SetClearData()
+    {
+        DataVO vo = SaveManager.LoadSavedOption("/stageStat.json");
+        if (vo == null)
+        {
+            stageClear[0] = false;
+            stageClear[1] = false;
+            stageClear[2] = true;
+            stageClear[3] = true;
+            stageClear[4] = false;
+
+            return;
+        }
+
+
+        StageVO stage = JsonUtility.FromJson<StageVO>(vo.payload);
+        
+        // 클리어 정보 넣어줌
+        for (int i = 0; i < stageClear.Length; ++i)
+        {
+            stageClear[i] = stage.stageClearStatus[i];
+        }
+    }
+    #endregion
 
     [Header("카메라")]
     private CinemachineImpulseSource ImpulseSource;
@@ -38,6 +68,9 @@ public class GameManager : MonoBehaviour
     {
         if (GameObject.Find("Vcam") != null)
             ImpulseSource = GameObject.Find("Vcam").GetComponent<CinemachineImpulseSource>();
+
+        SetClearData();
+
     }
 
     /// <summary>
