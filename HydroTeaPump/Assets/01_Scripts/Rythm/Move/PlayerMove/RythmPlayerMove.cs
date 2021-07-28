@@ -13,6 +13,8 @@ public class RythmPlayerMove : GeneralMove
 
     public int playerHp = 9;
 
+    [SerializeField]
+    private RythmTutorial tutorial = null;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -59,6 +61,12 @@ public class RythmPlayerMove : GeneralMove
                 noteManager.TimeOut();
             }
         }
+        else if(col.gameObject.layer == 13)//Æ©Åä¸®¾ó
+        {
+            Debug.Log("¾Æssssssssssss");
+            tutorial.TutorialPopUp(col.gameObject.GetComponent<RythmTutorialHelper>().tutorialIndex);
+        }
     }
+
     
 }

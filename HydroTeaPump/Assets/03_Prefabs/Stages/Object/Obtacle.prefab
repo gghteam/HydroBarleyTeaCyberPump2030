@@ -147,7 +147,7 @@ MonoBehaviour:
   moveDistance: 1
   ObtacleMask:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 832
   isMoving: 0
   dir: {x: 0, y: 0, z: 0}
   objectHp: 1

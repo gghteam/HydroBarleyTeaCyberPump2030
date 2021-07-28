@@ -38,14 +38,9 @@ public class ObtacleMove : GeneralMove
         switch (obtacleType)
         {
             case ObtacleType.Breakable:
-                Debug.Log("깨질 수 있음");
                 CheckBreakable();
                 break;
             case ObtacleType.UnBreakable:
-                if (hit.collider == null)
-                {
-                    Moving(dir);
-                }
                     break;
             case ObtacleType.MovingBreakable:
                 if (hit.collider != null)

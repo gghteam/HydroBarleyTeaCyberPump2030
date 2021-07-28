@@ -24,7 +24,7 @@ public class GeneralMove : MonoBehaviour
         //Debug.DrawRay(transform.position, dir);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
             //GameManager.Instance.CameraShaking(0.5f);
             isMoving = false;
             if (hit.collider.gameObject.layer == 8)

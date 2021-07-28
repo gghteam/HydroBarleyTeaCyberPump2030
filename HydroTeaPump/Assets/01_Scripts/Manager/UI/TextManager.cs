@@ -22,7 +22,15 @@ public class TextManager : MonoBehaviour
         talkData.Add(6, new string[] { "마도서에 있는 재료들 중엔 더이상 구할 수 없는 재료도 있지.","아애 구할 수 조차 없는 재료들도 가끔 적혀있어.","기억해둬, 인어는 비늘을 떨어뜨리지 않아... ","꼭 기억해서 나처럼 속지 말아야 해. 알았지?"});
 
 
-        talkData.Add(100, new string[] { "\"채력이 부족해서 더이상 못 찾겠어...\"", "결국 돌아오고 말았습니다." });
+        talkData.Add(100, new string[] { "\"채력이 부족해서 더이상 못 찾겠다냥....\"", "결국 돌아오고 말았습니다." });
+
+        //튜토리얼
+        talkData.Add(200, new string[] { "휴! 일단 여기서 별무리조각을 찾아야한다냥!","평소엔 집사가 안고서 데려다줘서 몰랐는데 엄청 넓다냥...", "빨리 조각 찾고 집사랑 같이 쉬고싶다냥.", "집사! 기다려라냥!" });
+        talkData.Add(201, new string[] { "앞에 수풀이 있다냥...","이정도면 지나갈 수 있을것 같다냥!" });
+        talkData.Add(202, new string[] { "이 정도 크기 나무면 밀 수 있다냥.", "집사 머그컵 미는 것 같아서 재밌다냥." });
+        talkData.Add(203, new string[] { "엄청 큰 바위다냥! 밀어도 꼼짝 안한다냥..." });
+        talkData.Add(204, new string[] { "냐냥!! 따끔하다냥! 가시는 가까이 가기도 싫다냥. 아프다냥..." });
+        talkData.Add(205, new string[] { "앞에 슬라임이 있다냥!","공격은 안하지만...지나갈수없다냥!" });
     }
 
     public string GetTalk(int id, int talkIndex) //다른 스크립트에서 대사를 불러와야 한다면 이 함수 사용, id와 몇번째 대사인지.
