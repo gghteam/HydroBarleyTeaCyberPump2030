@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
     public int currentStage;
     private void Awake()
     {
+        if (Instance != null) return;
         Instance = this;
         DontDestroyOnLoad(this);
 

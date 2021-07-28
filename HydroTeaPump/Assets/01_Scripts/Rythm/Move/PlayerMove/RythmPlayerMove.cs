@@ -78,7 +78,7 @@ public class RythmPlayerMove : GeneralMove
                 noteManager.TimeOut();
                 GameManager.Instance.isStory = false;
                 GameManager.Instance.isClear = false;
-                SceneLoadManager.LoadScene("CutSceneScene");
+                //SceneLoadManager.LoadScene("CutSceneScene");
             }
         }
         else if(col.gameObject.layer == 13)//Æ©Åä¸®¾ó
