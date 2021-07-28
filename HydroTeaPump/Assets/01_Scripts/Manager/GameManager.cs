@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public bool isEnding = false;
     public bool isGoodEnding = false;
 
+    public bool storyWatched = false;
+
     public bool[] GetStageClearStat()
     {
         SetClearData();
@@ -67,10 +69,10 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
 
-        if (isStory)
+        if (isStory && !storyWatched)
         {
+            storyWatched = true;
             SceneLoadManager.LoadSceneAdditive("CutSceneScene");
-            isStory = false;
         }
     }
     private void Start()
