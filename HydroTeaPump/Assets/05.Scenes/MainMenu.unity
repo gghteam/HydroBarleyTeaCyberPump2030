@@ -2562,7 +2562,7 @@ MonoBehaviour:
   isPopupOpen: 0
   stageClear: 0000000000
   isClear: 0
-  isStory: 1
+  isStory: 0
   isEnding: 0
   isGoodEnding: 0
   currentStage: 0
