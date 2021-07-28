@@ -18,7 +18,7 @@ public class CutScene : MonoBehaviour
     private int explainIndex;
 
     [SerializeField]
-    private Sprite[] cutSceneSprites = null;
+    private Sprite[] cutSceneSprites = new Sprite[37];
 
     private int spriteIndex = 0;
 
@@ -64,12 +64,12 @@ public class CutScene : MonoBehaviour
         else if (GameManager.Instance.isEnding)
         {
             explainId = GameManager.Instance.isGoodEnding ? 400 : 401;
-            spriteIndex = 14;
+            spriteIndex = GameManager.Instance.isGoodEnding ? 16 : 26;
         }
         else
         {
-            explainId = GameManager.Instance.isClear ? GameManager.Instance.currentStage + 1 : 100;
-            spriteIndex = 18;
+            explainId = GameManager.Instance.isClear ? 13 : 100;
+            spriteIndex = GameManager.Instance.isClear ? 0 : 37;
         }
         explainIndex = 0;
 
@@ -100,6 +100,15 @@ public class CutScene : MonoBehaviour
         {
             if (GameManager.Instance.isStory || GameManager.Instance.isEnding)
             {
+                if (!GameManager.Instance.isGoodEnding)
+                {
+                    GameManager.Instance.stageClear[0] = false;
+                    GameManager.Instance.stageClear[1] = false;
+                    GameManager.Instance.stageClear[2] = true;
+                    GameManager.Instance.stageClear[3] = true;
+                    GameManager.Instance.stageClear[4] = false;
+                }
+
                 SceneLoadManager.UnLoadScene("CutSceneScene");
             }
             else
@@ -145,6 +154,8 @@ public class CutScene : MonoBehaviour
         seq.Append(transform.GetChild(1).DOScale(prevScale, .5f).SetEase(Ease.OutBack));
         //설명 이미지
 
+        Debug.Log(spriteIndex);
+        Debug.Log(cutSceneSprites.Length);
         transform.GetChild(2).GetComponent<Image>().sprite = cutSceneSprites[spriteIndex];
         seq.Join(transform.GetChild(2).GetComponent<Image>().DOFade(1, .2f).SetDelay(.3f));
 

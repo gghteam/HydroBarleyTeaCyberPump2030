@@ -40,7 +40,9 @@ public class RewardAnim : MonoBehaviour
     private void AfterAnim()
     {
         GameManager.Instance.isStory = false;
+        GameManager.Instance.isClear = true;
         SceneLoadManager.LoadSceneAdditive("CutSceneScene");
+        SceneLoadManager.UnLoadScene("RewardScene");
     }
     /// <summary>
     /// 피슝 에니메이션 재생

@@ -63,7 +63,7 @@ public class StageFailedManager : MonoBehaviour
     }
     public void NextSceneLoad()
     {
-        SceneLoadManager.LoadSceneAdditive("CutSceneScene");
+        //SceneLoadManager.LoadSceneAdditive("CutSceneScene");
     }
     public void Zoom()
     {
