@@ -63,7 +63,6 @@ public class RythmPlayerMove : GeneralMove
         }
         else if(col.gameObject.layer == 13)//Æ©Åä¸®¾ó
         {
-            Debug.Log("¾Æssssssssssss");
             tutorial.TutorialPopUp(col.gameObject.GetComponent<RythmTutorialHelper>().tutorialIndex);
         }
     }

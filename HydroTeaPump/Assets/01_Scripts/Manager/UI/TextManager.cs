@@ -31,6 +31,21 @@ public class TextManager : MonoBehaviour
         talkData.Add(203, new string[] { "엄청 큰 바위다냥! 밀어도 꼼짝 안한다냥..." });
         talkData.Add(204, new string[] { "냐냥!! 따끔하다냥! 가시는 가까이 가기도 싫다냥. 아프다냥..." });
         talkData.Add(205, new string[] { "앞에 슬라임이 있다냥!","공격은 안하지만...지나갈수없다냥!" });
+
+        //초반 스토리
+        talkData.Add(300, new string[] { "안냥! 네로다냥. \n세상 최고의 마녀의 유일무이한 사역마다냥" });
+        talkData.Add(301, new string[] { "우리 집사는 엄청 대단한 마녀다냥. \n마법을 담은 물건을 도시로 나가 팔고온다냥!","우리 집사 솜씨가 좋아서 도구는 가져가면 금방 동난다냥!\n세상 그 어떤 마녀도 우리 집사보다 잘날 순 없다냥. "});
+        talkData.Add(302, new string[] {" 아! 집사가 왔다냥! 집사 집사! 잘 갔다왔냥?","\"응. 잘 다녀왔어\"" });
+        talkData.Add(303, new string[] { "\"하암... 너무너무 피곤해. 네로... 나 잠깐 눈좀 붙이고 있을게.\"" });
+        talkData.Add(304, new string[] { "알았다냥!","알았다냥~","알았다냥..."});
+        talkData.Add(305, new string[] { "...?" });
+        talkData.Add(306, new string[] { "우리집사가눈을안뜬다냥!!!" });
+        talkData.Add(307, new string[] { "틀림없이우리집사를질투한다른법사녀석짓이다냥!!","내가 우리집사... 반드시 고쳐주고 말거다냥!!!"});
+
+        //엔딩
+        talkData.Add(400, new string[] { "" });
+        talkData.Add(401, new string[] { "" });
+
     }
 
     public string GetTalk(int id, int talkIndex) //다른 스크립트에서 대사를 불러와야 한다면 이 함수 사용, id와 몇번째 대사인지.

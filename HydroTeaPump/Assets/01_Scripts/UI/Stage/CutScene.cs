@@ -35,8 +35,18 @@ public class CutScene : MonoBehaviour
         explainText = transform.GetChild(3).GetComponent<Text>();
 
         textManager = GameObject.Find("TextManager").GetComponent<TextManager>();
-
-        explainId = GameManager.Instance.isClear ? GameManager.Instance.currentStage + 1 : 100;
+        if(GameManager.Instance.isStory)
+        {
+            explainId = 300;
+        }
+        else if (GameManager.Instance.isEnding)
+        {
+            explainId = GameManager.Instance.isGoodEnding ? 400 : 401;
+        }
+        else
+        {
+            explainId = GameManager.Instance.isClear ? GameManager.Instance.currentStage + 1 : 100;
+        }
         explainIndex = 0;
         PopPop();
     }
@@ -46,6 +56,7 @@ public class CutScene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PopPop(callbackSave);
+            Debug.Log(explainIndex);
         }
     }
 
@@ -55,36 +66,53 @@ public class CutScene : MonoBehaviour
         isPlaying = true;
 
         Talk(explainText, explainId, explainIndex);
-        explainIndex++;
     }
     private void Talk(UnityEngine.UI.Text text, int id, int talkIndex, CutsceneEndCallback callback = null) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
     {
         string talkData = textManager.GetTalk(id, talkIndex);
+        string nextTalkData = textManager.GetTalk(id, talkIndex+1);
 
         if (talkData != null)
         {
             text.text = talkData;
             PopUp();
+            explainIndex++;
         }
         else
         {
-            //씬 전환
-            if(GameManager.Instance.isClear)
+            if (GameManager.Instance.isStory || GameManager.Instance.isEnding)
             {
-                GameManager.Instance.isClear = false;
-                GameManager.Instance.stageClear[GameManager.Instance.currentStage] = true;
-
-                GameManager.Instance.SaveClearData();
-
-                SceneLoadManager.LoadScene("MainMenu");
+                SceneLoadManager.UnLoadScene("CutSceneScene");
             }
             else
             {
-                //어느 씬을 로드할지 결정
-                callbackSave?.Invoke();
+                //씬 전환
+                if (GameManager.Instance.isClear)
+                {
+                    GameManager.Instance.isClear = false;
+                    GameManager.Instance.stageClear[GameManager.Instance.currentStage] = true;
+
+                    GameManager.Instance.SaveClearData();
+
+                    SceneLoadManager.LoadScene("MainMenu");
+                }
+                else
+                {
+                    //어느 씬을 로드할지 결정
+                    callbackSave?.Invoke();
+                }
             }
 
         }
+        if(!GameManager.Instance.isEnding)
+        {
+            if (nextTalkData == null)
+            {
+                explainId++;
+                explainIndex = 0;
+            }
+        }
+       
     }
     private void PopUp(CutsceneEndCallback callback = null)
     {
@@ -105,7 +133,7 @@ public class CutScene : MonoBehaviour
         seq.Join(transform.GetChild(3).GetComponent<Text>().DOFade(1, 1f));
         seq.Join(transform.GetChild(3).DOScale(prevTextScale, .4f).SetEase(Ease.OutBack));
 
-        seq.OnComplete(() => { isPlaying = false; });
+        seq.OnComplete(() => { isPlaying = false;Debug.Log("sss"); });
     }
     private void SetChildAlpha()
     {
