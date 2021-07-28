@@ -279,10 +279,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1273971349083996292, guid: 24adbed9590a1984abb516a93e4efa3c, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1273971349083996294, guid: 24adbed9590a1984abb516a93e4efa3c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -370,10 +366,6 @@ PrefabInstance:
     - target: {fileID: 1273971349083996298, guid: 24adbed9590a1984abb516a93e4efa3c, type: 3}
       propertyPath: m_Name
       value: cvsReward
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273971349965622846, guid: 24adbed9590a1984abb516a93e4efa3c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24adbed9590a1984abb516a93e4efa3c, type: 3}
