@@ -6,27 +6,29 @@ public class ToStage : SelectObjectBase
 {
     [SerializeField] private string nextScene = "";
 
-    bool isSceneOpen = false;
     public override void OnSelect()
     {
         base.OnSelect();
-        //Debug.Log("SSSSS");
-        if(GameManager.Instance.isPopupOpen)
+        if (GameManager.Instance.isPopupOpen) return;
+
+        SceneLoadManager.LoadSceneAdditive(nextScene);
+        GameManager.Instance.isPopupOpen = true;
+    }
+
+    public override void OnClose()
+    {
+        if (!GameManager.Instance.isPopupOpen) return;
+
+        if (nextScene == "MapScene")
         {
-            if(nextScene == "MapScene")
-            {
-                MapUi mapManager = GameObject.Find("Piece").GetComponent<MapUi>();
-                mapManager.PopDown(.5f);
-            }
-            else
-            {
-                SceneLoadManager.UnLoadScene(nextScene);
-            }
+            MapUi mapManager = GameObject.Find("Piece").GetComponent<MapUi>();
+            mapManager.PopDown(.5f);
         }
         else
         {
-            SceneLoadManager.LoadSceneAdditive(nextScene);
+            SceneLoadManager.UnLoadScene(nextScene);
         }
-        GameManager.Instance.isPopupOpen = !GameManager.Instance.isPopupOpen;
+
+        GameManager.Instance.isPopupOpen = false;
     }
 }

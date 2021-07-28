@@ -7,17 +7,20 @@ public class PlayerInput : MonoBehaviour
     public bool left   { get; private set; } // 왼쪽 키 눌렀음을 의미
     public bool right  { get; private set; } // 오른쪽 키 눌렀음을 의미
     public bool select { get; private set; } // 선택 키 눌렀음을 의미
+    public bool exit   { get; private set; } // 뒤로가기 키 눌렀음을 의미
 
     // 키매핑 대응
     private KeyCode leftKey;
     private KeyCode rightKey;
     private KeyCode selectKey;
+    private KeyCode exitKey;
 
     private void Start()
     {
         leftKey = OptionManager.GetSettings().moveLeft;
         rightKey = OptionManager.GetSettings().moveRight;
         selectKey = OptionManager.GetSettings().select;
+        exitKey = OptionManager.GetSettings().exit;
     }
 
     void Update()
@@ -27,11 +30,15 @@ public class PlayerInput : MonoBehaviour
 
     private void GetInput()
     {
-        left   = Input.GetKey(leftKey);
-        right  = Input.GetKey(rightKey);
-        if (Input.GetKeyDown(selectKey))
+        left   = Input.GetKey(OptionManager.GetSettings().moveLeft);
+        right  = Input.GetKey(OptionManager.GetSettings().moveRight);
+        if (Input.GetKeyDown(OptionManager.GetSettings().select))
         {
             select = true;
+        }
+        if (Input.GetKeyDown(OptionManager.GetSettings().exit))
+        {
+            exit = true;
         }
     }
 
@@ -41,5 +48,13 @@ public class PlayerInput : MonoBehaviour
     public void DisableSelect()
     {
         select = false;
+    }
+
+    /// <summary>
+    /// exit boolean 을 false 로 설정합니다
+    /// </summary>
+    public void DisableExit()
+    {
+        exit = false;
     }
 }

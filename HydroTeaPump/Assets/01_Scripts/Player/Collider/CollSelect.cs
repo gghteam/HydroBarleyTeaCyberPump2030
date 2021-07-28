@@ -33,6 +33,13 @@ public partial class CollSelect : MonoBehaviour
             input.DisableSelect();
             col?.OnSelect();
         }
+
+        if (input.exit)
+        {
+            if (!isCollision) return;
+            input.DisableExit();
+            col?.OnClose();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

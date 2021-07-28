@@ -55,6 +55,7 @@ public class PauseUI : MonoBehaviour
     {
         if (Input.GetKeyDown(OptionManager.GetSettings().exit))
         {
+            if (GameManager.Instance.isPopupOpen) return;
             Pause();
         }
     }
