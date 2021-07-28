@@ -10,7 +10,7 @@ public class WinMoveMid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PositionEffects.Middle(0, true);
+        //PositionEffects.Middle(0, true);
         ScaleEffects.ToWindowed(1280, 720, 0, true);
     }
 }

@@ -251,8 +251,10 @@ namespace WinTween
             static private ScaleEffects      inst = null; // static 접근 용도
                    private WaitForEndOfFrame wait = new WaitForEndOfFrame();
 
-            private void Awake()
+            protected override void Awake()
             {
+                base.Awake();
+
                 inst = this;
             }
 
