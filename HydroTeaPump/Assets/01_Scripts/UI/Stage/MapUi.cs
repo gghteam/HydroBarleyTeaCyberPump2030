@@ -17,9 +17,10 @@ public class MapUi : MonoBehaviour
 
     private bool canMove = false;
 
-    public KeyCode nextKey = KeyCode.LeftArrow;
-    public KeyCode prevKey = KeyCode.RightArrow;
-    public KeyCode selectKey = KeyCode.Space;
+    private KeyCode nextKey;
+    private KeyCode prevKey;
+    private KeyCode selectKey;
+
     void Start()
     {
         firstPos = map.position;
@@ -28,7 +29,11 @@ public class MapUi : MonoBehaviour
         PopUp(1f);
 
         Select.SelectFrom(stages);
-        Select.SetKey(nextKey, prevKey, selectKey);
+        Select.SetKey(OptionManager.GetSettings(KeyMapEnum.right), OptionManager.GetSettings(KeyMapEnum.left), OptionManager.GetSettings(KeyMapEnum.select));
+
+        nextKey = OptionManager.GetSettings(KeyMapEnum.right);
+        prevKey = OptionManager.GetSettings(KeyMapEnum.left);
+        selectKey = OptionManager.GetSettings(KeyMapEnum.select);
     }
 
     // Update is called once per frame
