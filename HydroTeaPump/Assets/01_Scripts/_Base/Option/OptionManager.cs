@@ -148,7 +148,7 @@ public partial class OptionManager : MonoBehaviour
 
 
         sw.WriteLine(json);
-        Debug.Log($"Data saved.\r\nPath: {path}");
+        //Debug.Log($"Data saved.\r\nPath: {path}");
 
         sw.Close();
         fs.Close();

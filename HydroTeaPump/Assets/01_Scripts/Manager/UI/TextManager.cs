@@ -53,18 +53,18 @@ public class TextManager : MonoBehaviour
     {
         if(talkData.ContainsKey(id))
         {
-            Debug.Log(talkData[id].Length);
+            //Debug.Log(talkData[id].Length);
             if (talkIndex >= talkData[id].Length)
             {
-                if (GameManager.Instance.isEnding)
+                if (GameSave.Instance.data.isEnding)
                 {
-                    GameManager.Instance.isStory = false;
+                    GameSave.Instance.data.isStory = false;
                     SceneLoadManager.LoadScene("MainMenu");
                 }
                 return null;
             }
 
-            Debug.Log(talkIndex);
+            //Debug.Log(talkIndex);
             return talkData[id][talkIndex];
         }
         return null;

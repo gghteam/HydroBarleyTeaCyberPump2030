@@ -140,7 +140,7 @@ public class InventoryBase : MonoBehaviour
 
     static public InventoryVO GetInventory()
     {
-        return inst.inventoryVO;
+        return inst?.inventoryVO;
     }
     #endregion
 }

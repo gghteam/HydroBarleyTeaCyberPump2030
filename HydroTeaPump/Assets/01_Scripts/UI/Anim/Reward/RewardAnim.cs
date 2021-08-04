@@ -39,8 +39,8 @@ public class RewardAnim : MonoBehaviour
     }
     private void AfterAnim()
     {
-        GameManager.Instance.isStory = false;
-        GameManager.Instance.isClear = true;
+        GameSave.Instance.data.isStory = false;
+        GameSave.Instance.data.isClear = true;
         SceneLoadManager.LoadSceneAdditive("CutSceneScene");
         SceneLoadManager.UnLoadScene("RewardScene");
     }

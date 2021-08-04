@@ -3,7 +3,13 @@ using System;
 [Serializable]
 public class SaveData
 {
-    public int TestInt = 100;
-    public string TestString = "테스트용";
     public InventoryVO inventoryVO = InventoryBase.GetInventory();
+
+    public bool isClear = false;
+    public bool isStory = true;
+    public bool isEnding = false;
+    public bool isGoodEnding = false;
+
+    public bool storyWatched = false;
+
 }

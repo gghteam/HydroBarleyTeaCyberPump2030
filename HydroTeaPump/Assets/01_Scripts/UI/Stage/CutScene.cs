@@ -20,8 +20,6 @@ public class CutScene : MonoBehaviour
     [SerializeField]
     private Sprite[] cutSceneSprites = new Sprite[37];
 
-    private int spriteIndex = 0;
-
     public delegate void CutsceneEndCallback();
 
     private CutsceneEndCallback callbackSave = null;
@@ -49,30 +47,30 @@ public class CutScene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PopPop(callbackSave);
-            Debug.Log(explainIndex);
+            //Debug.Log(explainIndex);
         }
     }
 
     public void RefreshIndex()
     {
-
-        if (GameManager.Instance.isStory)
+        //Debug.Log("ss");
+        if (GameSave.Instance.data.isStory)
         {
             explainId = 300;
-            spriteIndex = 0;
+            GameManager.Instance.spriteIndex = 0;
         }
-        else if (GameManager.Instance.isEnding)
+        else if (GameSave.Instance.data.isEnding)
         {
-            explainId = GameManager.Instance.isGoodEnding ? 400 : 401;
-            spriteIndex = GameManager.Instance.isGoodEnding ? 16 : 26;
+            explainId = GameSave.Instance.data.isGoodEnding ? 400 : 401;
+            GameManager.Instance.spriteIndex = GameSave.Instance.data.isGoodEnding ? 16 : 26;
         }
         else
         {
-            explainId = GameManager.Instance.isClear ? 13 : 100;
-            spriteIndex = GameManager.Instance.isClear ? 0 : 37;
+            explainId = GameSave.Instance.data.isClear ? 13 : 100;
+            GameManager.Instance.spriteIndex = GameSave.Instance.data.isClear ? 0 : 37;
         }
         explainIndex = 0;
-
+        //Debug.Log(GameManager.Instance.spriteIndex);
     }
     public void PopPop(CutsceneEndCallback callback = null)
     {
@@ -83,24 +81,24 @@ public class CutScene : MonoBehaviour
     }
     private void Talk(UnityEngine.UI.Text text, int id, int talkIndex, CutsceneEndCallback callback = null) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
     {
-        string talkData = textManager.GetTalk(id, talkIndex);
-        if (spriteIndex == 13) SceneLoadManager.UnLoadScene("CutSceneScene");
+        string talkData = textManager?.GetTalk(id, talkIndex);
+        //if (GameManager.Instance.spriteIndex == 13) SceneLoadManager.UnLoadScene("CutSceneScene");
 
-        string nextTalkData = textManager.GetTalk(id, talkIndex+1);
-        string nextTalkId = textManager.GetTalk(id+1, 0);
+        string nextTalkData = textManager?.GetTalk(id, talkIndex+1);
+        string nextTalkId = textManager?.GetTalk(id+1, 0);
 
         if (talkData != null)
         {
             text.text = talkData;
             PopUp();
             explainIndex++;
-            spriteIndex++;
+            GameManager.Instance.spriteIndex++;
         }
         else
         {
-            if (GameManager.Instance.isStory || GameManager.Instance.isEnding)
+            if (GameSave.Instance.data.isStory || GameSave.Instance.data.isEnding)
             {
-                if (!GameManager.Instance.isGoodEnding)
+                if (!GameSave.Instance.data.isGoodEnding)
                 {
                     GameManager.Instance.stageClear[0] = false;
                     GameManager.Instance.stageClear[1] = false;
@@ -114,9 +112,9 @@ public class CutScene : MonoBehaviour
             else
             {
                 //씬 전환
-                if (GameManager.Instance.isClear)
+                if (GameSave.Instance.data.isClear)
                 {
-                    GameManager.Instance.isClear = false;
+                    GameSave.Instance.data.isClear = false;
                     GameManager.Instance.stageClear[GameManager.Instance.currentStage] = true;
 
                     GameManager.Instance.SaveClearData();
@@ -131,15 +129,11 @@ public class CutScene : MonoBehaviour
             }
 
         }
-        if(!GameManager.Instance.isEnding)
+        if (nextTalkData == null && nextTalkId != null)
         {
-            if (nextTalkData == null && nextTalkId != null)
-            {
-                explainId++;
-                explainIndex = 0;
-            }
+            explainId++;
+            explainIndex = 0;
         }
-       
     }
     private void PopUp(CutsceneEndCallback callback = null)
     {
@@ -154,9 +148,9 @@ public class CutScene : MonoBehaviour
         seq.Append(transform.GetChild(1).DOScale(prevScale, .5f).SetEase(Ease.OutBack));
         //설명 이미지
 
-        Debug.Log(spriteIndex);
-        Debug.Log(cutSceneSprites.Length);
-        transform.GetChild(2).GetComponent<Image>().sprite = cutSceneSprites[spriteIndex];
+        //Debug.Log(GameManager.Instance.spriteIndex);
+        //Debug.Log(cutSceneSprites.Length);
+        transform.GetChild(2).GetComponent<Image>().sprite = cutSceneSprites[GameManager.Instance.spriteIndex];
         seq.Join(transform.GetChild(2).GetComponent<Image>().DOFade(1, .2f).SetDelay(.3f));
 
         //텍스트
@@ -164,7 +158,7 @@ public class CutScene : MonoBehaviour
         seq.Join(transform.GetChild(3).GetComponent<Text>().DOFade(1, 1f));
         seq.Join(transform.GetChild(3).DOScale(prevTextScale, .4f).SetEase(Ease.OutBack));
 
-        seq.OnComplete(() => { isPlaying = false;Debug.Log("sss"); });
+        seq.OnComplete(() => { isPlaying = false;/*Debug.Log("sss");*/ });
     }
     private void SetChildAlpha()
     {

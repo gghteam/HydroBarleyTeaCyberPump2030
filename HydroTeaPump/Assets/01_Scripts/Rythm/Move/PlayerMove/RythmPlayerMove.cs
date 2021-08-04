@@ -66,7 +66,7 @@ public class RythmPlayerMove : GeneralMove
         {
             Debug.Log("¤È! È¹µæ!");
             noteManager.canAct = false;
-            GameManager.Instance.isClear = true;
+            GameSave.Instance.data.isClear = true;
             SceneLoadManager.LoadSceneAdditive("RewardScene");
         }
         else if(col.gameObject.layer == 12)//°¡½Ã
@@ -76,8 +76,8 @@ public class RythmPlayerMove : GeneralMove
             if(playerHp <=0)
             {
                 noteManager.TimeOut();
-                GameManager.Instance.isStory = false;
-                GameManager.Instance.isClear = false;
+                GameSave.Instance.data.isStory = false;
+                GameSave.Instance.data.isClear = false;
                 //SceneLoadManager.LoadScene("CutSceneScene");
             }
         }

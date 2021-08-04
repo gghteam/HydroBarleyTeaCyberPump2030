@@ -10,17 +10,17 @@ public class OnCraft : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameManager.Instance.isEnding = true;
-        GameManager.Instance.isStory = false;
+        GameSave.Instance.data.isEnding = true;
+        GameSave.Instance.data.isStory = false;
 
         if (isSuccess)
         {
-            GameManager.Instance.isGoodEnding = true;
+            GameSave.Instance.data.isGoodEnding = true;
             SceneLoadManager.LoadSceneAdditive("CutSceneScene");
             return;
         }
 
-        GameManager.Instance.isGoodEnding = false;
+        GameSave.Instance.data.isGoodEnding = false;
         SceneLoadManager.LoadSceneAdditive("CutSceneScene");
     }
 
