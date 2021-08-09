@@ -105,7 +105,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.9",
+      "version": "2.0.11",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -211,6 +211,13 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "ggm.han.wintween": {
+      "version": "https://github.com/notdevblue/WinTween.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "00e3578ed96f521190788aa4423269080718f11d"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    bool onMem = false; // 이미 메모리에 올라가 있는지
+    static bool onMem = false; // 이미 메모리에 올라가 있는지
 
     private void Awake()
     {
