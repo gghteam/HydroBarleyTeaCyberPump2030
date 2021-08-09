@@ -8,11 +8,16 @@ public class SceneLoadManager : MonoBehaviour
     static private SceneLoadManager inst; // static Á¢±Ù¿ë
            private Stack<string>    sceneRequest = new Stack<string>();
 
+    static bool onMem = false;
 
     private void Awake()
     {
+        if (onMem) return;
+
         inst = this;
         DontDestroyOnLoad(this);
+
+        onMem = true;
     }
 
     static public void LoadScene(string sceneName)

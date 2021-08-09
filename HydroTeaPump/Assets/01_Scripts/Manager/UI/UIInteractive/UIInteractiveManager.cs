@@ -3,11 +3,16 @@ using UI.Interactive.Button;
 
 public class UIInteractiveManager : UnityEngine.MonoBehaviour
 {
+    static bool onMem = false;
+
     private void Awake()
     {
+        if (onMem) return;
+
         new Select();
 
         DontDestroyOnLoad(this);
+        onMem = true;
     }
 }
 
