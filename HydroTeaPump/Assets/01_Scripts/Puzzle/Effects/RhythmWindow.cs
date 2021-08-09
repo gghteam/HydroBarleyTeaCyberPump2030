@@ -7,7 +7,7 @@ using WinTween.Scale;
 
 public class RhythmWindow : MonoBehaviour
 {
-    [SerializeField] private RhythmPlayerInput input = null;
+    [SerializeField] private PuzzlePlayerInput input = null;
 
     [SerializeField] private float bounceDuration;
     [SerializeField] private float bounceAmount;
@@ -20,7 +20,8 @@ public class RhythmWindow : MonoBehaviour
 
     void Update()
     {
-        bounceDuration = (float)NoteManager.GetBPM() / 1000.0f;
+        //bounceDuration = (float)NoteManager.GetBPM() / 1000.0f;
+        bounceDuration = 0;
 
         if (input.up)
         {

@@ -29,7 +29,7 @@ public class GeneralMove : MonoBehaviour
             isMoving = false;
             if (hit.collider.gameObject.layer == 8)
             {
-                if (gameObject.GetComponent<RythmPlayerMove>() != null)
+                if (gameObject.GetComponent<PuzzlePlayerMove>() != null)
                 {
                     hit.collider.GetComponent<ObtacleMove>().dir = dir;
                     hit.collider.GetComponent<ObtacleMove>().ObtacleMoving();
