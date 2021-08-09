@@ -19,6 +19,11 @@ public partial class PlayerMove : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        GameManager.Instance.isPopupOpen = false;
+    }
+
     private void Update()
     {
         if (!GameManager.Instance.isPopupOpen)

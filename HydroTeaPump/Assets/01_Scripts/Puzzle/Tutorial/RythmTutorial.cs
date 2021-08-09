@@ -15,7 +15,7 @@ public class RythmTutorial : MonoBehaviour
     [SerializeField]
     private TextManager textManager = null;
     [SerializeField]
-    private NoteManager noteManager = null;
+    private PuzzleManager puzzleManager = null;
     private void Start()
     {
         talkPanel.gameObject.SetActive(false);
@@ -23,7 +23,7 @@ public class RythmTutorial : MonoBehaviour
     public void TutorialPopUp(int index)
     {
         talkPanel.gameObject.SetActive(true);
-        noteManager.canAct = false;
+        puzzleManager.canAct = false;
         Talk(talkText,index + 200,0);
     }
     private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
@@ -40,7 +40,7 @@ public class RythmTutorial : MonoBehaviour
             {
                 if(nextTalkData == null)
                 {
-                    noteManager.canAct = true;
+                    puzzleManager.canAct = true;
                 }
                 else
                 {

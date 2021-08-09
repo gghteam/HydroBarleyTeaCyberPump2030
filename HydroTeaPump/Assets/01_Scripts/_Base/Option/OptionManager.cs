@@ -19,23 +19,16 @@ public partial class OptionManager : MonoBehaviour
     public float effectVolume = 0.8f;
     public float musicVolume  = 0.8f;
 
-    private bool isInstantiated = false;
+    static private bool onMem = false;
 
     private void Awake()
     {
-        if (isInstantiated)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            isInstantiated = true;
-            inst = this;
-            DontDestroyOnLoad(this);
-            LoadSavedOption();
-        }
+        if (onMem) return;
 
-        
+        onMem = true;
+        inst = this;
+        DontDestroyOnLoad(this);
+        LoadSavedOption();
     }
 
     private void OnDestroy()

@@ -189,7 +189,7 @@ public partial class NoteManager : MonoBehaviour
 
                         if (x <2)
                         {
-                            player.GetComponent<RythmPlayerMove>().PlayerMoving();
+                            player.GetComponent<PuzzlePlayerMove>().PlayerMoving();
                         }
                         heartState = (HeartState)x;
                         HeartSpriteRefresh();

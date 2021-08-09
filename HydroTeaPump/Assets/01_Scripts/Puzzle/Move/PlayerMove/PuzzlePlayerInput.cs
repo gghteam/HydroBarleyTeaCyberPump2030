@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RhythmPlayerInput : MonoBehaviour
+public class PuzzlePlayerInput : MonoBehaviour
 {
     // ют╥б boolean
     public bool up    { get; private set; }

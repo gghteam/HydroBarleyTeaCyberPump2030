@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class RythmPlayerMove : GeneralMove
+public class PuzzlePlayerMove : GeneralMove
 {
     private Animator          animator;
-    private RhythmPlayerInput input; // 입력
+    private PuzzlePlayerInput input; // 입력
 
     public NoteManager noteManager;
 
@@ -19,7 +19,7 @@ public class RythmPlayerMove : GeneralMove
     private void Start()
     {
         animator = GetComponent<Animator>();
-        input    = GetComponent<RhythmPlayerInput>();
+        input    = GetComponent<PuzzlePlayerInput>();
     }
     /// <summary>
     /// 플레이어 이동함수
