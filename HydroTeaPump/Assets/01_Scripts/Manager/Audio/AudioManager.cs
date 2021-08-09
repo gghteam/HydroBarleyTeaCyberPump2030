@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     private AudioClip[] StageMusic;
 
     [SerializeField]
-    private NoteManager noteManager;
+    private NoteManager puzzleManager;
 
     private SettingsVO opt = new SettingsVO();
 
@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
     {
         if(!audioSource.isPlaying && isStartPlaying)
         {
-            noteManager.TimeOut();
+            puzzleManager.TimeOut();
         }
     }
 

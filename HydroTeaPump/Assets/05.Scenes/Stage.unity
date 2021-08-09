@@ -330,7 +330,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 606212a319b047047aeddf544bc2a613, type: 3}
   - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
   - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
-  noteManager: {fileID: 0}
+  puzzleManager: {fileID: 0}
 --- !u!4 &87731013
 Transform:
   m_ObjectHideFlags: 0
@@ -787,7 +787,7 @@ MonoBehaviour:
   talkPanel: {fileID: 1648703109}
   talkText: {fileID: 351014824}
   textManager: {fileID: 1698645080}
-  noteManager: {fileID: 0}
+  puzzleManager: {fileID: 423967109}
 --- !u!4 &224169086
 Transform:
   m_ObjectHideFlags: 0

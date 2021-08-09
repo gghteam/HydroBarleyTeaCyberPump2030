@@ -68,5 +68,9 @@ public class PuzzleManager : MonoBehaviour
     {
         heartSprite.sprite = heartSprites[(int)heartState];
     }
-
+    public void TimeOut()
+    {
+        canAct = false;
+        failedManager.FailedStage();
+    }
 }
