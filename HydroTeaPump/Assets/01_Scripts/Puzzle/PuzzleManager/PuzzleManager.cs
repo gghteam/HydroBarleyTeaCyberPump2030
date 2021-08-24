@@ -43,6 +43,9 @@ public class PuzzleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (GameObject.Find("Enemy") != null)
+            enemy = GameObject.Find("Enemy");
         opt = OptionManager.GetSettings();
         audioManager.StartMusic();
     }
@@ -55,7 +58,8 @@ public class PuzzleManager : MonoBehaviour
         // 키 입력 시 타이밍 체크
         if (Input.GetKeyDown(opt.moveUp) || Input.GetKeyDown(opt.moveRight) || Input.GetKeyDown(opt.moveLeft) || Input.GetKeyDown(opt.moveDown))
         {
-            enemy.GetComponent<EnemyMove>().EnemyMoving();
+            if (enemy != null)
+                enemy.GetComponent<EnemyMove>().EnemyMoving();
             player.GetComponent<PuzzlePlayerMove>().PlayerMoving();
             HeartSpriteRefresh();
         }

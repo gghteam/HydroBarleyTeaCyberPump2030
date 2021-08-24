@@ -26,12 +26,18 @@ public class RythmTutorial : MonoBehaviour
         puzzleManager.canAct = false;
         Talk(talkText,index + 200,0);
     }
+    private void ResetText(Text text)
+    {
+        text.text = "";
+    }
     private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
     {
+
         string talkData = textManager.GetTalk(id, talkIndex);
         string nextTalkData = textManager.GetTalk(id, talkIndex +1);
 
         //텍스트 리셋한번
+        ResetText(text);
 
         if (talkData != null)
         {
@@ -41,6 +47,8 @@ public class RythmTutorial : MonoBehaviour
                 if(nextTalkData == null)
                 {
                     puzzleManager.canAct = true;
+                    talkPanel.gameObject.SetActive(false);
+                    Destroy(gameObject);
                 }
                 else
                 {

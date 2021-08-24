@@ -8,7 +8,7 @@ public class PuzzlePlayerMove : GeneralMove
     private Animator          animator;
     private PuzzlePlayerInput input; // ÀÔ·Â
 
-    public NoteManager noteManager;
+    public PuzzleManager puzzleManager;
 
     [SerializeField] private GameObject[] hps = new GameObject[9];
 
@@ -27,6 +27,7 @@ public class PuzzlePlayerMove : GeneralMove
     public void PlayerMoving()
     {
         float h = input.right ? 1 : (input.left ? -1 : 0);
+        Debug.Log(h);
         float v = input.up ? 1    : (input.down ? -1 : 0);
         if (h != 0)
         {
@@ -37,6 +38,7 @@ public class PuzzlePlayerMove : GeneralMove
 
         Vector3 dir = new Vector3(h, v, 0); // 1, 0, -1 : h, v
         transform.localScale = new Vector3(h!=0? -h/2:transform.localScale.x, 0.5f, 1);
+        Debug.Log(dir);
         Moving(dir);
     }
 
@@ -65,7 +67,7 @@ public class PuzzlePlayerMove : GeneralMove
         if (col.gameObject.layer == 11)  //¸ñÇ¥¹°°ú Á¢ÃËÇßÀ»¶§
         {
             Debug.Log("¤È! È¹µæ!");
-            noteManager.canAct = false;
+            puzzleManager.canAct = false;
             GameSave.Instance.data.isClear = true;
             SceneLoadManager.LoadSceneAdditive("RewardScene");
         }
@@ -75,7 +77,7 @@ public class PuzzlePlayerMove : GeneralMove
             --playerHp;
             if(playerHp <=0)
             {
-                noteManager.TimeOut();
+                puzzleManager.TimeOut();
                 GameSave.Instance.data.isStory = false;
                 GameSave.Instance.data.isClear = false;
                 //SceneLoadManager.LoadScene("CutSceneScene");
@@ -84,6 +86,7 @@ public class PuzzlePlayerMove : GeneralMove
         else if(col.gameObject.layer == 13)//Æ©Åä¸®¾ó
         {
             tutorial.TutorialPopUp(col.gameObject.GetComponent<RythmTutorialHelper>().tutorialIndex);
+            Destroy(col.gameObject);
         }
     }
 

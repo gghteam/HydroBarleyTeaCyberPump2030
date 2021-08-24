@@ -330,7 +330,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 606212a319b047047aeddf544bc2a613, type: 3}
   - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
   - {fileID: 8300000, guid: e548daf19122cea4aa0e2ebb64ca6b25, type: 3}
-  puzzleManager: {fileID: 0}
+  puzzleManager: {fileID: 423967109}
 --- !u!4 &87731013
 Transform:
   m_ObjectHideFlags: 0
@@ -741,8 +741,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1800466021}
-  bounceDuration: 0.5
-  bounceAmount: 10
 --- !u!114 &194871979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,6 +1735,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292146663}
   m_CullTransparentMesh: 1
+--- !u!1001 &1407459872
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101341, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566796595540101347, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
+      propertyPath: m_Name
+      value: OptionManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b40f30eaeff17245b14665c96589117, type: 3}
 --- !u!1 &1552868616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,9 +2281,9 @@ GameObject:
   - component: {fileID: 1800466018}
   - component: {fileID: 1800466017}
   - component: {fileID: 1800466015}
+  - component: {fileID: 1800466021}
   - component: {fileID: 1800466016}
   - component: {fileID: 1800466020}
-  - component: {fileID: 1800466021}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -2253,7 +2308,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 832
   isMoving: 0
-  noteManager: {fileID: 0}
+  puzzleManager: {fileID: 423967109}
   hps:
   - {fileID: 1192851594}
   - {fileID: 71246677}

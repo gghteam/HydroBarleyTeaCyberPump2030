@@ -9,11 +9,10 @@ public class AudioManager : MonoBehaviour
     private AudioClip[] StageMusic;
 
     [SerializeField]
-    private NoteManager puzzleManager;
+    private PuzzleManager puzzleManager;
 
     private SettingsVO opt = new SettingsVO();
 
-    private bool isStartPlaying = false;
     private void Start()
     {
         if(audioSource != null)
@@ -26,14 +25,13 @@ public class AudioManager : MonoBehaviour
     public void StartMusic()
     {
         audioSource.Play();
-        isStartPlaying = true;
     }
 
     private void Update()
     {
-        if(!audioSource.isPlaying && isStartPlaying)
+        if(!audioSource.isPlaying)
         {
-            puzzleManager.TimeOut();
+            //puzzleManager.TimeOut();
         }
     }
 
