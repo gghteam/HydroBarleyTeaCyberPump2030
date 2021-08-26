@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_STANDALONE_WIN || !UNITY_EDITOR_LINUX
+
 using WinTween.Position;
 using WinTween.Scale;
 
@@ -47,3 +49,5 @@ public class RhythmWindow : MonoBehaviour
 
 
 }
+
+#endif

@@ -8,8 +8,8 @@ namespace WinTween
 {
     abstract public class WindowCore : MonoBehaviour
     {
+#if UNITY_STANDALONE_WIN || !UNITY_EDITOR_LINUX
         #region WinAPI import
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
     [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
     private static extern IntPtr GetActiveWindow();
 
@@ -33,8 +33,7 @@ namespace WinTween
         public int Right;       // x position of lower-right corner
         public int Bottom;      // y position of lower-right corner
     }
-#endif
-    #endregion
+#endregion
     
         // Sets current application's window position
         // do not work when fullscreen
@@ -67,7 +66,7 @@ namespace WinTween
     {
         SetWindowPos(activeHwnd, 0, pos.x, pos.y, screen.x, screen.y, 1);
     }
-    #endregion
+        #endregion
     
         // Sets current application's window size
         #region SetWindowSize Function
@@ -110,7 +109,7 @@ namespace WinTween
     {
         MoveWindow(activeHwnd, location.x, location.y, size.x, size.y, true);
     }
-    #endregion
+        #endregion
     
         
     
@@ -161,7 +160,7 @@ namespace WinTween
     /// Bottom: y pos of lower-right coner.<br></br>
     /// </summary>
     private RECT rc;
-    #endregion
+        #endregion
     
         // callback delegate
         public delegate void WindowCallBack();
@@ -197,7 +196,7 @@ namespace WinTween
     /// Monitor y resolution - Application y resolution
     /// </summary>
     public int BottomPosY { get; private set; }
-    #endregion
+        #endregion
     
         #region Screen size var
     // screen size var
@@ -261,11 +260,11 @@ namespace WinTween
         #region ToMiddle
 
         /// <summary>
-        /// Ã¢À» È­¸é °¡¿Âµ¥·Î ÀÌµ¿½ÃÅµ´Ï´Ù.
+        /// Ã¢ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½Åµï¿½Ï´ï¿½.
         /// </summary>
-        /// <param name="speed">ÀÌµ¿ ¼Óµµ</param>
+        /// <param name="speed">ï¿½Ìµï¿½ ï¿½Óµï¿½</param>
         /// <param name="callBack"></param>
-        /// <param name="snap">¿¡´Ï¿¡ÀÌ¼Ç ¾øÀÌ ÀÌµ¿ ¿©ºÎ</param>
+        /// <param name="snap">ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½</param>
         /// <returns></returns>
         static public void Middle(float speed, bool snap = false, WindowCallBack callBack = null)
         {
@@ -273,7 +272,7 @@ namespace WinTween
         }
         private IEnumerator ToMiddle(float speed, bool snap = false, WindowCallBack callBack = null)
         {
-            // Midpos Àß¸øÀâÈû
+            // Midpos ï¿½ß¸ï¿½ï¿½ï¿½ï¿½ï¿½
             if (snap)
             {
                 SetLocation(MiddleCenter);
@@ -285,7 +284,7 @@ namespace WinTween
 
             while (degree < Mathf.PI / 2.0f)
             {
-                degree += speed; // TODO : ³¡³»Áö ¾ÊÀ½
+                degree += speed; // TODO : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 //SetLocation();
             }
@@ -298,7 +297,7 @@ namespace WinTween
 
         protected virtual void Awake()
         {
-            #region ## DO NOT EDIT ##
+        #region ## DO NOT EDIT ##
         // init core var
         activeHwnd = GetActiveWindow();
         ResetPoints();
@@ -307,7 +306,7 @@ namespace WinTween
         Screen.SetResolution(1920, 1080, false);
         SetWindowSize(1280, 720);
 
-            #endregion
+        #endregion
 
             inst = this;
         }
@@ -349,8 +348,10 @@ namespace WinTween
             BottomLeft   = new Vector2Int(LeftPosX, BottomPosY);
             BottomRight  = new Vector2Int(RightPosX, BottomPosY);
         }
-    }
 
+        #endif
+    }
+    
 }
 
 

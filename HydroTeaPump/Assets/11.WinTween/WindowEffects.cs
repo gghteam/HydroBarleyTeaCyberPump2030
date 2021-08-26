@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
+#if UNITY_STANDALONE_WIN || !UNITY_EDITOR_LINUX
 
 using WinTween.Position;
 using WinTween.Scale;
+
 
 public class WindowEffects : MonoBehaviour
 {
@@ -25,7 +27,7 @@ namespace WinTween
     { 
         public class PositionEffects : WindowCore
         {
-            static private PositionEffects   inst = null; // static Á¢±Ù ¿ëµµ 
+            static private PositionEffects   inst = null; // static ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµ 
                    private WaitForEndOfFrame wait = new WaitForEndOfFrame();
 
             protected override void Awake()
@@ -40,10 +42,10 @@ namespace WinTween
             #region Bounce Effects
 
             /// <summary>
-            /// Ã¢ÀÌ À§·Î ¹Ù¿î½ºµÇ´Â È¿°ú¸¦ Àç»ýÇÕ´Ï´Ù.
+            /// Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿î½ºï¿½Ç´ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
             /// </summary>
-            /// <param name="duration">¹Ù¿î½º ±â°£</param>
-            /// <param name="amount">¹Ù¿î½º µÉ °Å¸®</param>
+            /// <param name="duration">ï¿½Ù¿î½º ï¿½â°£</param>
+            /// <param name="amount">ï¿½Ù¿î½º ï¿½ï¿½ ï¿½Å¸ï¿½</param>
             /// <param name="callback"></param>
             /// <returns></returns>
             static public void BounceUp(float duration, float amount, WindowCallBack callback = null)
@@ -52,14 +54,14 @@ namespace WinTween
             }
             private IEnumerator UpBounce(float duration, float amount, WindowCallBack callback = null)
             {
-                Vector2Int pos = GetLocation(); // º»ÀÎ Ã¢ À§Ä¡¸¦ °¡Á®¿È
-                float degree   = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add      = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                Vector2Int pos = GetLocation(); // ï¿½ï¿½ï¿½ï¿½ Ã¢ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                float degree   = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add      = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 while (degree < Mathf.PI)
                 {
                     degree += add * Time.deltaTime;
-                    SetLocation(pos.x, pos.y - (int)(Mathf.Sin(degree) * amount)); // TODO : À§Ä¡
+                    SetLocation(pos.x, pos.y - (int)(Mathf.Sin(degree) * amount)); // TODO : ï¿½ï¿½Ä¡
                     yield return wait;
                 }
 
@@ -67,10 +69,10 @@ namespace WinTween
             }
 
             /// <summary>
-            /// Ã¢ÀÌ ¾Æ·¹·Î ¹Ù¿î½ºµÇ´Â È¿°ú¸¦ Àç»ýÇÕ´Ï´Ù.
+            /// Ã¢ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½Ù¿î½ºï¿½Ç´ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
             /// </summary>
-            /// <param name="duration">¹Ù¿î½º ±â°£</param>
-            /// <param name="amount">¹Ù¿î½º µÉ °Å¸®</param>
+            /// <param name="duration">ï¿½Ù¿î½º ï¿½â°£</param>
+            /// <param name="amount">ï¿½Ù¿î½º ï¿½ï¿½ ï¿½Å¸ï¿½</param>
             /// <param name="callback"></param>
             /// <returns></returns>
             static public void BounceDown(float duration, float amount, WindowCallBack callback = null)
@@ -80,8 +82,8 @@ namespace WinTween
             private IEnumerator DownBounce(float duration, float amount, WindowCallBack callback = null)
             {
                 Vector2Int pos = GetLocation();
-                float degree   = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add      = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree   = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add      = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 while (degree < Mathf.PI)
                 {
@@ -94,10 +96,10 @@ namespace WinTween
             }
 
             /// <summary>
-            /// Ã¢ÀÌ ¿À¸¥ÂÊÀ¸·Î ¹Ù¿î½ºµÇ´Â È¿°ú¸¦ Àç»ýÇÕ´Ï´Ù.
+            /// Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿î½ºï¿½Ç´ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
             /// </summary>
-            /// <param name="duration">¹Ù¿î½º ±â°£</param>
-            /// <param name="amount">¹Ù¿î½º µÉ °Å¸®</param>
+            /// <param name="duration">ï¿½Ù¿î½º ï¿½â°£</param>
+            /// <param name="amount">ï¿½Ù¿î½º ï¿½ï¿½ ï¿½Å¸ï¿½</param>
             /// <param name="callback"></param>
             /// <returns></returns>
             static public void BounceRight(float duration, float amount, WindowCallBack callback = null)
@@ -107,8 +109,8 @@ namespace WinTween
             private IEnumerator RightBounce(float duration, float amount, WindowCallBack callback = null)
             {
                 Vector2Int pos = GetLocation();
-                float degree   = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add      = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree   = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add      = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 while (degree < Mathf.PI)
                 {
@@ -121,10 +123,10 @@ namespace WinTween
             }
 
             /// <summary>
-            /// Ã¢ÀÌ ¿ÞÂÊÀ¸·Î ¹Ù¿î½ºµÇ´Â È¿°ú¸¦ Àç»ýÇÕ´Ï´Ù.
+            /// Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿î½ºï¿½Ç´ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
             /// </summary>
-            /// <param name="duration">¹Ù¿î½º ±â°£</param>
-            /// <param name="amount">¹Ù¿î½º µÉ °Å¸®</param>
+            /// <param name="duration">ï¿½Ù¿î½º ï¿½â°£</param>
+            /// <param name="amount">ï¿½Ù¿î½º ï¿½ï¿½ ï¿½Å¸ï¿½</param>
             /// <param name="callback"></param>
             /// <returns></returns>
             static public void BounceLeft(float duration, float amount, WindowCallBack callback = null)
@@ -134,8 +136,8 @@ namespace WinTween
             private IEnumerator LeftBounce(float duration, float amount, WindowCallBack callback = null)
             {
                 Vector2Int pos = GetLocation();
-                float degree   = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add      = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree   = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add      = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 
                 while (degree < Mathf.PI)
                 {
@@ -152,11 +154,11 @@ namespace WinTween
             #region Shake Effects
 
             /// <summary>
-            /// Ã¢À» ÁÂ¿ì·Î Èçµì´Ï´Ù.
+            /// Ã¢ï¿½ï¿½ ï¿½Â¿ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½.
             /// </summary>
-            /// <param name="duration">Èçµé ±â°£</param>
-            /// <param name="amount">Èçµé °Å¸®</param>
-            /// <param name="count">Èçµé È½¼ö</param>
+            /// <param name="duration">ï¿½ï¿½ï¿½ ï¿½â°£</param>
+            /// <param name="amount">ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½</param>
+            /// <param name="count">ï¿½ï¿½ï¿½ È½ï¿½ï¿½</param>
             /// <param name="callBack"></param>
             static public void ShakeX(float duration, float amount, int count, WindowCallBack callBack = null)
             {
@@ -169,8 +171,8 @@ namespace WinTween
 
                 Vector2Int pos = GetLocation();
 
-                float degree = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 for (int i = 0; i < count; ++i)
                 {
@@ -196,11 +198,11 @@ namespace WinTween
             }
 
             /// <summary>
-            /// Ã¢À» »óÇÏ·Î Èçµì´Ï´Ù.
+            /// Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½.
             /// </summary>
-            /// <param name="duration">Èçµé ±â°£</param>
-            /// <param name="amount">Èçµé °Å¸®</param>
-            /// <param name="count">Èçµé È½¼ö</param>
+            /// <param name="duration">ï¿½ï¿½ï¿½ ï¿½â°£</param>
+            /// <param name="amount">ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½</param>
+            /// <param name="count">ï¿½ï¿½ï¿½ È½ï¿½ï¿½</param>
             /// <param name="callBack"></param>
             static public void ShakeY(float duration, float amount, int count, WindowCallBack callBack = null)
             {
@@ -213,8 +215,8 @@ namespace WinTween
 
                 Vector2Int pos = GetLocation();
 
-                float degree = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 for (int i = 0; i < count; ++i)
                 {
@@ -248,7 +250,7 @@ namespace WinTween
     {
         public class ScaleEffects : WindowCore
         {
-            static private ScaleEffects      inst = null; // static Á¢±Ù ¿ëµµ
+            static private ScaleEffects      inst = null; // static ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµ
                    private WaitForEndOfFrame wait = new WaitForEndOfFrame();
 
             protected override void Awake()
@@ -261,10 +263,10 @@ namespace WinTween
             #region Window Size effects
 
             /// <summary>
-            /// Ã¢À» Á¡Á¡ Å°¿ö¼­ ÀüÃ¼È­¸éÀ¸·Î ¸¸µì´Ï´Ù.
+            /// Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
             /// </summary>
-            /// <param name="duration">Ã¢ Ä¿Áö´Â ±â°£</param>
-            /// <param name="snap">¿¡´Ï¸ÞÀÌ¼Ç ¾øÀÌ ÀÌµ¿ ¿©ºÎ</param>
+            /// <param name="duration">Ã¢ Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½â°£</param>
+            /// <param name="snap">ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½</param>
             /// <param name="callBack"></param>
             static public void ToFullScreen(float duration, bool snap = false, WindowCallBack callBack = null)
             {
@@ -276,8 +278,8 @@ namespace WinTween
                 Vector2Int curScale = GetCurrentSize();
                 Vector2Int beginScale = curScale;
 
-                float degree = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 if (snap)
                 {
@@ -311,23 +313,23 @@ namespace WinTween
 
             #region Windowed Caller Function
             /// <summary>
-            /// ÀüÃ¼È­¸éÀ» ÇØÁ¦ÇÑ ÈÄ Ã¢À» Á¡Á¡ ÁÙÀÔ´Ï´Ù.
+            /// ï¿½ï¿½Ã¼È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
             /// </summary>
-            /// <param name="targetScale">¸ñÇ¥ »çÀÌÁî</param>
-            /// <param name="duration">Ã¢ ÁÙ¾îµå´Â ±â°£</param>
-            /// <param name="snap">¿¡´Ï¸ÞÀÌ¼Ç ¾øÀÌ ÀÌµ¿ ¿©ºÎ</param>
+            /// <param name="targetScale">ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
+            /// <param name="duration">Ã¢ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½â°£</param>
+            /// <param name="snap">ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½</param>
             /// <param name="callBack"></param>
             static public void ToWindowed(Vector2Int targetScale, float duration, bool snap = false, WindowCallBack callBack = null)
             {
                 inst.StartCoroutine(inst.Windowed(targetScale.x, targetScale.y, duration, snap, callBack));
             }
             /// <summary>
-            /// ÀüÃ¼È­¸éÀ» ÇØÁ¦ÇÑ ÈÄ Ã¢À» Á¡Á¡ ÁÙÀÔ´Ï´Ù.
+            /// ï¿½ï¿½Ã¼È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
             /// </summary>
-            /// <param name="targetX">¸ñÇ¥ X »çÀÌÁî</param>
-            /// <param name="targetY">¸ñÆ÷ Y »çÀÌÁî</param>
-            /// <param name="duration">Ã¢ ÁÙ¾îµå´Â ±â°£</param>
-            /// <param name="snap">¿¡´Ï¸ÞÀÌ¼Ç ¾øÀÌ ÀÌµ¿ ¿©ºÎ</param>
+            /// <param name="targetX">ï¿½ï¿½Ç¥ X ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
+            /// <param name="targetY">ï¿½ï¿½ï¿½ï¿½ Y ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
+            /// <param name="duration">Ã¢ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½â°£</param>
+            /// <param name="snap">ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½</param>
             /// <param name="callBack"></param>
             static public void ToWindowed(int targetX, int targetY, float duration, bool snap = false, WindowCallBack callBack = null)
             {
@@ -340,8 +342,8 @@ namespace WinTween
                 Vector2Int curScale = GetCurrentSize();
                 Resolution curRes = Screen.currentResolution;
 
-                float degree = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 Screen.SetResolution(curScale.x, curScale.y, false);
                 if (snap)
@@ -384,11 +386,11 @@ namespace WinTween
 
 
             /// <summary>
-            /// Æ¯Á¤ÇÑ À§Ä¡·Î Ã¢À» ¿òÁ÷ÀÔ´Ï´Ù.
+            /// Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
             /// </summary>
-            /// <param name="pos">ÀÌµ¿½ÃÅ³ À§Ä¡</param>
-            /// <param name="duration">ÀÌµ¿ ±â°£</param>
-            /// <param name="snap">¿¡´Ï¿¡ÀÌ¼Ç ¾øÀÌ ÀÌµ¿ ¿©ºÎ</param>
+            /// <param name="pos">ï¿½Ìµï¿½ï¿½ï¿½Å³ ï¿½ï¿½Ä¡</param>
+            /// <param name="duration">ï¿½Ìµï¿½ ï¿½â°£</param>
+            /// <param name="snap">ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½</param>
             /// <returns></returns>
             public IEnumerator MoveWindow(Vector2Int pos, float duration, bool snap = false)
             {
@@ -398,18 +400,20 @@ namespace WinTween
                     yield break;
                 }
 
-                float degree = 0.0f; // »ï°¢ÇÔ¼ö ¿ë
-                float add = Mathf.PI / duration; // ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ À§ÇÔ
+                float degree = 0.0f; // ï¿½ï°¢ï¿½Ô¼ï¿½ ï¿½ï¿½
+                float add = Mathf.PI / duration; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 while (degree < Mathf.PI / 2.0f)
                 {
                     degree += add;
-                    SetLocation(pos.x, pos.y); // TODO : snap ÀÌ¶û ´Ù¸¥°Ô ¾ø´Ù
+                    SetLocation(pos.x, pos.y); // TODO : snap ï¿½Ì¶ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     yield return wait;
                 }
             }
 
-            // TODO : Dotween Ã³·³ µÚ¿¡ SetEase ºÙÀÌ°í ½ÍÀ½
+            // TODO : Dotween Ã³ï¿½ï¿½ ï¿½Ú¿ï¿½ SetEase ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
     }
 }
+
+#endif
