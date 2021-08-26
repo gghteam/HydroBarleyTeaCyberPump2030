@@ -6,7 +6,7 @@ using DG.Tweening;
 public class PuzzlePlayerMove : GeneralMove
 {
     private Animator          animator;
-    private PuzzlePlayerInput input; // 입력
+    //private PuzzlePlayerInput input; // 입력
 
     public PuzzleManager puzzleManager;
 
@@ -19,16 +19,18 @@ public class PuzzlePlayerMove : GeneralMove
     private void Start()
     {
         animator = GetComponent<Animator>();
-        input    = GetComponent<PuzzlePlayerInput>();
+        //input    = GetComponent<PuzzlePlayerInput>();
     }
     /// <summary>
     /// 플레이어 이동함수
     /// </summary>
     public void PlayerMoving()
     {
-        float h = input.right ? 1 : (input.left ? -1 : 0);
-        Debug.Log(h);
-        float v = input.up ? 1    : (input.down ? -1 : 0);
+        float v =Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        //float h = input.right ? 1 : (input.left ? -1 : 0);
+        //Debug.Log(h);
+        //float v = input.up ? 1    : (input.down ? -1 : 0);
         if (h != 0)
         {
             v = 0;

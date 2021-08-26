@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class RythmTutorial : MonoBehaviour
 {
+    private PuzzlePlayerInput input; // 입력
+
     //텍스트 매니저에 아이디 추가 후 튜토리얼 내용 작성
 
     [SerializeField]
@@ -16,9 +18,19 @@ public class RythmTutorial : MonoBehaviour
     private TextManager textManager = null;
     [SerializeField]
     private PuzzleManager puzzleManager = null;
+
+    private bool isDoText = false;
     private void Start()
     {
         talkPanel.gameObject.SetActive(false);
+        input = GameObject.Find("Player").GetComponent<PuzzlePlayerInput>();
+    }
+    private void Update()
+    {
+        if (isDoText && input.right || input.left || input.up|| input.down)
+        {
+            
+        }
     }
     public void TutorialPopUp(int index)
     {
@@ -32,7 +44,7 @@ public class RythmTutorial : MonoBehaviour
     }
     private void Talk(UnityEngine.UI.Text text, int id, int talkIndex) //대사 사용 예시 함수 대사가 계속 나온다면 딴 스크립트에서 이러케 쓰면 편함
     {
-
+        isDoText = true;
         string talkData = textManager.GetTalk(id, talkIndex);
         string nextTalkData = textManager.GetTalk(id, talkIndex +1);
 
@@ -48,6 +60,7 @@ public class RythmTutorial : MonoBehaviour
                 {
                     puzzleManager.canAct = true;
                     talkPanel.gameObject.SetActive(false);
+                    isDoText = false;
                     Destroy(gameObject);
                 }
                 else
