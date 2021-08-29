@@ -12,6 +12,17 @@ public class GameManager : MonoBehaviour
     public bool[] stageClear = new bool[5]; // 스테이지 클리어 정보 배열
 
     public int spriteIndex = 0;
+
+    public enum CutSceneState
+    {
+        Start,
+        Fail,
+        StageClear,
+        HappyEnding,
+        NormalEnding
+    }
+
+    public CutSceneState cutSceneState = CutSceneState.Start;
     public bool[] GetStageClearStat()
     {
         SetClearData();
@@ -57,7 +68,7 @@ public class GameManager : MonoBehaviour
     [Header("카메라")]
     private CinemachineImpulseSource ImpulseSource;
 
-    public int currentStage;
+    public int currentStage = 0;
     private void Awake()
     {
         if (Instance != null) return;

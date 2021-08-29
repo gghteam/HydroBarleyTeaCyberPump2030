@@ -70,7 +70,8 @@ public class PuzzlePlayerMove : GeneralMove
         {
             Debug.Log("¤È! È¹µæ!");
             puzzleManager.canAct = false;
-            GameSave.Instance.data.isClear = true;
+            //GameSave.Instance.data.isClear = true;
+            GameManager.Instance.cutSceneState = GameManager.CutSceneState.StageClear;
             SceneLoadManager.LoadSceneAdditive("RewardScene");
         }
         else if(col.gameObject.layer == 12)//°¡½Ã
@@ -80,8 +81,9 @@ public class PuzzlePlayerMove : GeneralMove
             if(playerHp <=0)
             {
                 puzzleManager.TimeOut();
-                GameSave.Instance.data.isStory = false;
-                GameSave.Instance.data.isClear = false;
+                /*GameSave.Instance.data.isStory = false;
+                GameSave.Instance.data.isClear = false;*/
+                GameManager.Instance.cutSceneState = GameManager.CutSceneState.Fail;
                 //SceneLoadManager.LoadScene("CutSceneScene");
             }
         }

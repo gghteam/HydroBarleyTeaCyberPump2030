@@ -54,7 +54,31 @@ public class CutScene : MonoBehaviour
     public void RefreshIndex()
     {
         //Debug.Log("ss");
-        if (GameSave.Instance.data.isStory)
+        switch (GameManager.Instance.cutSceneState)
+        {
+            case GameManager.CutSceneState.Start:
+                GameManager.Instance.spriteIndex = 0;
+                explainId = 300;
+                break;
+            case GameManager.CutSceneState.Fail:
+                GameManager.Instance.spriteIndex = 37;
+                explainId = 100;
+                break;
+            case GameManager.CutSceneState.StageClear:
+                GameManager.Instance.spriteIndex = 0;
+                explainId = GameManager.Instance.currentStage +1;
+                Debug.Log(explainId);
+                break;
+            case GameManager.CutSceneState.HappyEnding:
+                GameManager.Instance.spriteIndex = 16;
+                explainId = 400;
+                break;
+            case GameManager.CutSceneState.NormalEnding:
+                GameManager.Instance.spriteIndex = 26;
+                explainId = 401;
+                break;
+        }
+        /*if (GameSave.Instance.data.isStory)
         {
             explainId = 300;
             GameManager.Instance.spriteIndex = 0;
@@ -68,7 +92,7 @@ public class CutScene : MonoBehaviour
         {
             explainId = GameSave.Instance.data.isClear ? 13 : 100;
             GameManager.Instance.spriteIndex = GameSave.Instance.data.isClear ? 0 : 37;
-        }
+        }*/
         explainIndex = 0;
         //Debug.Log(GameManager.Instance.spriteIndex);
     }
