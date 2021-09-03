@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ±â´É °ü·Ã (¶Ç´Â ±â¹Ý)
+// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½)
 public class InventoryBase : MonoBehaviour
 {
 
-    static private InventoryBase                inst        = null;                               // static ÇÔ¼ö ¿ë
-           private Dictionary<ItemEnum, ItemVO> inventory   = new Dictionary<ItemEnum, ItemVO>(); // ÀÎº¥Åä¸® µñ¼Å³Ê¸®
-           private ItemVO[]                     items       = new ItemVO[6];                      // ¾ÆÀÌÅÆ ¹è¿­
-           public  InventoryVO                  inventoryVO = null;                               // ÀÎº¥Åä¸® ÀúÀå
+    static private InventoryBase                inst        = null;                               // static ï¿½Ô¼ï¿½ ï¿½ï¿½
+           private Dictionary<ItemEnum, ItemVO> inventory   = new Dictionary<ItemEnum, ItemVO>(); // ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½Å³Ê¸ï¿½
+           private ItemVO[]                     items       = new ItemVO[6];                      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
+           public  InventoryVO                  inventoryVO = null;                               // ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½
     #region init, includes Awake
 
     private void Awake()
@@ -20,7 +20,7 @@ public class InventoryBase : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÆ ±âº» µ¥ÀÌÅÍ¸¦ ÀÎº¥Åä¸®¿¡ ÀúÀå
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void SetItemData(bool debug = false)
     {
@@ -34,7 +34,7 @@ public class InventoryBase : MonoBehaviour
         bool[] itemStatus = new bool[5];
         itemStatus = GameManager.Instance.GetStageClearStat();
 
-        // ¾ÆÀÌÅÆ ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         items[0] = new ItemVO(ItemEnum.Star,     (itemStatus[0] ? 1 : 0), 0);
         items[1] = new ItemVO(ItemEnum.Mermaid,  1, 0);
         items[2] = new ItemVO(ItemEnum.Flower,   (itemStatus[1] ? 1 : 0), 0);
@@ -42,13 +42,13 @@ public class InventoryBase : MonoBehaviour
         items[4] = new ItemVO(ItemEnum.Fog,      (itemStatus[3] ? 1 : 0), 0);
         items[5] = new ItemVO(ItemEnum.Moon,     (itemStatus[4] ? 1 : 0), 0);
 
-        // µñ¼Å³Ê¸®¿¡ Ãß°¡
+        // ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
         for (int i = 0; i < items.Length; ++i)
         {
             inventory.Add((ItemEnum)i, items[i]);
         }
 
-        // VO ¿¡ ³Ö¾îµÒ
+        // VO ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½
         inventoryVO = new InventoryVO(items);
     }
     #endregion
@@ -56,10 +56,10 @@ public class InventoryBase : MonoBehaviour
     #region Get, check
 
     /// <summary>
-    /// ¾ÆÀÌÅÆ °¡Á®¿Ã ¼ö ÀÖ´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     /// </summary>
-    /// <param name="itemEnum">°¡Á®¿Ã ¾ÆÀÌÅÆ</param>
-    /// <param name="itemVO">°¡Á®¿Ã ¼ö ÀÖÀ» ½Ã °¡Á®¿Â ¾ÆÀÌÅÆÀÇ Á¤º¸°¡ ´ã±è</param>
+    /// <param name="itemEnum">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
+    /// <param name="itemVO">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½</param>
     /// <returns>false when item count is 0 or less</returns>
     static public bool TryGetItem(ItemEnum itemEnum, ref ItemVO itemVO)
     {
@@ -81,7 +81,7 @@ public class InventoryBase : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÆÀÇ ´ëÇÑ Á¤º¸¸¦ °¡Á®¿Ã ¼ö ÀÖÀ½
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="itemEnum"></param>
     /// <returns>inventory[itemEnum]</returns>
@@ -100,9 +100,9 @@ public class InventoryBase : MonoBehaviour
     #region AddItem
 
     /// <summary>
-    /// ¾ÆÀÌÅÆÀ» Ãß°¡ÇÔ
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½
     /// </summary>
-    /// <param name="vo">Ãß°¡ÇÒ ¾ÆÀÌÅÆÀÇ vo</param>
+    /// <param name="vo">ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ vo</param>
     /// <returns>false when fail</returns>
     static public bool AddItem(ItemVO vo)
     {
@@ -117,9 +117,9 @@ public class InventoryBase : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÆÀ» ÇÏ³ª Ãß°¡ÇÔ
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ß°ï¿½ï¿½ï¿½
     /// </summary>
-    /// <param name="itemEnum">Ãß°¡ÇÒ ¾ÆÀÌÅÆÀÇ enums</param>
+    /// <param name="itemEnum">ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ enums</param>
     /// <returns>false when fail</returns>
     static public bool AddItem(ItemEnum itemEnum)
     {

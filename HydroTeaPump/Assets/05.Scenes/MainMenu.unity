@@ -2562,6 +2562,7 @@ MonoBehaviour:
   isPopupOpen: 0
   stageClear: 0000000000
   spriteIndex: 0
+  cutSceneState: 0
   currentStage: 0
 --- !u!4 &1274378866
 Transform:
@@ -3220,9 +3221,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ed6d625f0648e94a97065695d74cc99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1a2f61b31faa544f819e3da3ea361e1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

@@ -30,6 +30,16 @@ public class BasicMagicbook : MonoBehaviour
             magicBook.SetActive(true);
             btnEnable.gameObject.SetActive(false);
             exitButton.gameObject.SetActive(true);
+
+            for (int i = 1; i < pages.Count; ++i)
+            {
+                int num = i;
+                pages[num].SetActive(false);
+            }
+
+            magicBookIdx = 0;
+
+            Debug.Log(pages[0].name);
         }); // 마도서 펼치거나 접음
 
         exitButton.onClick.AddListener(() =>
@@ -43,10 +53,12 @@ public class BasicMagicbook : MonoBehaviour
         btnPrev.onClick.AddListener(PageDown);
 
 
-        for (int i = 1; i < pages.Count; ++i) // 표지 빼고 다 비활성화 상태로 돌림
+        for (int i = 1; i < pages.Count; ++i)
         {
-            pages[i].SetActive(false);
+            int num = i;
+            pages[num].SetActive(false);
         }
+
 
         magicBook.SetActive(false);
     }
@@ -61,7 +73,8 @@ public class BasicMagicbook : MonoBehaviour
             return; // 첫 페이지
         }
 
-        Debug.Log(magicBookIdx);
+        Debug.Log(pages[magicBookIdx - 1].name);
+        Debug.Log(pages[magicBookIdx].name);
 
         pages[magicBookIdx - 1].SetActive(!pages[magicBookIdx - 1].activeSelf); // 열린 페이지를 닫음
         pages[magicBookIdx].SetActive(!pages[magicBookIdx].activeSelf); // 닫힌 페이지를 열음
@@ -76,7 +89,8 @@ public class BasicMagicbook : MonoBehaviour
             return; // 마지막 페이지
         }
 
-        Debug.Log(magicBookIdx);
+        Debug.Log(pages[magicBookIdx + 1].name);
+        Debug.Log(pages[magicBookIdx].name);
 
         pages[magicBookIdx + 1].SetActive(!pages[magicBookIdx + 1].activeSelf); // 열린 페이지를 닫음
         pages[magicBookIdx].SetActive(!pages[magicBookIdx].activeSelf); // 닫힌 페이지를 열음

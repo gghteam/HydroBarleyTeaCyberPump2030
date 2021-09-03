@@ -9103,6 +9103,7 @@ MonoBehaviour:
   - {fileID: 2125639885}
   - {fileID: 1531836739}
   magicBook: {fileID: 1783425104}
+  exitButton: {fileID: 245986835}
   btnNext: {fileID: 1771920069}
   btnPrev: {fileID: 1426095958}
   btnEnable: {fileID: 200311329}
